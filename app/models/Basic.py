@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from app import db
+from datetime import datetime
 
 class Basic(db.Document):
     '''
@@ -7,6 +8,6 @@ class Basic(db.Document):
     '''
 
     # 创建时间
-    createAt = db.StringField(max_length=60, required=True)
+    createAt = db.DateTimeField(required=True)
     # 更新时间
-    updateAt = db.StringField(max_length=60, required=True)
+    updateAt = db.DateTimeField(required=True)

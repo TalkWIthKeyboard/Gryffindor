@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from flask_mongoengine import MongoEngine
 from flask import Flask
 from flask_login import LoginManager
@@ -12,6 +14,8 @@ db = MongoEngine(app)
 # loginManager.init_app(app)
 # loginManager.login_view='admin_login'
 
+# models
+from app.models.Movie import BasicInfo # 电影基本信息
 
 # router
 from app.routes.calendar import calendar
