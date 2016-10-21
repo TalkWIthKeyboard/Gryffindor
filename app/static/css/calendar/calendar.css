@@ -1,0 +1,138 @@
+.body{
+    margin: 0px;
+}
+
+table {
+    border-spacing: 0;
+    width: 100%;
+    table-layout:fixed;
+}
+
+header{
+    background-color: #f1f1f1;
+}
+
+thead{
+    background-color: #f1f1f1
+}
+
+thead td{
+    border-bottom: 2px solid #eaeaea;
+}
+
+tbody tr td{
+    padding: 0px;
+    border: 1px solid #fafafa;
+    height: 40px;
+}
+
+.has-event {
+    cursor: pointer;
+    position: relative;
+}
+
+.has-event:after {
+    background: #010101;
+    border-radius: 50%;
+    bottom: 5px;
+    display: block;
+    content: '';
+    height: 6px;
+    left: 50%;
+    margin: -4px 0 0 -4px;
+    position: absolute;
+    width: 6px;
+}
+
+.first-line{
+    border-top: 0px;
+}
+
+.last-line{
+    border-bottom: 0px;
+}
+
+.event-calendar tr td:hover{
+    background-color: #ffdf39;
+    color: #010101;
+}
+
+.current-day {
+    background-color: #ffdf39;
+    /*border: 2px solid #ffdf39;*/
+}
+
+.calendar {
+    text-align: center;
+}
+
+.calendar h2{
+    text-transform: uppercase;
+    border-top: 8px solid #f1f1f1;
+    color: #010101;
+}
+
+.calendar thead{
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btn-prev,
+.btn-next {
+    margin: -16px;
+    position: absolute;
+    width: 32px;
+    top: 4%;
+}
+
+.btn-prev {
+    left: 35px;
+}
+
+.btn-next {
+    right: 35px;
+}
+
+.not-month-day{
+    color: #d0d0d0;
+    background-color: #f6f6f6;
+}
+
+.event .event-header{
+    width: 100%;
+    height: 56px;
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #eaeaea;
+    padding-left: 18px;
+    padding-top: 5px;
+}
+
+.event .event-header .dayInfo{
+    color: dimgray;
+}
+
+.event .event-header .activeInfo{
+    font-size: 14px;
+    color: darkgray;
+}
+
+.event-hidden{
+    display: none;
+}
+
+.weui_panel{
+    margin-top: 0px;
+}
+
+.has-event:hover:after {
+    background: #010101;
+    border-radius: 50%;
+    bottom: 5px;
+    display: block;
+    content: '';
+    height: 6px;
+    left: 50%;
+    margin: -4px 0 0 -4px;
+    position: absolute;
+    width: 6px;
+}

@@ -10,3 +10,4 @@ flask/bin/pip install requests
 flask/bin/pip install mongoengine
 flask/bin/pip install flask-mongoengine
 flask/bin/pip install flask-login
+flask/bin/pip install flask-json

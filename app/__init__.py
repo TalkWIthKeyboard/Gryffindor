@@ -6,9 +6,15 @@ app = Flask(__name__, static_url_path='')
 app.config.from_object('config')
 app.secret_key = 'GryffindorProject'
 db = MongoEngine(app)
-loginManager = LoginManager()
-loginManager.init_app(app)
-loginManager.login_view='admin_login'
+
+
+# loginManager = LoginManager()
+# loginManager.init_app(app)
+# loginManager.login_view='admin_login'
+
+
+# router
+from app.routes.calendar import calendar
 
 #
 # @loginManager.user_loader
