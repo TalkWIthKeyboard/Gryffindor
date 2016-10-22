@@ -1,0 +1,10 @@
+#select {
+    margin-top: 0px;
+    height: 150px;
+    overflow-y: scroll;
+    display: none;
+}
+
+.content {
+    font-size: large;
+}
