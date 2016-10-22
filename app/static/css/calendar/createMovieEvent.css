@@ -8,3 +8,8 @@
 .content {
     font-size: large;
 }
+
+.touch {
+    background-color: #1ebc21;
+    color: white
+}
