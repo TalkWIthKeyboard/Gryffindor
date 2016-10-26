@@ -17,6 +17,7 @@ db = MongoEngine(app)
 # models
 from app.models.Movie import BasicInfo # 电影基本信息
 from app.models.Movie import Details # 电影细节信息
+from app.models.Movie import Score # 电影分数信息
 
 # router
 from app.routes.calendar import calendar

@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from app import BasicInfo,Details
+from app import BasicInfo
 import re
 
 def select_basic_info_by_name_blur(name):
@@ -20,16 +20,16 @@ def select_basic_info_by_name_blur(name):
         print e.message
         return None
 
-
-def select_detail_by_id(id):
+def select_by_id(db,id):
     '''
-    通过id查找电影的细节信息
-    :param id: 电影id
+    通过id查找电影的某种信息
+    :param db: 表
+    :param id: 电影的id
     :return:
     '''
     try:
-        detail = Details.objects(movieid=id).first()
-        return detail
+        info = db.objects(movieid=id).first()
+        return info
     except Exception,e:
         print e.message
         return None
