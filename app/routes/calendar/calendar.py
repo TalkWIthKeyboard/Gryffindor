@@ -16,8 +16,12 @@ def getCalendar():
     try:
         basic = BasicInfo.objects(movieid=22506).first()
         basic = basic.to_dict()
+        pass
     except Exception,e:
         print e.message
 
     return render_template('calendar/calendar.html')
 
+@app.route('/postTest', methods=['GET'])
+def postTest():
+    return render_template('calendar/createMovieEvent.html')
