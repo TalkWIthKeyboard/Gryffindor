@@ -1,8 +1,12 @@
 #select {
     margin-top: 0px;
-    height: 150px;
     overflow-y: scroll;
+    height: 144px;
+    border-bottom: #d9d9d9 1px solid;
     display: none;
+}
+
+.list_cell {
 }
 
 .content {

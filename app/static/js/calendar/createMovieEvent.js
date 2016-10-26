@@ -24,7 +24,7 @@ $(document).ready(function () {
     $("#select").children("div").click(function () {
         var str = $(this).attr("data-id");
         $(".input").val(str);
-        $("#select").slideUp(1);
+        $("#select").slideUp();
     });
 
     $("#select").children("div").on("touchstart", function () {
