@@ -202,6 +202,15 @@ class Score(db.Document, MtimeMixin):
     ratingcount = db.IntField()  # 参与评分的人数
     want = db.IntField()  # 想观看的人数
 
+    def to_dict(self):
+        return dict(
+            movieid = self.movieid,
+            favorited = self.favorited,
+            rating = self.rating,
+            ratingcount = self.ratingcount,
+            want = self.want
+        )
+
 class EmbeddedBasicInfo(db.EmbeddedDocument):
     '''
         电影基本信息
@@ -219,6 +228,7 @@ class BasicInfo(db.Document, MtimeMixin):
     def to_dict(self):
         info = self.info
         return dict(
+            movieid = self.movieid,
             cnname = info.cnname,
             enname = info.enname,
             img = info.img
