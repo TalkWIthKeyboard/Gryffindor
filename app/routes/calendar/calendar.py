@@ -21,4 +21,3 @@ def getCalendar():
 
     return render_template('calendar/calendar.html')
 
-

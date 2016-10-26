@@ -16,9 +16,11 @@ db = MongoEngine(app)
 
 # models
 from app.models.Movie import BasicInfo # 电影基本信息
+from app.models.Movie import Details # 电影细节信息
 
 # router
 from app.routes.calendar import calendar
+from app.routes.movie import movie
 
 #
 # @loginManager.user_loader
