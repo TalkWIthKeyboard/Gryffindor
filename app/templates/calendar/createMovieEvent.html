@@ -1,58 +1,91 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+    <!--<title>createMovieEvent</title>-->
+
+    <!--&lt;!&ndash; css &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="/libs/jquery-weui.min.css">-->
+    <!--<link rel="stylesheet" href="/libs/weui.css">-->
+    <!--<link rel="stylesheet" href="/css/calendar/createMovieEvent.css">-->
+
+    <!--&lt;!&ndash; js &ndash;&gt;-->
+    <!--<script src="/libs/jquery-2.1.4.js"></script>-->
+    <!--<script src="/libs/jquery-weui.min.js"></script>-->
+    <!--<script src="/js/calendar/createMovieEvent.js"></script>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<div class="weui_cells weui_cells_form">-->
+    <!--<div class="weui_cell">-->
+        <!--<div class="weui_cell_hd"><label class="weui_label">电影名称</label></div>-->
+        <!--<div class="weui_cell_bd weui_cell_primary">-->
+            <!--<input id="mov_input" class="weui_input input" placeholder="请输入电影名">-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; 电影名称提示列表模块&ndash;&gt;-->
+<!--<div id="select">-->
+    <!--<div class="weui_cell list_cell" data-id="test1">-->
+        <!--<p class="content">-->
+            <!--null-->
+        <!--</p>-->
+    <!--</div>-->
+
+    <!--<div class="weui_cell list_cell" data-id="test2">-->
+        <!--<p class="content">-->
+            <!--null-->
+        <!--</p>-->
+    <!--</div>-->
+
+    <!--<div class="weui_cell list_cell" data-id="test3">-->
+        <!--<p class="content">-->
+            <!--null-->
+        <!--</p>-->
+    <!--</div>-->
+
+    <!--<div class="weui_cell list_cell" data-id="test4">-->
+        <!--<p class="content">-->
+            <!--null-->
+        <!--</p>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>createMovieEvent</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>createMovieEvent</title>
 
-    <!-- css -->
-    <link rel="stylesheet" href="/libs/jquery-weui.min.css">
-    <link rel="stylesheet" href="/libs/weui.css">
-    <link rel="stylesheet" href="/css/calendar/createMovieEvent.css">
+        <!-- css -->
+        <link rel="stylesheet" href="/libs/jquery-weui.min.css">
+        <link rel="stylesheet" href="/libs/weui.css">
+        <link rel="stylesheet" href="/css/calendar/createMovieEvent.css">
 
-    <!-- js -->
-    <script src="/libs/jquery-2.1.4.js"></script>
-    <script src="/libs/jquery-weui.min.js"></script>
-    <script src="/js/calendar/createMovieEvent.js"></script>
+        <!-- js -->
+        <script src="/libs/jquery-2.1.4.js"></script>
+        <script src="/libs/jquery-weui.min.js"></script>
+        <script src="/js/calendar/createMovieEvent.js"></script>
+    </head>
 
-</head>
-<body>
-<div class="weui_cells weui_cells_form">
-    <div class="weui_cell">
-        <div class="weui_cell_hd"><label class="weui_label">电影名称</label></div>
-        <div class="weui_cell_bd weui_cell_primary">
-            <input id="mov_input" class="weui_input input" placeholder="请输入电影名">
+    <body>
+        <div class="title"><p>记录</p></div>
+        <div class="detail"></div>
+        <div class="record">
+            <p>观影感想</p>
+            <div class="rectext">
+                <p></p>
+            </div>
         </div>
-    </div>
-</div>
-
-<!-- 电影名称提示列表模块-->
-<div id="select">
-    <div class="weui_cell list_cell" data-id="test1">
-        <p class="content">
-            null
-        </p>
-    </div>
-
-    <div class="weui_cell list_cell" data-id="test2">
-        <p class="content">
-            null
-        </p>
-    </div>
-
-    <div class="weui_cell list_cell" data-id="test3">
-        <p class="content">
-            null
-        </p>
-    </div>
-
-    <div class="weui_cell list_cell" data-id="test4">
-        <p class="content">
-            null
-        </p>
-    </div>
-</div>
-
-</body>
+        <div class="date"></div>
+        <div class="foot"><a href="javascript:;" class="weui_btn weui_btn_primary">添加记录</a></div>
+    </body>
 </html>
