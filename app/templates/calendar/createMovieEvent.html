@@ -1,62 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
-    <!--<title>createMovieEvent</title>-->
-
-    <!--&lt;!&ndash; css &ndash;&gt;-->
-    <!--<link rel="stylesheet" href="/libs/jquery-weui.min.css">-->
-    <!--<link rel="stylesheet" href="/libs/weui.css">-->
-    <!--<link rel="stylesheet" href="/css/calendar/createMovieEvent.css">-->
-
-    <!--&lt;!&ndash; js &ndash;&gt;-->
-    <!--<script src="/libs/jquery-2.1.4.js"></script>-->
-    <!--<script src="/libs/jquery-weui.min.js"></script>-->
-    <!--<script src="/js/calendar/createMovieEvent.js"></script>-->
-
-<!--</head>-->
-<!--<body>-->
-<!--<div class="weui_cells weui_cells_form">-->
-    <!--<div class="weui_cell">-->
-        <!--<div class="weui_cell_hd"><label class="weui_label">电影名称</label></div>-->
-        <!--<div class="weui_cell_bd weui_cell_primary">-->
-            <!--<input id="mov_input" class="weui_input input" placeholder="请输入电影名">-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; 电影名称提示列表模块&ndash;&gt;-->
-<!--<div id="select">-->
-    <!--<div class="weui_cell list_cell" data-id="test1">-->
-        <!--<p class="content">-->
-            <!--null-->
-        <!--</p>-->
-    <!--</div>-->
-
-    <!--<div class="weui_cell list_cell" data-id="test2">-->
-        <!--<p class="content">-->
-            <!--null-->
-        <!--</p>-->
-    <!--</div>-->
-
-    <!--<div class="weui_cell list_cell" data-id="test3">-->
-        <!--<p class="content">-->
-            <!--null-->
-        <!--</p>-->
-    <!--</div>-->
-
-    <!--<div class="weui_cell list_cell" data-id="test4">-->
-        <!--<p class="content">-->
-            <!--null-->
-        <!--</p>-->
-    <!--</div>-->
-<!--</div>-->
-
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -78,18 +19,37 @@
 
     <body>
         <div class="title"><p>记录</p></div>
-        <div class="detail"></div>
+        <div class="detail">
+            <img class=""/>
+            <div>
+                <ul>
+                    <li id="mov_name">有关莉莉周的一切(2001)</li>
+                    <li id="eng_name">All About Lily Chou-Chou</li>
+                    <li id="director">导演: <a href=";">岩井俊二</a></li>
+                    <li id="scenarist">编剧: <a href=";">岩井俊二</a></li>
+                </ul>
+            </div>
+        </div>
+
         <div class="record">
             <i class="weui_icon_success"><span>观影感想</span></i>
             <div class="rectext">
                 <textarea class="weui_textarea"></textarea>
             </div>
             <div class="time_where">
-                <button id="where">上海市同济大学</button>
-                <button id="time">2016年11月12日</button>
+                <input id="where" type="text" value="香港九龙湾" readonly/>
+                <input id="time" type="text" placeholder="请选择日期" readonly/>
             </div>
         </div>
-        <div class="date"></div>
+
+        <div class="date">
+            <i class="weui_icon_success"><span>再刷提醒</span></i>
+            <div>
+                <p>日期</p>
+                <input id="ftime" type="text" placeholder="请选择日期" readonly／>
+            </div>
+        </div>
+
         <div class="foot"><a href="javascript:;" class="weui_btn weui_btn_primary">添加记录</a></div>
     </body>
 </html>

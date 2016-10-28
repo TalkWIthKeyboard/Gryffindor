@@ -1,26 +1,14 @@
-/*#select {*/
-    /*margin-top: 0px;*/
-    /*overflow-y: scroll;*/
-    /*height: 144px;*/
-    /*border-bottom: #d9d9d9 1px solid;*/
-    /*display: none;*/
-/*}*/
-
-/*.list_cell {*/
-/*}*/
-
-/*.content {*/
-    /*font-size: large;*/
-/*}*/
-
-/*.touch {*/
-    /*background-color: #1ebc21;*/
-    /*color: white*/
-/*}*/
-
 * {
     padding: 0;
     margin: 0 auto;
+}
+
+ul,li {
+    list-style: none;
+}
+
+a {
+    color: #0037a8;
 }
 
 body {
@@ -41,13 +29,48 @@ body {
 }
 
 .detail {
-    height: 180px;
+    height: 160px;
     background: #fff;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+}
+
+.detail>img {
+    float: left;
+    background: #000;
+    width: 33%;
+    margin-right: 7%;
+    height: 100%;
+}
+
+.detail>div {
+    float: left;
+    background: #fff;
+    height: 100%;
+    width: 60%;
+    overflow-y: scroll;
+}
+
+#mov_name {
+    font-size: 19px;
+}
+
+#eng_name {
+    font-size: 15px;
+    color: #999999;
     margin-bottom: 10px;
 }
 
+#director {
+    font-size: 19px;
+}
+
+#scenarist {
+    font-size: 19px;
+}
+
 .record {
-    height: 240px;
+    height: 250px;
     background: #fff;
     margin-bottom: 10px;
 }
@@ -71,47 +94,71 @@ body {
 
 .rectext>textarea {
     background: rgba(228,228,228, 0.6);
-    height: 160px;
-    /*width: 355px;*/
+    height: 165px;
+    width: 95%;
     border-radius: 5px;
     font-size: 18px;
-    padding-top: 3px;
-    /*margin: 10px 10px;*/
+    padding: 3px 10px;
 }
 
 .time_where {
     /*background: #5bc0de;*/
     height: 40px;
 }
-.time_where>button {
+.time_where>input {
     display: block;
     line-height: 37px;
     float: left;
     border: none;
     background: #fff;
     color: #999999;
+    font-size: 15px;
+    text-align: center;
 }
 
-#where {
-    width: 187px;
+#where, #time {
+    width: 50%
 }
-
-#time {
-    width: 188px;
-}
-
 
 .date {
-    height: 80px;
+    font-size: 20px;
+    height: 90px;
     /*background: #f2dede;*/
     background: #fff;
     margin-bottom: 10px;
 }
 
+.date>.weui_icon_success {
+    display: block;
+    line-height: 35px;
+    font-style: normal;
+    margin: 0px 10px;
+}
+
+.date>div {
+    height: 55px;
+}
+
+.date>div>p {
+    float: left;
+    /*background: #f7ecb5;*/
+    width: 50%;
+    line-height: 55px;
+    text-align: center;
+}
+
+.date>div>input {
+    font-size: 20px;
+    float: left;
+    background: #fff;
+    width: 50%;
+    border: none;
+    height: 100%;
+    text-align: center;
+}
+
 .foot {
-    height: 60px;
-    padding-left:10px;
-    padding-right: 10px;
-    padding-top: 15px;
+    height: 45px;
+    padding: 6px 10px 5px;
     background: #fff;
 }
