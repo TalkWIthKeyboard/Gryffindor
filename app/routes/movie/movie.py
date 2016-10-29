@@ -28,7 +28,5 @@ def select_movie_by_id(id):
     :param id: 电影的id
     :return:
     '''
-    list = []
     movie = ready_for_SelectMovieById(id)
-    list.append(movie)
-    return render_template('movie/loadMovie.html',list=list)
+    return render_template('movie/postMovie.html',movie=movie)

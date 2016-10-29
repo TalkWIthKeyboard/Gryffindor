@@ -24,4 +24,4 @@ def getCalendar():
 
 @app.route('/postTest', methods=['GET'])
 def postTest():
-    return render_template('calendar/createMovieEvent.html')
+    return render_template('calendar/../../templates/movie/postMovie.html')

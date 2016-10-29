@@ -2,7 +2,8 @@
 
 from app.core.movie.movie import (select_basic_info_by_name_blur,
                                   select_by_id)
-from app import BasicInfo,Score,Details
+from app import BasicInfo,Score,Details,Fullcredits
+import datetime
 
 
 def ready_for_SelectMovieByName(name):
@@ -41,8 +42,20 @@ def ready_for_SelectMovieById(id):
     :param id:
     :return:
     '''
-    out = select_by_id(BasicInfo,id).to_dict()
-    score = select_by_id(Score,id).to_dict()
+    out = select_by_id(BasicInfo,id)
+    score = select_by_id(Score,id)
+    detail = select_by_id(Details,id)
+    fullcredits = select_by_id(Fullcredits,id)
+
+    #  上映年份
+    date = detail['release'][0]['date'].year if len(detail['release']) > 0 else '-'
+    out['cnname'] = '{}({})'.format(out['cnname'],date)
+    # 导演
+    out['director'] = fullcredits['director'][0]['name'] if fullcredits['director'][0]['name'] else '-'
+    # 主演
+    out['actor'] = fullcredits['actor'][0]['name'] if fullcredits['actor'][0]['name'] else '-'
+
+    # 电影得分
     if score is not None:
         out = dict(out,**score)
     return out

@@ -15,7 +15,10 @@ def select_basic_info_by_name_blur(name):
                              {'info.enname': re.compile(name)}] }}
     try:
         basic = BasicInfo.objects(**search).all()
-        return basic
+        if basic:
+            return basic.to_dict()
+        else:
+            return None
     except Exception,e:
         print e.message
         return None
@@ -29,7 +32,10 @@ def select_by_id(db,id):
     '''
     try:
         info = db.objects(movieid=id).first()
-        return info
+        if info:
+            return info.to_dict()
+        else:
+            return None
     except Exception,e:
         print e.message
         return None
