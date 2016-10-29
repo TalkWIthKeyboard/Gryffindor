@@ -70,7 +70,7 @@ body {
 }
 
 .record {
-    height: 250px;
+    height: 280px;
     background: #fff;
     margin-bottom: 10px;
 }
@@ -94,7 +94,7 @@ body {
 
 .rectext>textarea {
     background: rgba(228,228,228, 0.6);
-    height: 165px;
+    height: 195px;
     width: 95%;
     border-radius: 5px;
     font-size: 18px;

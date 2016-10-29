@@ -1,8 +1,9 @@
 # coding=utf-8
 
 from app.core.movie.movie import (select_basic_info_by_name_blur,
-                                  select_by_id)
-from app import BasicInfo,Score,Details,Fullcredits
+                                  select_by_id,
+                                  select_by_userid_movieid)
+from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent
 import datetime
 
 
@@ -35,8 +36,7 @@ def ready_for_SelectMovieByName(name):
     else:
         return None
 
-
-def ready_for_SelectMovieById(id):
+def ready_for_SelectMovieById(userid, id):
     '''
     为SelectMovieById做数据准备
     :param id:
@@ -46,6 +46,10 @@ def ready_for_SelectMovieById(id):
     score = select_by_id(Score,id)
     detail = select_by_id(Details,id)
     fullcredits = select_by_id(Fullcredits,id)
+    history = select_by_userid_movieid(MovieRecordEvent,userid,str(id))
+
+    # 再刷的日期
+    out['featureDate'] = str(history.to_dict()['featureDate']) if history is not None else None
 
     #  上映年份
     date = detail['release'][0]['date'].year if len(detail['release']) > 0 else '-'
@@ -59,4 +63,39 @@ def ready_for_SelectMovieById(id):
     if score is not None:
         out = dict(out,**score)
     return out
+
+def click_for_user_movie_save(info):
+    '''
+    通过用户id、电影id检查是否存在记录,并存入数据库
+    :param userid: 用户id
+    :param movieid: 电影id
+    :return:
+    '''
+    out = select_by_userid_movieid(MovieRecordEvent,info['userId'],info['movieId'])
+    if out is not None:
+        outDict = out.to_dict()
+
+        out.num = int(outDict['num']) + 1
+        out.impression = workList(list(outDict['impression']),info['impression'])
+        out.address = workList(list(outDict['address']),info['address'])
+        out.date = workList(list(outDict['date']),info['date'])
+        out.featureDate = info['featureDate']
+        out.updateTime = datetime.datetime.now()
+        out.save()
+    else:
+        info['num'] = 1
+        info['createTime'] = datetime.datetime.now()
+        info['updateTime'] = datetime.datetime.now()
+        info['date'] = [info['date']]
+        info['address'] = [info['address']]
+        info['impression'] = [info['impression']]
+        MovieRecordEvent(**info).save()
+
+def workList(list,addObj):
+    for i in range(0,len(list) - 1):
+        list[i] = str(list[i])
+    list.append(addObj)
+    return list
+
+
 

@@ -29,7 +29,7 @@
         <div class="record">
             <i class="weui_icon_success"><span>观影感想</span></i>
             <div class="rectext">
-                <textarea class="weui_textarea"></textarea>
+                <textarea class="weui_textarea" id="impression"></textarea>
             </div>
             <div class="time_where">
                 <input id="where" type="text" value="加载中.." readonly/>
@@ -41,11 +41,17 @@
             <i class="weui_icon_success"><span>再刷提醒</span></i>
             <div>
                 <p>日期</p>
-                <input id="ftime" type="text" placeholder="请选择日期" readonly／>
+                <input id="ftime" type="text" placeholder=
+                       {% if movie.featureDate == None %}
+                        "请选择日期"
+                       {% else %}
+                        {{ movie.featureDate }}
+                       {% endif %}
+                readonly／>
             </div>
         </div>
 
-        <a href="javascript:;" class="weui_btn weui_btn_primary foot-btn">添加记录</a>
+        <a class="weui_btn weui_btn_primary foot-btn" data-id="{{ movie.movieid }}">添加记录</a>
 
         <!-- js -->
         <script src="/libs/jquery-2.1.4.js"></script>
