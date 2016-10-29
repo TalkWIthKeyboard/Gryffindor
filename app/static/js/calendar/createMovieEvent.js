@@ -2,6 +2,7 @@
  * Created by huangrui on 2016/10/22.
  */
 $(document).ready(function () {
+
     $("#mov_input").keyup(function () {
         var value = $(this).val();
         //判断条件之后可修改
@@ -14,6 +15,7 @@ $(document).ready(function () {
             $("#select").slideUp();
         }
     });
+
 
     $("#select").children("div").hover(function () {
         $(this).addClass("touch");
@@ -35,3 +37,6 @@ $(document).ready(function () {
         $(this).removeClass("touch");
     });
 });
+
+
+
