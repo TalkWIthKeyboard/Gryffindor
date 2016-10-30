@@ -46,7 +46,7 @@ function searchEvent(value) {
                 var movie = movies[index];
                 $('#select').append(
                 '<div data-id="'+ movie.movieid +'"> \
-                    <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg"> \
+                    <a href="' + '/selectMovieById/' + movie.movieid + '" class="weui_media_box weui_media_appmsg"> \
                         <div class="weui_media_hd"> \
                             <img class="weui_media_appmsg_thumb" src="' + movie.img + '"> \
                         </div> \
