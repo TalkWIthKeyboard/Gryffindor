@@ -3,21 +3,16 @@
  */
 $(document).ready(function () {
 
-    //延时器
-    var time = 0;
-    var l_date = null;
-
-    $("#mov_input").keyup(function () {
-
-        // _.debounce( ajax_lookup, 250 )
+    $("#mov_input").on('keyup',_.debounce(function(){
+        alert('hahah');
         var value = $(this).val();
-        //判断条件之后可修改
+            //判断条件之后可修改
         if (value != "") {
             searchEvent(value)
         }else {
             searchEventClean()
         }
-    });
+    },500));
 
     $("#select").children("div").hover(function () {
         $(this).addClass("touch");
@@ -77,6 +72,7 @@ function searchEvent(value) {
         }
     })
 }
+
 
 function searchEventClean() {
     $('#select').empty()
