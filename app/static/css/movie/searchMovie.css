@@ -1,4 +1,3 @@
-
 #select {
     margin-top: 0px;
     overflow-y: scroll;
@@ -17,5 +16,22 @@
 .touch {
     background-color: #1ebc21;
     color: white;
+}
+
+.movie-enname{
+    font-family:Times New Roman Times serif;
+    font-size:10px;
+    color:gray;
+}
+
+.table-title{
+    float:left;
+    font-size:15px
+}
+
+.table-value{
+    float:left;
+    font-size:15px;
+    color:#3366FF;
 }
 

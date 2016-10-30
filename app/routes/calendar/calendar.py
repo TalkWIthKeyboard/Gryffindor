@@ -12,16 +12,8 @@ sys.setdefaultencoding('utf8')
 
 @app.route('/',methods=['GET'])
 def getCalendar():
-
-    try:
-        basic = BasicInfo.objects(movieid=22506).first()
-        basic = basic.to_dict()
-        pass
-    except Exception,e:
-        print e.message
-
+    '''
+    获取日历页面
+    :return:
+    '''
     return render_template('calendar/calendar.html')
-
-@app.route('/postTest', methods=['GET'])
-def postTest():
-    return render_template('calendar/../../templates/movie/searchMovie.html')

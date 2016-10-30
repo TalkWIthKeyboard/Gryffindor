@@ -3,19 +3,21 @@
  */
 $(document).ready(function () {
 
+    //延时器
+    var time = 0;
+    var l_date = null;
+
     $("#mov_input").keyup(function () {
+
+        // _.debounce( ajax_lookup, 250 )
         var value = $(this).val();
         //判断条件之后可修改
         if (value != "") {
-            $("#select").find("p.content").text(function () {
-                return $(this).parents().attr("data-id");
-            });
-            $("#select").slideDown();
+            searchEvent(value)
         }else {
-            $("#select").slideUp();
+            searchEventClean()
         }
     });
-
 
     $("#select").children("div").hover(function () {
         $(this).addClass("touch");
@@ -37,6 +39,49 @@ $(document).ready(function () {
         $(this).removeClass("touch");
     });
 });
+
+
+function searchEvent(value) {
+
+    $.ajax({
+        url: '/selectMovieByName/' + value,
+        type: 'GET',
+        success: function (data) {
+            var movies = data.movieList;
+            console.log(movies);
+            for (var index in movies){
+                var movie = movies[index];
+                $('#select').append(
+                '<div data-id="'+ movie.movieid +'"> \
+                    <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg"> \
+                        <div class="weui_media_hd"> \
+                            <img class="weui_media_appmsg_thumb" src="' + movie.img + '"> \
+                        </div> \
+                        <div class="weui_media_bd"> \
+                            <h4 class="weui_media_title">'+ movie.cnname +'</h4> \
+                            <p class="movie-enname">' + movie.enname + '</p> \
+                            <div style="display:inline"> \
+                                <div class="table-title">导演:</div> \
+                                <div class="table-value">&nbsp&nbsp' + movie.director + '</div> \
+                            </div> \
+                            <br> \
+                            <div style="display:inline"> \
+                                <div class="table-title">主演:</div> \
+                                <div class="table-value">&nbsp&nbsp' + movie.actor + '</div> \
+                            </div> \
+                        </div> \
+                    </a> \
+                </div>')
+            }
+            $("#select").slideDown();
+        }
+    })
+}
+
+function searchEventClean() {
+    $('#select').empty()
+    $("#select").slideUp()
+}
 
 
 

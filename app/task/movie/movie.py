@@ -6,7 +6,6 @@ from app.core.movie.movie import (select_basic_info_by_name_blur,
 from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent
 import datetime
 
-
 def ready_for_SelectMovieByName(name):
     '''
     为SelectMovieByName做数据准备
@@ -19,18 +18,20 @@ def ready_for_SelectMovieByName(name):
         for each in movie_list:
             id = each['movieid']
             info = each.to_dict()
+            score = select_by_id(Score,id)
+            detail = select_by_id(Details,id)
+            fullcredits = select_by_id(Fullcredits, id)
 
-            # 查找电影分数
-            score = select_by_id(Score,id).to_dict()
+            # 电影分数
             if score is not None:
                 info = dict(info, **score)
+            # 上映时间（默认取第一个上映时间）
+            info['date'] = str(detail['release'][0]['date']) if detail is not None else '-'
+            # 导演
+            info['director'] = fullcredits['director'][0]['name'] if fullcredits['director'][0]['name'] else '-'
+            # 主演
+            info['actor'] = fullcredits['actor'][0]['name'] if fullcredits['actor'][0]['name'] else '-'
 
-            # 查找上映时间（默认取第一个上映时间）
-            detail = select_by_id(Details,id)
-            if detail is not None:
-                info['date'] = str(detail['release'][0]['date'])
-            else:
-                info['date'] = "暂无上映时间"
             out.append(info)
         return out
     else:

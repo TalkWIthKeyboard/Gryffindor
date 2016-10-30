@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 from app import db
-from Basic import Basic
-
 
 class MovieBasic(object):
     '''
@@ -12,10 +10,10 @@ class MovieBasic(object):
     userId = db.StringField(max_length=60, required=True)
     # 电影Id
     movieId = db.StringField(max_length=60, required=True)
-    # 创建日期
+    # 创建时间
     createTime = db.DateTimeField(required=True)
-    # 更新日期
-    updateTime = db.DateTimeField(required=True)
+    # 更新时间
+    createTime = db.DateTimeField(required=True)
 
 
 class MovieRecordEvent(db.Document, MovieBasic):

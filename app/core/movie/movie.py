@@ -16,7 +16,7 @@ def select_basic_info_by_name_blur(name):
     try:
         basic = BasicInfo.objects(**search).all()
         if basic:
-            return basic.to_dict()
+            return basic
         else:
             return None
     except Exception,e:

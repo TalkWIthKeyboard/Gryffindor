@@ -2,12 +2,12 @@
 from app import db
 from datetime import datetime
 
-class Basic(db.Document):
+class Basic(object):
     '''
         数据库的基本共有属性
     '''
 
     # 创建时间
-    createAt = db.DateTimeField(required=True)
+    createTime = db.DateTimeField(required=True)
     # 更新时间
-    updateAt = db.DateTimeField(required=True)
+    createTime = db.DateTimeField(required=True)

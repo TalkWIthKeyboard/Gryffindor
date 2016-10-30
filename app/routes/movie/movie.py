@@ -20,7 +20,7 @@ def select_movie_by_name(name):
     :return:
     '''
     list = ready_for_SelectMovieByName(str(name))
-    return render_template('movie/loadMovie.html',list=list)
+    return jsonify({'movieList' : list})
 
 
 @app.route('/selectMovieById/<int:id>', methods=['GET'])
@@ -34,6 +34,7 @@ def select_movie_by_id(id):
     movie = ready_for_SelectMovieById(userid,id)
     return render_template('movie/postMovie.html',movie=movie)
 
+
 @app.route('/postMovieInfo', methods=['POST'])
 def post_movie_info():
     '''
@@ -46,3 +47,12 @@ def post_movie_info():
         for (key, value) in request.form.items():
             form[key] = str(value)
         click_for_user_movie_save(form)
+
+
+@app.route('/searchPage',methods=['GET'])
+def get_search_page():
+    '''
+    获取电影搜索页面
+    :return:
+    '''
+    return render_template('movie/searchMovie.html')
