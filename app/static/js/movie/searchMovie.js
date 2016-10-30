@@ -4,7 +4,6 @@
 $(document).ready(function () {
 
     $("#mov_input").on('keyup',_.debounce(function(){
-        alert('hahah');
         var value = $(this).val();
             //判断条件之后可修改
         if (value != "") {
@@ -34,7 +33,6 @@ $(document).ready(function () {
         $(this).removeClass("touch");
     });
 });
-
 
 function searchEvent(value) {
 
@@ -75,8 +73,8 @@ function searchEvent(value) {
 
 
 function searchEventClean() {
-    $('#select').empty()
-    $("#select").slideUp()
+    $('#select').empty();
+    $("#select").slideUp();
 }
 
 
