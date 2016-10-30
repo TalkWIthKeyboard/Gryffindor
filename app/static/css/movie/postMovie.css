@@ -1,0 +1,180 @@
+* {
+    padding: 0;
+    margin: 0 auto;
+}
+
+html {
+    height: 100%;
+}
+
+ul,li {
+    list-style: none;
+}
+
+a {
+    color: #0037a8;
+}
+
+body {
+    background: #e4e4e4;
+    height: 100%;
+}
+
+.title {
+    height: 7%;
+    background: #151a26;
+}
+
+.title>p {
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.detail {
+    height: 24%;
+    background: #fff;
+    padding: 2%;
+    margin-bottom: 2%;
+}
+
+.detail>img {
+    float: left;
+    background: #000;
+    width: 33%;
+    margin-right: 7%;
+    height: 100%;
+}
+
+.detail>div {
+    float: left;
+    background: #fff;
+    height: 100%;
+    width: 60%;
+    overflow-y: scroll;
+}
+
+#mov_name {
+    font-size: 19px;
+}
+
+#eng_name {
+    font-size: 15px;
+    color: #999999;
+    margin-bottom: 4%;
+}
+
+#director {
+    font-size: 19px;
+}
+
+#scenarist {
+    font-size: 19px;
+}
+
+.record {
+    height: 45%;
+    background: #fff;
+    margin-bottom: 2%;
+}
+
+.record>.weui_icon_success {
+    font-size: 20px;
+    height: 10%;
+    font-style: normal;
+    margin: 0px 2%;
+    display: block;
+}
+
+.weui_icon_success>span {
+    padding-left: 3%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.rectext {
+    height: 73%;
+    margin-top: 2%;
+    padding: 0px 10px;
+}
+
+.rectext>textarea {
+    background: rgba(228,228,228, 0.6);
+    height: 100%;
+    width: 95%;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 3px 10px;
+}
+
+.time_where {
+    height: 13%
+}
+.time_where>input {
+    display: block;
+    height: 100%;
+    float: left;
+    border: none;
+    background: #fff;
+    color: #999999;
+    font-size: 15px;
+    text-align: center;
+}
+
+#where, #time {
+    width: 50%
+}
+
+.date {
+    font-size: 20px;
+    height: 12%;
+    background: #fff;
+    margin-bottom: 2%;
+}
+
+.date>.weui_icon_success {
+    float: left;
+    display: block;
+    margin-left: 2%;
+    font-style: normal;
+    height: 40%;
+    font-size: 20px;
+    width: 48%;
+}
+
+.date>input {
+    float: left;
+    width: 48%;
+    height: 40%;
+    border: none;
+    /*background: #f7ecb5;*/
+    font-size: 17px;
+    color: #999999;
+    text-align: center;
+}
+
+
+.date>div {
+    height: 60%;
+}
+
+
+.date>div>input {
+    font-size: 19px;
+    float: left;
+    background: #fff;
+    width: 50%;
+    border: none;
+    height: 100%;
+    text-align: center;
+}
+
+
+.foot-btn{
+    /*position: fixed !important;*/
+    bottom: 0px;
+    width: 100%;
+    padding-bottom: 0px;
+    height: 6%;
+}

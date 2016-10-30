@@ -15,7 +15,10 @@ def select_basic_info_by_name_blur(name):
                              {'info.enname': re.compile(name)}] }}
     try:
         basic = BasicInfo.objects(**search).all()
-        return basic
+        if basic:
+            return basic
+        else:
+            return None
     except Exception,e:
         print e.message
         return None
@@ -29,7 +32,28 @@ def select_by_id(db,id):
     '''
     try:
         info = db.objects(movieid=id).first()
-        return info
+        if info:
+            return info.to_dict()
+        else:
+            return None
+    except Exception,e:
+        print e.message
+        return None
+
+def select_by_userid_movieid(db,userid,movieid):
+    '''
+    通过用户id、电影id查找表里面的信息
+    :param db: 表
+    :param userid: 用户的id
+    :param movieid: 电影的id
+    :return:
+    '''
+    try:
+        info = db.objects(userId=userid,movieId=movieid).first()
+        if info:
+            return info
+        else:
+            return None
     except Exception,e:
         print e.message
         return None

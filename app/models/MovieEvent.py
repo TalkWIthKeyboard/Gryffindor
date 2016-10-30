@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from app import db
-from Basic import Basic
 
-
-class MovieBasic(db.Document, Basic):
+class MovieBasic(object):
     '''
         电影事件基础类
     '''
@@ -12,8 +10,10 @@ class MovieBasic(db.Document, Basic):
     userId = db.StringField(max_length=60, required=True)
     # 电影Id
     movieId = db.StringField(max_length=60, required=True)
-    # 对应日期
-    date = db.DateTimeField(required=True)
+    # 创建时间
+    createTime = db.DateTimeField(required=True)
+    # 更新时间
+    updateTime = db.DateTimeField(required=True)
 
 
 class MovieRecordEvent(db.Document, MovieBasic):
@@ -23,10 +23,12 @@ class MovieRecordEvent(db.Document, MovieBasic):
 
     # 观看次数
     num = db.IntField(required=True)
-    # 观看时间
-    time = db.ListField(db.StringField(max_length=60))
     # 观看感想
-    impression = db.ListField(db.StringField(max_length=2048))
+    impression = db.StringField(max_length=2048)
+    # 观看地址
+    address = db.StringField(max_length=2048)
+    # 观看日期
+    date = db.DateTimeField(required=True)
 
     def to_dict(self):
         return dict(
@@ -34,22 +36,23 @@ class MovieRecordEvent(db.Document, MovieBasic):
             movieId = self.movieId,
             date = self.date,
             num = self.num,
-            time = self.time,
-            impression = self.impression
+            address = self.address,
+            impression = self.impression,
+            createTime = self.createTime,
+            updateTime = self.updateTime
         )
 
-class MovieExpectEvent(db.Document, MovieBasic):
+class MovieFeatureEvent(db.Document, MovieBasic):
     '''
-        日历中的未来电影观看安排事件
+        日历中的未来观影事件
     '''
-
-    # 观看原因
-    reason = db.StringField(db.StringField(max_length=2048))
-
+    # 未来观看日期
+    date = db.DateTimeField(required=True)
     def to_dict(self):
         return dict(
             userId=self.userId,
             movieId=self.movieId,
             date=self.date,
-            reason = self.reason
+            createTime=self.createTime,
+            updateTime=self.updateTime
         )

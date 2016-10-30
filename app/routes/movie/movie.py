@@ -3,8 +3,10 @@
 from flask import render_template, request, jsonify, redirect, url_for
 from app import app
 from app.task.movie.movie import (ready_for_SelectMovieByName,
-                                    ready_for_SelectMovieById)
+                                  ready_for_SelectMovieById,
+                                  click_for_user_movie_save)
 import sys
+from app.task.tools import makeDate
 
 DEFAULT_PAGE_SIZE = 10
 reload(sys)
@@ -18,7 +20,7 @@ def select_movie_by_name(name):
     :return:
     '''
     list = ready_for_SelectMovieByName(str(name))
-    return render_template('movie/loadMovie.html',list=list)
+    return jsonify({'movieList' : list})
 
 
 @app.route('/selectMovieById/<int:id>', methods=['GET'])
@@ -28,7 +30,29 @@ def select_movie_by_id(id):
     :param id: 电影的id
     :return:
     '''
-    list = []
-    movie = ready_for_SelectMovieById(id)
-    list.append(movie)
-    return render_template('movie/loadMovie.html',list=list)
+    userid = '1'
+    movie = ready_for_SelectMovieById(userid,id)
+    return render_template('movie/postMovie.html',movie=movie)
+
+
+@app.route('/postMovieInfo', methods=['POST'])
+def post_movie_info():
+    '''
+    将表单信息存入数据库
+    :return:
+    '''
+    if request.method == 'POST':
+        form = {}
+        form['userId'] = '1'
+        for (key, value) in request.form.items():
+            form[key] = str(value)
+        click_for_user_movie_save(form)
+
+
+@app.route('/searchPage',methods=['GET'])
+def get_search_page():
+    '''
+    获取电影搜索页面
+    :return:
+    '''
+    return render_template('movie/searchMovie.html')

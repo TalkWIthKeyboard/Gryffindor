@@ -73,6 +73,12 @@ class Fullcredits(db.Document, MtimeMixin):
         db.StringField(max_length=60, required=True))  # 服装设计
     assistantdirector = db.ListField(
         db.StringField(max_length=60, required=True))  # 副导演/助理导演
+    def to_dict(self):
+        return dict(
+            director=self.director,
+            writer=self.writer,
+            actor=self.actor
+        )
 
 
 class EmbeddedReleaseInfo(db.EmbeddedDocument):
@@ -143,6 +149,12 @@ class Details(db.Document, MtimeMixin):
     movieinfo = db.EmbeddedDocumentField(MovieInfo)
     release = db.ListField(db.EmbeddedDocumentField(Release))
     detail = db.EmbeddedDocumentField(MovieDetail)
+    def to_dict(self):
+        return dict(
+            movieinfo = self.movieinfo,
+            release = self.release,
+            detail = self.detail
+        )
 
 class Awardsinfo(db.EmbeddedDocument):
     type = db.StringField(max_length=30, required=True)  # 提名或者获奖

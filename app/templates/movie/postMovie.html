@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>createMovieEvent</title>
+
+        <!-- css -->
+        <link rel="stylesheet" href="/libs/jquery-weui.min.css">
+        <link rel="stylesheet" href="/libs/weui.css">
+        <link rel="stylesheet" href="/css/movie/postMovie.css">
+    </head>
+
+    <body>
+        <div class="title"><p>记录</p></div>
+
+        <div class="detail">
+            <img class="" src="{{ movie.img }}"/>
+            <div>
+                <ul>
+                    <li id="mov_name">{{ movie.cnname }}</li>
+                    <li id="eng_name">{{ movie.enname }}</li>
+                    <li id="director">导演: <a href=";">{{ movie.director }}</a></li>
+                    <li id="scenarist">主演: <a href=";">{{ movie.actor }}</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="record">
+            <i class="weui_icon_success"><span>观影感想</span></i>
+            <div class="rectext">
+                <textarea class="weui_textarea" id="impression"></textarea>
+            </div>
+            <div class="time_where">
+                <input id="where" type="text" value="加载中.." readonly/>
+                <input id="time" type="text" placeholder="请选择日期" readonly/>
+            </div>
+        </div>
+
+        <div class="date">
+            <i class="weui_icon_success"><span>再刷提醒</span></i>
+            <input type="text" value="次数:1" readonly/>
+            <div>
+                <input type="text" value="日期" readonly/>
+                <input id="ftime" type="text" placeholder=
+                       {% if movie.featureDate == None %}
+                        "请选择日期"
+                       {% else %}
+                        {{ movie.featureDate }}
+                       {% endif %}
+                readonly／>
+            </div>
+        </div>
+        <a class="weui_btn weui_btn_primary foot-btn" data-id="{{ movie.movieid }}">添加记录</a>
+
+        <!-- js -->
+        <script src="/libs/jquery-2.1.4.js"></script>
+        <script src="/libs/jquery-weui.min.js"></script>
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=l28tQqC0MN6pK7RWf4kjt0gnzUhXUNmp" type="text/javascript"></script>
+        <script src="/js/movie/postMovie.js"></script>
+    </body>
+</html>
