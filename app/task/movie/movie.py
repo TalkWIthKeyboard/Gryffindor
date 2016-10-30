@@ -3,7 +3,7 @@
 from app.core.movie.movie import (select_basic_info_by_name_blur,
                                   select_by_id,
                                   select_by_userid_movieid)
-from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent
+from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent,MovieFeatureEvent
 import datetime
 
 def ready_for_SelectMovieByName(name):
@@ -72,31 +72,35 @@ def click_for_user_movie_save(info):
     :param movieid: 电影id
     :return:
     '''
-    out = select_by_userid_movieid(MovieRecordEvent,info['userId'],info['movieId'])
-    if out is not None:
-        outDict = out.to_dict()
+    record = select_by_userid_movieid(MovieRecordEvent,info['userId'],info['movieId'])
+    feature = select_by_userid_movieid(MovieFeatureEvent,info['userId'],info['movieId'])
+    info['createTime'] = datetime.datetime.now()
+    info['updateTime'] = datetime.datetime.now()
+    info['date'] = datetime.datetime.strptime(info['date'],'%Y-%m-%d')
 
-        out.num = int(outDict['num']) + 1
-        out.impression = workList(list(outDict['impression']),info['impression'])
-        out.address = workList(list(outDict['address']),info['address'])
-        out.date = workList(list(outDict['date']),info['date'])
-        out.featureDate = info['featureDate']
-        out.updateTime = datetime.datetime.now()
-        out.save()
+    # 电影记录事件
+    if record is not None:
+        recordDict = record.to_dict()
+        info['num'] = int(recordDict['num']) + 1
     else:
         info['num'] = 1
-        info['createTime'] = datetime.datetime.now()
-        info['updateTime'] = datetime.datetime.now()
-        info['date'] = [info['date']]
-        info['address'] = [info['address']]
-        info['impression'] = [info['impression']]
-        MovieRecordEvent(**info).save()
+    date = datetime.datetime.strptime(info['featureDate'],'%Y-%m-%d')
+    info.pop('featureDate')
+    MovieRecordEvent(**info).save()
 
-def workList(list,addObj):
-    for i in range(0,len(list) - 1):
-        list[i] = str(list[i])
-    list.append(addObj)
-    return list
+    # 电影未来观看事件
+    if date != '':
+        if feature is not None:
+            feature.date = info['featureDate']
+            feature.save()
+        else:
+            info['date'] = date
+            info.pop('num')
+            info.pop('impression')
+            info.pop('address')
+            MovieFeatureEvent(**info).save()
+
+
 
 
 
