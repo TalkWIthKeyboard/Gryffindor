@@ -22,21 +22,36 @@ function init() {
     }
     var dateStr = date.getFullYear() + '-' + month + '-' + day;
     $('#time').val(dateStr);
-
     getLocation()
+    $('#where').click(function () {
+        getLocation()
+    })
 }
 
 // 获取地理位置
 function getLocation() {
 
-    var map = new BMap.Map("bdMapBox");
-    var nowCity = new BMap.LocalCity();
-    nowCity.get(bdGetPosition);
-    function bdGetPosition(result){
-        console.log(result);
-        var cityName = result.name; //当前的城市名
-        $('#where').val(cityName);
-    }
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            var mk = new BMap.Marker(r.point);
+            var myGeo = new BMap.Geocoder();
+            myGeo.getLocation(new BMap.Point(r.point.lng, r.point.lat),
+                function(rs) {
+                    var addComp = rs.addressComponents;
+                    var data = '';
+                    if (addComp.province != addComp.city){
+                        data = addComp.province + addComp.city + addComp.district + addComp.street
+                    } else{
+                        data = addComp.city + addComp.district + addComp.street
+                    }
+                    $('#where').val(data);
+                });
+
+        } else {
+             $.toast('获取地理位置失败！', 'forbidden');
+        }
+    });
 }
 
 //提交表单
@@ -48,11 +63,11 @@ function postMovie() {
 
         if (!date || !impression){
             if (date == ''){
-                $.toast('观影日期是必须要填的啊～', 'forbidden');
+                $.toast('没有填写观影日期！', 'forbidden');
             }
 
             if (impression == ''){
-                $.toast('观影感想是必须要填的啊～', 'forbidden');
+                $.toast('没有填写观影感想！', 'forbidden');
             }
         }
         else{
