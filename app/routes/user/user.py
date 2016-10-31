@@ -1,10 +1,11 @@
 # coding=utf-8
 
-from app import app
+from app import app,User
 from app.task.user.user import (query_user_by_account,
                                 save_user_info,
                                 check_user_info)
 from flask import render_template, request, jsonify, redirect, url_for
+from flask_login import login_user
 
 
 @app.route('/',methods=['GET'])
@@ -63,6 +64,8 @@ def post_user_login():
     if request.method == 'POST':
         try:
             if check_user_info(request.form):
+                user = User.objects(account=str(request.form['account'])).first()
+                login_user(user)
                 return jsonify(dict(message='success'))
             else:
                 return jsonify(dict(message='fail'))

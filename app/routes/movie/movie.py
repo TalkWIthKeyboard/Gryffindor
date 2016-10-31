@@ -1,6 +1,7 @@
 # coding=utf-8
 
-from flask import render_template, request, jsonify, redirect, url_for
+from flask import render_template, request, jsonify
+from flask_login import current_user
 from app import app
 from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
@@ -43,7 +44,7 @@ def post_movie_info():
     '''
     if request.method == 'POST':
         form = {}
-        form['userId'] = '1'
+        form['userId'] = current_user.myid
         for (key, value) in request.form.items():
             form[key] = str(value)
         click_for_user_movie_save(form)

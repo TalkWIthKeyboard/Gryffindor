@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from app import db
+from flask_login import UserMixin
 
-class UserInfo(db.Document):
+class User(db.Document, UserMixin):
     '''
         用户信息类
     '''
@@ -14,10 +15,15 @@ class UserInfo(db.Document):
     username = db.StringField(max_length=60,required=True)
     # 头像路径
     userimage = db.StringField
+    # 用户类型(0为管理员、1为用户)
+    state = db.IntField(required=True)
 
     meta = {
         'ordering': ['-myid']
     }
+
+    def __repr__(self):
+        return '<User %r>' % self.username
 
     def to_dict(self):
         return dict(
@@ -25,5 +31,6 @@ class UserInfo(db.Document):
             account = self.account,
             password = self.password,
             username = self.username,
-            userimage = self.userimage
+            userimage = self.userimage,
+            state = self.state
         )

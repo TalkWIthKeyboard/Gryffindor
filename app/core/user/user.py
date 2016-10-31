@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from app import UserInfo
+from app import User
 
 def query_first(db):
     '''
@@ -25,7 +25,7 @@ def query_user_by_account(account):
     :return:
     '''
     try:
-        info = UserInfo.objects(account=account).first()
+        info = User.objects(account=account).first()
         if info:
             return info.to_dict()
         else:
