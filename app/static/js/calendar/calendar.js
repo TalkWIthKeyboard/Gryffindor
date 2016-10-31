@@ -17,7 +17,7 @@ startEventDay = function () {
         var day = obj.attr('date-day');
         var month = parseInt(obj.attr('date-month')) + 1;
         var year = obj.attr('date-year');
-        var date = year + '-' + month + '-' + day + ' 00:00:00';
+        var date = year + '-' + month + '-' + day;
         return date;
     }
 
@@ -25,7 +25,7 @@ startEventDay = function () {
     $.showLoading("正在加载数据...");
 
     $.ajax({
-        url:'/weh5/calendar/getActivities',
+        url:'/calendar/getActivities',
         type:'POST',
         data:{
             'firstDay': firstDay,
@@ -33,11 +33,12 @@ startEventDay = function () {
         },
         traditional: true,
         success:function (data) {
-            var dict = data.dict;
+            var dict = data.dateDict;
             $('tbody.event-calendar tr td').each(function () {
                 var year = $(this).attr('date-year');
-                var month = parseInt($(this).attr('date-month')) + 1;
-                var day = $(this).attr('date-day');
+                var month = addZero(parseInt($(this).attr('date-month')) + 1);
+                var day = addZero($(this).attr('date-day'));
+
                 var dateStr = year + '-' + month + '-' + day;
                 if (dict[dateStr] > 0){
                     $(this).addClass('has-event');
@@ -49,24 +50,24 @@ startEventDay = function () {
                         '<div class="weui_panel"> \
                             <div class="weui_panel_bd"> \
                                 <div class="weui_media_box weui_media_text event-btn event-hidden" data-id=' + event[i].id + ' data-date=' + event[i].date + '> \
-                                        <h4 class="weui_media_title">' + event[i].startTime + '-' + event[i].endTime + '</h4> \
-                                        <p class="weui_media_desc">' + event[i].description + '</p> \
+                                        <h4 class="weui_media_title">' + event[i].id + '-' + event[i].date + '</h4> \
+                                        <p class="weui_media_desc">' + event[i].impression + '</p> \
                                     </div> \
                                 </div> \
                             </div>'
                 )
             }
 
-            $('.event-list').append(
-                    '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
-                        <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
-                        <p class="p-t-sm empty_text">空空如也</p> \
-                    </div>'
-            )
+            // $('.event-list').append(
+            //         '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
+            //             <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
+            //             <p class="p-t-sm empty_text">空空如也</p> \
+            //         </div>'
+            // )
 
             $('.event-btn').click(function () {
                 var id = $(this).attr('data-id');
-                window.location.href = '/weh5/calendar/getOneActivity/' + id;
+                window.location.href = '/calendar/getOneActivity/' + id;
             })
 
             $.hideLoading();
@@ -122,6 +123,14 @@ writeByTime = function (year,month,day) {
             return false;
         }
         return true;
+    }
+}
+
+function addZero(num) {
+    if (parseInt(num) < 10){
+        return('0' + num);
+    } else{
+        return num;
     }
 }
 
@@ -194,7 +203,7 @@ startCalendar = function() {
         var month = date.getMonth() + 1;
         var thisyear = new Date().getFullYear();
         setCurrentDay(month,thisyear);
-        //startEventDay();
+        startEventDay();
 
         function getAllDays(month,year) {
             var days = getDaysInMonth(month,year);

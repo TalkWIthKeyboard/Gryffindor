@@ -13,7 +13,7 @@ class MovieBasic(object):
     # 创建时间
     createTime = db.DateTimeField(required=True)
     # 更新时间
-    createTime = db.DateTimeField(required=True)
+    updateTime = db.DateTimeField(required=True)
 
 
 class MovieRecordEvent(db.Document, MovieBasic):
@@ -24,13 +24,11 @@ class MovieRecordEvent(db.Document, MovieBasic):
     # 观看次数
     num = db.IntField(required=True)
     # 观看感想
-    impression = db.ListField(db.StringField(max_length=2048))
-    # 未来观看日期
-    featureDate = db.StringField(max_length=64)
+    impression = db.StringField(max_length=2048)
     # 观看地址
-    address = db.ListField(db.StringField(max_length=2048))
+    address = db.StringField(max_length=2048)
     # 观看日期
-    date = db.ListField(db.StringField(max_length=64))
+    date = db.DateTimeField(required=True)
 
     def to_dict(self):
         return dict(
@@ -38,9 +36,23 @@ class MovieRecordEvent(db.Document, MovieBasic):
             movieId = self.movieId,
             date = self.date,
             num = self.num,
-            featureDate = self.featureDate,
             address = self.address,
             impression = self.impression,
             createTime = self.createTime,
             updateTime = self.updateTime
+        )
+
+class MovieFeatureEvent(db.Document, MovieBasic):
+    '''
+        日历中的未来观影事件
+    '''
+    # 未来观看日期
+    date = db.DateTimeField(required=True)
+    def to_dict(self):
+        return dict(
+            userId=self.userId,
+            movieId=self.movieId,
+            date=self.date,
+            createTime=self.createTime,
+            updateTime=self.updateTime
         )

@@ -14,6 +14,7 @@
 
     <body>
         <div class="title"><p>记录</p></div>
+
         <div class="detail">
             <img class="" src="{{ movie.img }}"/>
             <div>
@@ -39,8 +40,9 @@
 
         <div class="date">
             <i class="weui_icon_success"><span>再刷提醒</span></i>
+            <input type="text" value="次数:1" readonly/>
             <div>
-                <p>日期</p>
+                <input type="text" value="日期" readonly/>
                 <input id="ftime" type="text" placeholder=
                        {% if movie.featureDate == None %}
                         "请选择日期"
@@ -50,7 +52,6 @@
                 readonly／>
             </div>
         </div>
-
         <a class="weui_btn weui_btn_primary foot-btn" data-id="{{ movie.movieid }}">添加记录</a>
 
         <!-- js -->

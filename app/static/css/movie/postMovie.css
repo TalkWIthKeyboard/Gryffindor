@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+html {
+    height: 100%;
+}
+
 ul,li {
     list-style: none;
 }
@@ -13,26 +17,26 @@ a {
 
 body {
     background: #e4e4e4;
+    height: 100%;
 }
 
 .title {
-    height: 50px;
+    height: 7%;
     background: #151a26;
-    text-align: center;
 }
 
 .title>p {
-    color: #fff;
     font-size: 20px;
-    display: block;
-    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
 }
 
 .detail {
-    height: 160px;
+    height: 24%;
     background: #fff;
-    margin-bottom: 10px;
-    padding: 10px 10px;
+    padding: 2%;
+    margin-bottom: 2%;
 }
 
 .detail>img {
@@ -58,7 +62,7 @@ body {
 #eng_name {
     font-size: 15px;
     color: #999999;
-    margin-bottom: 10px;
+    margin-bottom: 4%;
 }
 
 #director {
@@ -70,31 +74,34 @@ body {
 }
 
 .record {
-    height: 280px;
+    height: 45%;
     background: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 2%;
 }
 
 .record>.weui_icon_success {
-    display: block;
     font-size: 20px;
-    line-height: 35px;
+    height: 10%;
     font-style: normal;
-    margin: 0px 10px;
+    margin: 0px 2%;
+    display: block;
 }
 
 .weui_icon_success>span {
-    padding-left: 15px;
+    padding-left: 3%;
+    height: 100%;
+    vertical-align: middle;
 }
 
 .rectext {
-    margin-top: 5px;
+    height: 73%;
+    margin-top: 2%;
     padding: 0px 10px;
 }
 
 .rectext>textarea {
     background: rgba(228,228,228, 0.6);
-    height: 195px;
+    height: 100%;
     width: 95%;
     border-radius: 5px;
     font-size: 18px;
@@ -102,12 +109,11 @@ body {
 }
 
 .time_where {
-    /*background: #5bc0de;*/
-    height: 40px;
+    height: 13%
 }
 .time_where>input {
     display: block;
-    line-height: 37px;
+    height: 100%;
     float: left;
     border: none;
     background: #fff;
@@ -122,33 +128,40 @@ body {
 
 .date {
     font-size: 20px;
-    height: 90px;
-    /*background: #f2dede;*/
+    height: 12%;
     background: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 2%;
 }
 
 .date>.weui_icon_success {
-    display: block;
-    line-height: 35px;
-    font-style: normal;
-    margin: 0px 10px;
-}
-
-.date>div {
-    height: 55px;
-}
-
-.date>div>p {
     float: left;
+    display: block;
+    margin-left: 2%;
+    font-style: normal;
+    height: 40%;
+    font-size: 20px;
+    width: 48%;
+}
+
+.date>input {
+    float: left;
+    width: 48%;
+    height: 40%;
+    border: none;
     /*background: #f7ecb5;*/
-    width: 50%;
-    line-height: 55px;
+    font-size: 17px;
+    color: #999999;
     text-align: center;
 }
 
+
+.date>div {
+    height: 60%;
+}
+
+
 .date>div>input {
-    font-size: 20px;
+    font-size: 19px;
     float: left;
     background: #fff;
     width: 50%;
@@ -157,14 +170,11 @@ body {
     text-align: center;
 }
 
-.foot {
-    height: 45px;
-    padding: 6px 10px 5px;
-    background: #fff;
-}
 
 .foot-btn{
-    position: fixed !important;
+    /*position: fixed !important;*/
     bottom: 0px;
     width: 100%;
+    padding-bottom: 0px;
+    height: 6%;
 }
