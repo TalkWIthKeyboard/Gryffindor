@@ -40,7 +40,7 @@ def get_activities():
     if request.method == 'POST':
         firstDay = datetime.datetime.strptime(str(request.form['firstDay']),'%Y-%m-%d')
         lastDay = datetime.datetime.strptime(str(request.form['lastDay']),'%Y-%m-%d')
-        userid = current_user.myid
+        userid = str(current_user.myid)
 
         info = ready_out_date(ready_getActivities(userid,firstDay,lastDay))
         dateDict = create_dates_by_first_last(firstDay, lastDay)
