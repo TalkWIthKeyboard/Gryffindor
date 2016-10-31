@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>注册</title>
+
+        <!-- css -->
+        <link rel="stylesheet" href="/libs/jquery-weui.min.css">
+        <link rel="stylesheet" href="/libs/weui.css">
+    </head>
+    <body>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">账号</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" placeholder="请输入您的账号" id="account">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">密码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="password" placeholder="请输入登录密码" id="password">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">重复密码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                  <input class="weui_input" type="password" placeholder="请再次输入密码" id="repassword">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">用户名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                  <input class="weui_input" type="text" placeholder="请输入用户名" id="username">
+                </div>
+            </div>
+        </div>
+
+        <div class="tj-padded tj-margin-top">
+          <button class="weui_btn weui_btn_primary" type="submit" id="sureBtn">注册</button>
+          <button class="weui_btn weui_btn_warn" type="submit" id="exitBtn">返回</button>
+        </div>
+
+        <!-- js -->
+        <script src="/libs/jquery-2.1.4.js"></script>
+        <script src="/libs/jquery-weui.min.js"></script>
+        <script src="/js/user/register.js"></script>
+        </body>
+    </body>
+</html>

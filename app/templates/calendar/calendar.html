@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta charset="UTF-8">
-    <title>电影日历</title>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta charset="UTF-8">
+        <title>电影日历</title>
 
-    <link rel="stylesheet" href="/libs/jquery-weui.min.css">
-    <link rel="stylesheet" href="/libs/weui.min.css">
-    <link rel="stylesheet" href="/css/calendar/calendar.css">
+        <link rel="stylesheet" href="/libs/jquery-weui.min.css">
+        <link rel="stylesheet" href="/libs/weui.min.css">
+        <link rel="stylesheet" href="/css/calendar/calendar.css">
 
-</head>
-<body>
-    <body ontouchstart>
+    </head>
 
-        <!-- 日历模块 -->
-        <div class="calendar">
-            <header>
-                <h2 class="month"></h2>
-                <img class="btn-prev" src="/image/icons/icon-calendar-left.png">
-                <img class="btn-next" src="/image/icons/icon-calendar-right.png">
-            </header>
-            <table>
-                <thead class="event-days">
-                <tr></tr>
-                </thead>
-                <tbody class="event-calendar">
-                <tr class="1"></tr>
-                <tr class="2"></tr>
-                <tr class="3"></tr>
-                <tr class="4"></tr>
-                <tr class="5"></tr>
-                <tr class="6"></tr>
-                </tbody>
-            </table>
-        </div>
+    <body>
+        <body ontouchstart>
 
-        <!-- 事件模块 -->
-        <div class="event">
-            <div class="event-header">
-                <h3 class="dayInfo"></h3>
-                <p class="activeInfo"></p>
+            <!-- 日历模块 -->
+            <div class="calendar">
+                <header>
+                    <h2 class="month"></h2>
+                    <img class="btn-prev" src="/image/icons/icon-calendar-left.png">
+                    <img class="btn-next" src="/image/icons/icon-calendar-right.png">
+                </header>
+                <table>
+                    <thead class="event-days">
+                    <tr></tr>
+                    </thead>
+                    <tbody class="event-calendar">
+                    <tr class="1"></tr>
+                    <tr class="2"></tr>
+                    <tr class="3"></tr>
+                    <tr class="4"></tr>
+                    <tr class="5"></tr>
+                    <tr class="6"></tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="event-list"></div>
-        </div>
-    </body>
 
-    <script src="/libs/jquery-2.1.4.js"></script>
-    <script src="/libs/jquery-weui.min.js"></script>
-    <script src="/js/calendar/calendar.js"></script>
-</body>
+            <!-- 事件模块 -->
+            <div class="event">
+                <div class="event-header">
+                    <h3 class="dayInfo"></h3>
+                    <p class="activeInfo"></p>
+                </div>
+                <div class="event-list"></div>
+            </div>
+        </body>
+
+        <script src="/libs/jquery-2.1.4.js"></script>
+        <script src="/libs/jquery-weui.min.js"></script>
+        <script src="/js/calendar/calendar.js"></script>
+    </body>
 </html>

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <title>createMovieEvent</title>
+        <title>电影记录</title>
 
         <!-- css -->
         <link rel="stylesheet" href="/libs/jquery-weui.min.css">
@@ -40,7 +40,13 @@
 
         <div class="date">
             <i class="weui_icon_success"><span>再刷提醒</span></i>
-            <input type="text" value="次数:1" readonly/>
+            <p readonly>
+                {% if movie.num == None %}
+                    尚未观影
+                {% else %}
+                    {{ '观影次数: ' + movie.num }}
+                {% endif %}
+            </p>
             <div>
                 <input type="text" value="日期" readonly/>
                 <input id="ftime" type="text" placeholder=

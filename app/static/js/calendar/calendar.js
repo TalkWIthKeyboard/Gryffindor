@@ -49,12 +49,22 @@ startEventDay = function () {
                 $('.event-list').append(
                         '<div class="weui_panel"> \
                             <div class="weui_panel_bd"> \
-                                <div class="weui_media_box weui_media_text event-btn event-hidden" data-id=' + event[i].id + ' data-date=' + event[i].date + '> \
-                                        <h4 class="weui_media_title">' + event[i].id + '-' + event[i].date + '</h4> \
-                                        <p class="weui_media_desc">' + event[i].impression + '</p> \
+                                <div class="weui_media_box weui_media_small_appmsg event-btn event-hidden" data-id=' + event[i].id + ' data-date=' + event[i].date + '> \
+                                    <div class="weui_cells weui_cells_access"> \
+                                        <a class="weui_cell" href="javascript:;"> \
+                                            <div class="weui_cell_hd"> \
+                                                <img class="box-img" src="'+ event[i].img +'"> \
+                                            </div> \
+                                            <div class="weui_media_bd"> \
+                                                <h4 class="weui_media_title">' + event[i].cnname + '</h4> \
+                                                <p class="weui_media_desc">观影日期：' + event[i].date + '</p> \
+                                                <p class="weui_media_desc">观影地址：' + event[i].address + '</p> \
+                                            </div> \
+                                        </a> \
                                     </div> \
                                 </div> \
-                            </div>'
+                            </div> \
+                        </div>'
                 )
             }
 
@@ -110,11 +120,11 @@ writeByTime = function (year,month,day) {
     })
 
     if (num == 0){
-        $('.activeInfo').text("没有活动!");
+        $('.activeInfo').text("没有记录提醒!");
         $('.empty').removeClass('event-hidden')
     }
     else{
-        $('.activeInfo').text("今天有" + num + "个活动！");
+        $('.activeInfo').text("这一天有" + num + "个记录提醒！");
     }
 
 

@@ -30,6 +30,10 @@ class MovieRecordEvent(db.Document, MovieBasic):
     # 观看日期
     date = db.DateTimeField(required=True)
 
+    meta = {
+        'ordering' : ['-num']
+    }
+
     def to_dict(self):
         return dict(
             userId = self.userId,

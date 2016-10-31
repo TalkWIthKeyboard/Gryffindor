@@ -1,9 +1,11 @@
 # coding=utf-8
 
 from flask import render_template, request, jsonify, redirect, url_for
+from flask_login import login_required, current_user
 from app import app
 from app.task.calendar.calendar import (ready_getActivities,
-                                        create_dates_by_first_last)
+                                        create_dates_by_first_last,
+                                        ready_out_date)
 import sys
 import datetime
 
@@ -14,15 +16,20 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 @app.route('/calendar/getCalendar',methods=['GET'])
+@login_required
 def get_calendar():
     '''
     获取日历页面
     :return:
     '''
-
-    return render_template('calendar/calendar.html')
+    user = current_user
+    if user.is_active:
+        return render_template('calendar/calendar.html')
+    else:
+        return render_template('user/login.html')
 
 @app.route('/calendar/getActivities',methods=['POST'])
+@login_required
 def get_activities():
     '''
     获取日历一页的所有活动
@@ -33,9 +40,9 @@ def get_activities():
     if request.method == 'POST':
         firstDay = datetime.datetime.strptime(str(request.form['firstDay']),'%Y-%m-%d')
         lastDay = datetime.datetime.strptime(str(request.form['lastDay']),'%Y-%m-%d')
-        userid = '1'
+        userid = current_user.myid
 
-        info = ready_getActivities(userid,firstDay,lastDay)
+        info = ready_out_date(ready_getActivities(userid,firstDay,lastDay))
         dateDict = create_dates_by_first_last(firstDay, lastDay)
         for each in info:
             dateDict[each['date']] += 1
