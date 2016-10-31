@@ -33,6 +33,7 @@ function getLocation() {
     var nowCity = new BMap.LocalCity();
     nowCity.get(bdGetPosition);
     function bdGetPosition(result){
+        console.log(result);
         var cityName = result.name; //当前的城市名
         $('#where').val(cityName);
     }
@@ -42,19 +43,33 @@ function getLocation() {
 function postMovie() {
 
     $('.foot-btn').click(function () {
-        $.ajax({
-            url: '/postMovieInfo',
-            type: 'POST',
-            data: {
-                'impression': $('#impression').val(),
-                'date': $('#time').val(),
-                'featureDate': $('#ftime').val(),
-                'movieId': $(this).attr('data-id'),
-                'address': $('#where').val()
-            },
-            success: function (data) {
-                window.location.href = '/';
+        var date = $('#time').val() || false;
+        var impression = $('#impression').val() || false;
+
+        if (!date || !impression){
+            if (date == ''){
+                $.toast('观影日期是必须要填的啊～', 'forbidden');
             }
-        })
+
+            if (impression == ''){
+                $.toast('观影感想是必须要填的啊～', 'forbidden');
+            }
+        }
+        else{
+            $.ajax({
+                url: '/postMovieInfo',
+                type: 'POST',
+                data: {
+                    'impression': $('#impression').val(),
+                    'date': $('#time').val(),
+                    'featureDate': $('#ftime').val(),
+                    'movieId': $(this).attr('data-id'),
+                    'address': $('#where').val()
+                },
+                success: function (data) {
+                    window.location.href = '/';
+                }
+            })
+        }
     })
 }

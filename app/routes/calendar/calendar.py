@@ -3,7 +3,8 @@
 from flask import render_template, request, jsonify, redirect, url_for
 from app import app
 from app.task.calendar.calendar import (ready_getActivities,
-                                        create_dates_by_first_last)
+                                        create_dates_by_first_last,
+                                        ready_out_date)
 import sys
 import datetime
 
@@ -35,7 +36,7 @@ def get_activities():
         lastDay = datetime.datetime.strptime(str(request.form['lastDay']),'%Y-%m-%d')
         userid = '1'
 
-        info = ready_getActivities(userid,firstDay,lastDay)
+        info = ready_out_date(ready_getActivities(userid,firstDay,lastDay))
         dateDict = create_dates_by_first_last(firstDay, lastDay)
         for each in info:
             dateDict[each['date']] += 1
