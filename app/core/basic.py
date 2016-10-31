@@ -1,4 +1,5 @@
 # coding=utf-8
+import hashlib
 
 def query_by_id(db, id):
     '''
@@ -16,3 +17,11 @@ def query_by_id(db, id):
     except Exception,e:
         print e.message
         return None
+
+def get_md5(str1=None):
+    '''
+        md5加密
+    '''
+    md5 = hashlib.md5()
+    md5.update(str1)
+    return md5.hexdigest()
