@@ -7,7 +7,6 @@ from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
                                   click_for_user_movie_save)
 import sys
-from app.task.tools import makeDate
 
 DEFAULT_PAGE_SIZE = 10
 reload(sys)
@@ -31,7 +30,7 @@ def select_movie_by_id(id):
     :param id: 电影的id
     :return:
     '''
-    userid = '1'
+    userid = current_user.myid
     movie = ready_for_SelectMovieById(userid,id)
     return render_template('movie/postMovie.html',movie=movie)
 
@@ -43,11 +42,15 @@ def post_movie_info():
     :return:
     '''
     if request.method == 'POST':
-        form = {}
-        form['userId'] = current_user.myid
-        for (key, value) in request.form.items():
-            form[key] = str(value)
-        click_for_user_movie_save(form)
+        try:
+            form = {}
+            form['userId'] = str(current_user.myid)
+            for (key, value) in request.form.items():
+                form[key] = str(value)
+            click_for_user_movie_save(form)
+            return jsonify(dict(message='success'))
+        except Exception,e:
+            return jsonify(dict(message='fail'))
 
 
 @app.route('/searchPage',methods=['GET'])

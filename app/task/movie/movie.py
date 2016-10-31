@@ -47,11 +47,12 @@ def ready_for_SelectMovieById(userid, id):
     score = select_by_id(Score,id)
     detail = select_by_id(Details,id)
     fullcredits = select_by_id(Fullcredits,id)
-    history = select_by_userid_movieid(MovieFeatureEvent,userid,str(id))
+    feature = select_by_userid_movieid(MovieFeatureEvent,userid,str(id))
+    history = select_by_userid_movieid(MovieRecordEvent,userid,str(id))
 
     # 再刷的日期
     out['featureDate'] = str(history.to_dict()['date']) if history is not None else None
-    out['num'] = str(history.to_dict()['num']) if history is not None else None
+    out['num'] = str(history.to_dict()['num']) if feature is not None else None
 
     #  上映年份
     date = detail['release'][0]['date'].year if detail is not None and len(detail['release']) > 0 else '-'

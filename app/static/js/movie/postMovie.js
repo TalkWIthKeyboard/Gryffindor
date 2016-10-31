@@ -82,7 +82,9 @@ function postMovie() {
                     'address': $('#where').val()
                 },
                 success: function (data) {
-                    window.location.href = '/';
+                    if (data.message == 'success'){
+                        window.location.href = '/searchPage';
+                    }
                 }
             })
         }
