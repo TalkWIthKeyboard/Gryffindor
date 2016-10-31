@@ -98,6 +98,11 @@ tbody tr td{
     background-color: #f6f6f6;
 }
 
+.box-img{
+    height: 100px;
+    width: 80px;
+}
+
 .event .event-header{
     width: 100%;
     height: 56px;
