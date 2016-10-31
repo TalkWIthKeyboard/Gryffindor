@@ -21,7 +21,7 @@
         <!--</div>-->
     <!--</div>-->
 <!--</div>-->
-
+<div id="title_bar"><p id="head_title">电影详情</p></div>
     <!--搜索框-->
     <div class="weui_search_bar" id="search_bar">
       <form class="weui_search_outer">
@@ -43,17 +43,16 @@
     <div id="select"></div>
 
     <!--正在上映电影列表-->
-    <div class="weui_panel weui_panel_access">
+    <div id ="main_onshow" class="weui_panel weui_panel_access">
             <!--<div class="weui_grid_icon" style="float:left">-->
                 <!--<img src="image/icons/onshow-icon.png" alt="">-->
             <!--</div>-->
-            <div class="weui_panel_hd" style="font-size:18px;color:black">正在上映</div>
+            <div class="weui_panel_hd" id="onshow_title" style="font-size:18px;color:black">正在上映</div>
+      <div  id ="test1" class="weui_panel_bd">
 
-      <div class="weui_panel_bd">
-
-          <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
-              <div class="weui_media_hd">
-                  <img class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
+          <a id="first" href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+              <div  id="fp" class="weui_media_hd ">
+                  <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
               </div>
               <div class="weui_media_bd">
                   <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
@@ -70,9 +69,9 @@
               </div>
           </a>
 
-         <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
-              <div class="weui_media_hd">
-                  <img class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
+         <a id="second" href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+              <div id="sp" class="weui_media_hd">
+                  <img  id="spp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
               </div>
               <div class="weui_media_bd">
                   <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
@@ -89,9 +88,9 @@
               </div>
           </a>
 
-          <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
-              <div class="weui_media_hd">
-                  <img class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
+          <a id="third" href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+              <div id="tp" class="weui_media_hd">
+                  <img id="tpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
               </div>
               <div class="weui_media_bd">
                   <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
@@ -107,9 +106,15 @@
                   </div>
               </div>
           </a>
+
       </div>
-      <a class="weui_panel_ft" href="javascript:void(0);">查看更多</a>
+      <a id = "query" class="weui_panel_ft" href="javascript:void(0);">查看更多</a>
     </div>
+
+
+
+
+
 
     <!-- js -->
     <script src="/libs/jquery-2.1.4.js"></script>

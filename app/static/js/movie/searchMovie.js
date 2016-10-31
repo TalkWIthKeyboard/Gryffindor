@@ -46,12 +46,15 @@ function searchEvent(value) {
                 var movie = movies[index];
                 $('#select').append(
                 '<div data-id="'+ movie.movieid +'"> \
+                <div class = "title_panel">\
+                <div class="weui_panel_hd" id="search_title" style="font-size:18px;color:black;">搜索结果</div>\
+                </div>\
                     <a href="' + '/selectMovieById/' + movie.movieid + '" class="weui_media_box weui_media_appmsg"> \
-                        <div class="weui_media_hd"> \
-                            <img class="weui_media_appmsg_thumb" src="' + movie.img + '"> \
+                        <div style="height:90px;width:65px;"class="weui_media_hd"> \
+                            <img style="height:90px;"class="weui_media_appmsg_thumb" src="' + movie.img + '"> \
                         </div> \
                         <div class="weui_media_bd"> \
-                            <h4 class="weui_media_title">'+ movie.cnname +'</h4> \
+                            <h5 class="weui_media_title">'+ movie.cnname +'</h5> \
                             <p class="movie-enname">' + movie.enname + '</p> \
                             <div style="display:inline"> \
                                 <div class="table-title">导演:</div> \
