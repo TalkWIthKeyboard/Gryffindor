@@ -143,7 +143,7 @@ body {
     width: 48%;
 }
 
-.date>input {
+.date>p {
     float: left;
     width: 48%;
     height: 40%;

@@ -26,11 +26,11 @@ def ready_for_SelectMovieByName(name):
             if score is not None:
                 info = dict(info, **score)
             # 上映时间（默认取第一个上映时间）
-            info['date'] = str(detail['release'][0]['date']) if detail is not None else '-'
+            info['date'] = str(detail['release'][0]['date']) if detail is not None and len(detail['release']) > 0 is not None else '-'
             # 导演
-            info['director'] = fullcredits['director'][0]['name'] if fullcredits['director'][0]['name'] else '-'
+            info['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and fullcredits['director'][0]['name'] else '-'
             # 主演
-            info['actor'] = fullcredits['actor'][0]['name'] if fullcredits['actor'][0]['name'] else '-'
+            info['actor'] = fullcredits['actor'][0]['name'] if fullcredits is not None and fullcredits['actor'][0]['name'] else '-'
 
             out.append(info)
         return out
@@ -51,14 +51,15 @@ def ready_for_SelectMovieById(userid, id):
 
     # 再刷的日期
     out['featureDate'] = str(history.to_dict()['date']) if history is not None else None
+    out['num'] = str(history.to_dict()['num']) if history is not None else None
 
     #  上映年份
-    date = detail['release'][0]['date'].year if len(detail['release']) > 0 else '-'
+    date = detail['release'][0]['date'].year if detail is not None and len(detail['release']) > 0 else '-'
     out['cnname'] = '{}({})'.format(out['cnname'],date)
     # 导演
-    out['director'] = fullcredits['director'][0]['name'] if fullcredits['director'][0]['name'] else '-'
+    out['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and fullcredits['director'][0]['name'] else '-'
     # 主演
-    out['actor'] = fullcredits['actor'][0]['name'] if fullcredits['actor'][0]['name'] else '-'
+    out['actor'] = fullcredits['actor'][0]['name'] if fullcredits is not None and fullcredits['actor'][0]['name'] else '-'
 
     # 电影得分
     if score is not None:
