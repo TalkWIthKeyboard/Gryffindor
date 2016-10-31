@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from flask import render_template, request, jsonify
-from flask_login import current_user
+from flask_login import current_user,login_required
 from app import app
 from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
@@ -13,6 +13,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 @app.route('/selectMovieByName/<string:name>', methods=['GET'])
+@login_required
 def select_movie_by_name(name):
     '''
     通过电影名字输入，模糊匹配所有可能的电影
@@ -24,6 +25,7 @@ def select_movie_by_name(name):
 
 
 @app.route('/selectMovieById/<int:id>', methods=['GET'])
+@login_required
 def select_movie_by_id(id):
     '''
     通过电影id，查找这个电影的信息
@@ -36,6 +38,7 @@ def select_movie_by_id(id):
 
 
 @app.route('/postMovieInfo', methods=['POST'])
+@login_required
 def post_movie_info():
     '''
     将表单信息存入数据库
@@ -54,6 +57,7 @@ def post_movie_info():
 
 
 @app.route('/searchPage',methods=['GET'])
+@login_required
 def get_search_page():
     '''
     获取电影搜索页面
