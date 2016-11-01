@@ -28,11 +28,11 @@ function init() {
     });
 
     // 解决安卓底部按钮被顶上去的问题
-    $('#impression').bind('focus',function(){
-        $('.bottom_fix').css('position','static!important');
-    }).bind('blur',function(){
-        $('.bottom_fix').css({'position':'fixed!important','bottom':'0'});
-    });
+    // $('#impression').bind('focus',function(){
+    //     $('.bottom_fix').css('display','none');
+    // }).bind('blur',function(){
+    //     $('.bottom_fix').css({'position':'fixed!important','bottom':'0'});
+    // });
 }
 
 // 获取地理位置
