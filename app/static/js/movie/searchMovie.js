@@ -3,13 +3,13 @@
  */
 $(document).ready(function () {
 
+    var loading = false;  //状态标记
     $("#mov_input").on('keyup',_.debounce(function(){
         var value = $(this).val();
             //判断条件之后可修改
         if (value != "") {
             searchEvent(value);
             listenInfinite();
-            $(document.body).infinite();
         }else {
             searchEventClean();
         }
@@ -34,6 +34,19 @@ $(document).ready(function () {
     $(".search-out").children("div").on("touchend", function () {
         $(this).removeClass("touch");
     });
+
+    // 监听滚动事件
+    function listenInfinite(){
+        $(".select").infinite().on("infinite", function() {
+            if(loading) return;
+            loading = true;
+            setTimeout(function() {
+                var value = $('.search-out').attr('data-value');
+                searchEvent(value);
+                loading = false;
+            }, 1000);   //模拟延迟
+        });
+    }
 });
 
 function searchEvent(value) {
@@ -41,7 +54,8 @@ function searchEvent(value) {
     var num = $('.search-out').attr('data-id');
     num = parseInt(num);
     if (num == 1){
-          $('.search-out').empty();
+        $('.search-out').empty();
+        $('#select').infinite();
     }
 
     $.ajax({
@@ -80,7 +94,7 @@ function searchEvent(value) {
                 }
                 $("#select").slideDown();
             } else {
-                $(document.body).destroyInfinite();
+                $("#select").destroyInfinite();
             }
         }
     })
@@ -89,24 +103,11 @@ function searchEvent(value) {
 function searchEventClean() {
     $('.search-out').empty();
     // 关闭滚动承载模块
-    $(document.body).destroyInfinite();
+    $('#select').destroyInfinite();
     $('.search-out').attr('data-id',"1");
     $("#select").slideUp();
 }
 
-// 监听滚动事件
-function listenInfinite(){
-    var loading = false;  //状态标记
-    $(document.body).infinite().on("infinite", function() {
-        if(loading) return;
-        loading = true;
-        setTimeout(function() {
-            var value = $('.search-out').attr('data-value');
-            searchEvent(value);
-            loading = false;
-        }, 1000);   //模拟延迟
-    });
-}
 
 
 
