@@ -1,3 +1,3 @@
 # coding=utf-8
 
-DEFAULT_PAGE_SIZE = 1
+DEFAULT_PAGE_SIZE = 5
