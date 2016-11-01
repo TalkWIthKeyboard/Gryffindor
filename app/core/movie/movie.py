@@ -1,9 +1,10 @@
 # coding=utf-8
 
 from app import BasicInfo
+from config import DEFAULT_PAGE_SIZE
 import re
 
-def select_basic_info_by_name_blur(name):
+def select_basic_info_by_name_blur(name, num):
     '''
     通过名字片段查找电影基本信息
     （中文名字和英文名字都参加匹配）
@@ -14,7 +15,7 @@ def select_basic_info_by_name_blur(name):
                    { '$or': [{'info.cnname': re.compile(name)},
                              {'info.enname': re.compile(name)}] }}
     try:
-        basic = BasicInfo.objects(**search).all()
+        basic = BasicInfo.objects(**search).paginate(page=num, per_page=DEFAULT_PAGE_SIZE)
         if basic:
             return basic
         else:
