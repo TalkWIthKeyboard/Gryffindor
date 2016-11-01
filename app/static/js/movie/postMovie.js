@@ -22,10 +22,17 @@ function init() {
     }
     var dateStr = date.getFullYear() + '-' + month + '-' + day;
     $('#time').val(dateStr);
-    getLocation()
+    getLocation();
     $('#where').click(function () {
         getLocation()
-    })
+    });
+
+    // 解决安卓底部按钮被顶上去的问题
+    // $('#impression').bind('focus',function(){
+    //     $('.bottom_fix').css('display','none');
+    // }).bind('blur',function(){
+    //     $('.bottom_fix').css({'position':'fixed!important','bottom':'0'});
+    // });
 }
 
 // 获取地理位置

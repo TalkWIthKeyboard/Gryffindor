@@ -7,9 +7,10 @@ $(document).ready(function () {
         var value = $(this).val();
             //判断条件之后可修改
         if (value != "") {
-            searchEvent(value)
+            searchEvent(value);
+            listenInfinite();
         }else {
-            searchEventClean()
+            searchEventClean();
         }
     },500));
 
@@ -41,8 +42,9 @@ function searchEvent(value) {
         type: 'GET',
         success: function (data) {
             $('.search-out').empty();
-            var movies = data.movieList;
-            console.log(movies);
+            // 开启滚动承载模块
+            $(document.body).infinite();
+            movies = data.movieList;
             for (var index in movies){
                 var movie = movies[index];
                 $('.search-out').append(
@@ -74,7 +76,22 @@ function searchEvent(value) {
 
 function searchEventClean() {
     $('.search-out').empty();
+    // 关闭滚动承载模块
+    $(document.body).destroyInfinite();
     $("#select").slideUp();
+}
+
+// 监听滚动事件
+function listenInfinite(){
+    var loading = false;  //状态标记
+    $(document.body).infinite().on("infinite", function() {
+      if(loading) return;
+      loading = true;
+      setTimeout(function() {
+        $(".search-out").append("<p> 我是新加载的内容 </p>");
+        loading = false;
+      }, 1500);   //模拟延迟
+    });
 }
 
 
