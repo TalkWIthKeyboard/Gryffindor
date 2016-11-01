@@ -37,7 +37,7 @@ $(document).ready(function () {
 
     // 监听滚动事件
     function listenInfinite(){
-        $(".select").infinite().on("infinite", function() {
+        $(document.body).infinite().on("infinite", function() {
             if(loading) return;
             loading = true;
             setTimeout(function() {
@@ -55,7 +55,7 @@ function searchEvent(value) {
     num = parseInt(num);
     if (num == 1){
         $('.search-out').empty();
-        $('#select').infinite();
+        startInfinite();
     }
 
     $.ajax({
@@ -64,7 +64,6 @@ function searchEvent(value) {
         success: function (data) {
             var movies = data.movieList;
             var num = data.movieNum;
-            // 开启滚动承载模块
             $('.search-out').attr('data-id',num);
             $('.search-out').attr('data-value',value);
             if (movies != null){
@@ -92,9 +91,13 @@ function searchEvent(value) {
                         </a> \
                     </div>')
                 }
+
+                if (movies.length < 5){
+                    killInfinite();
+                }
                 $("#select").slideDown();
             } else {
-                $("#select").destroyInfinite();
+                killInfinite();
             }
         }
     })
@@ -102,10 +105,19 @@ function searchEvent(value) {
 
 function searchEventClean() {
     $('.search-out').empty();
-    // 关闭滚动承载模块
-    $('#select').destroyInfinite();
+    killInfinite();
     $('.search-out').attr('data-id',"1");
     $("#select").slideUp();
+}
+
+function startInfinite() {
+    $(document.body).infinite();
+    $('#infinite').removeClass('infi-display');
+}
+
+function killInfinite() {
+    $(document.body).destroyInfinite();
+    $('#infinite').addClass('infi-display');
 }
 
 
