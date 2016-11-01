@@ -168,10 +168,13 @@ body {
 
 
 .foot-btn{
-    position: fixed !important;
-    bottom: 0px;
     width: 100%;
     padding-bottom: 0px;
     height: 7%;
     min-height: 7%;
+}
+
+.bottom_fix{
+    bottom: 0px;
+    position: fixed !important;
 }
