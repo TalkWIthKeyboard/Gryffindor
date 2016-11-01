@@ -13,21 +13,11 @@
 
 </head>
 <body>
-<!--<div class="weui_cells weui_cells_form">-->
-    <!--<div class="weui_cell">-->
-        <!--<div class="weui_cell_hd"><label class="weui_label">电影名称</label></div>-->
-        <!--<div class="weui_cell_bd weui_cell_primary">-->
-            <!--<input id="mov_input" class="weui_input input" placeholder="请输入电影名">-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
   <!-- js -->
     <script src="/libs/jquery-2.1.4.js"></script>
     <script src="/libs/jquery-weui.min.js"></script>
     <script src="/libs/underscore-min.js"></script>
     <script src="/js/movie/searchMovie.js"></script>
-
 
     <!--搜索框-->
     <div class="weui_search_bar" id="search_bar">
@@ -55,111 +45,100 @@
                 <p style="font-size:18px;">搜索结果</p>
             </div>
         </div>
+        <div class="search-out weui-panel-bd"></div>
     </div>
 
-    <!--正在上映电影列表-->
-    <div id ="main_onshow" class="weui_panel weui_panel_access">
-            <!--<div class="weui_grid_icon" style="float:left">-->
-                <!--<img src="image/icons/onshow-icon.png" alt="">-->
-            <!--</div>-->
-            <!--<div class="weui_panel_hd" id="onshow_title" style="font-size:18px;color:black">正在上映</div>-->
-        <div class="weui_cell" href="javascript:;" id="onshow_title">
-            <div class="weui_cell_hd">
-                <img src="image/icons/onshow_icon.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-            </div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <p style="font-size:18px;">正在上映</p>
-            </div>
-        </div>
-
-
-        <div  id ="test1" class="weui_panel_bd">
-
-          <a id="first"  href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
-              <div  id="fp" class=" weui_media_hd order_pic">
-                  <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
-              </div>
-              <div class="weui_media_bd">
-                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
-                  <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All About Lily Chou-Chou</p>
-                  <div style="display:inline">
-                      <div  style="float:left;font-size:15px">导演:</div>
-                      <div  style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
-                  </div>
-                  <br>
-                  <div style="display:inline">
-                      <div style="float:left;font-size:15px">编剧:</div>
-                      <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
-                  </div>
-              </div>
-          </a>
-
-         <a id="second"  href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
-              <div id="sp" class="weui_media_hd order_pic">
-                  <img  id="spp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
-              </div>
-              <div class="weui_media_bd">
-                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
-                  <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All About Lily Chou-Chou</p>
-                  <div style="display:inline">
-                      <div  style="float:left;font-size:15px">导演:</div>
-                      <div  style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
-                  </div>
-                  <br>
-                  <div style="display:inline">
-                      <div style="float:left;font-size:15px">编剧:</div>
-                      <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
-                  </div>
-              </div>
-          </a>
-
-          <a id="third"  href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
-              <div id="tp" class="weui_media_hd order_pic">
-                  <img id="tpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
-              </div>
-              <div class="weui_media_bd">
-                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
-                  <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All About Lily Chou-Chou</p>
-                  <div style="display:inline">
-                      <div  style="float:left;font-size:15px">导演:</div>
-                      <div  style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
-                  </div>
-                  <br>
-                  <div style="display:inline">
-                      <div style="float:left;font-size:15px">编剧:</div>
-                      <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
-                  </div>
-              </div>
-          </a>
-
-            <a id="four" href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
-              <div id="fourp" class="weui_media_hd">
-                  <img id="fourpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
-              </div>
-              <div class="weui_media_bd">
-                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
-                  <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All About Lily Chou-Chou</p>
-                  <div style="display:inline">
-                      <div  style="float:left;font-size:15px">导演:</div>
-                      <div  style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
-                  </div>
-                  <br>
-                  <div style="display:inline">
-                      <div style="float:left;font-size:15px">编剧:</div>
-                      <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
-                  </div>
-              </div>
-          </a>
-
-        </div>
-
-    </div>
-
-
-
-
-
-
+{#    <!--正在上映电影列表-->#}
+{#    <div id ="main_onshow" class="weui_panel weui_panel_access">#}
+{#        <div class="weui_cell" href="javascript:;" id="onshow_title">#}
+{#            <div class="weui_cell_hd">#}
+{#                <img src="image/icons/onshow_icon.png" alt="icon" style="width:20px;margin-right:5px;display:block">#}
+{#            </div>#}
+{#            <div class="weui_cell_bd weui_cell_primary">#}
+{#                <p style="font-size:18px;">正在上映</p>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{##}
+{#        <div  id ="test1" class="weui_panel_bd">#}
+{##}
+{#          <a id="first"  href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">#}
+{#              <div  id="fp" class=" weui_media_hd order_pic">#}
+{#                  <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">#}
+{#              </div>#}
+{#              <div class="weui_media_bd">#}
+{#                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>#}
+{#                  <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All About Lily Chou-Chou</p>#}
+{#                  <div style="display:inline">#}
+{#                      <div  style="float:left;font-size:15px">导演:</div>#}
+{#                      <div  style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>#}
+{#                  </div>#}
+{#                  <br>#}
+{#                  <div style="display:inline">#}
+{#                      <div style="float:left;font-size:15px">编剧:</div>#}
+{#                      <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>#}
+{#                  </div>#}
+{#              </div>#}
+{#          </a>#}
+{##}
+{#         <a id="second"  href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">#}
+{#              <div id="sp" class="weui_media_hd order_pic">#}
+{#                  <img  id="spp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">#}
+{#              </div>#}
+{#              <div class="weui_media_bd">#}
+{#                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>#}
+{#                  <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All About Lily Chou-Chou</p>#}
+{#                  <div style="display:inline">#}
+{#                      <div  style="float:left;font-size:15px">导演:</div>#}
+{#                      <div  style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>#}
+{#                  </div>#}
+{#                  <br>#}
+{#                  <div style="display:inline">#}
+{#                      <div style="float:left;font-size:15px">编剧:</div>#}
+{#                      <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>#}
+{#                  </div>#}
+{#              </div>#}
+{#          </a>#}
+{##}
+{#          <a id="third"  href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">#}
+{#              <div id="tp" class="weui_media_hd order_pic">#}
+{#                  <img id="tpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">#}
+{#              </div>#}
+{#              <div class="weui_media_bd">#}
+{#                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>#}
+{#                  <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All About Lily Chou-Chou</p>#}
+{#                  <div style="display:inline">#}
+{#                      <div  style="float:left;font-size:15px">导演:</div>#}
+{#                      <div  style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>#}
+{#                  </div>#}
+{#                  <br>#}
+{#                  <div style="display:inline">#}
+{#                      <div style="float:left;font-size:15px">编剧:</div>#}
+{#                      <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>#}
+{#                  </div>#}
+{#              </div>#}
+{#          </a>#}
+{##}
+{#            <a id="four" href="javascript:void(0);" class="weui_media_box weui_media_appmsg">#}
+{#              <div id="fourp" class="weui_media_hd">#}
+{#                  <img id="fourpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">#}
+{#              </div>#}
+{#              <div class="weui_media_bd">#}
+{#                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>#}
+{#                  <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All About Lily Chou-Chou</p>#}
+{#                  <div style="display:inline">#}
+{#                      <div  style="float:left;font-size:15px">导演:</div>#}
+{#                      <div  style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>#}
+{#                  </div>#}
+{#                  <br>#}
+{#                  <div style="display:inline">#}
+{#                      <div style="float:left;font-size:15px">编剧:</div>#}
+{#                      <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>#}
+{#                  </div>#}
+{#              </div>#}
+{#          </a>#}
+{#        </div>#}
+{#    </div>#}
 
 </body>
 </html>

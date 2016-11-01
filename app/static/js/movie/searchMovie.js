@@ -40,11 +40,12 @@ function searchEvent(value) {
         url: '/selectMovieByName/' + value,
         type: 'GET',
         success: function (data) {
+            $('.search-out').empty();
             var movies = data.movieList;
             console.log(movies);
             for (var index in movies){
                 var movie = movies[index];
-                $('#select').append(
+                $('.search-out').append(
                 '<div id="aa" data-id="'+ movie.movieid +'"> \
                     <a href="' + '/selectMovieById/' + movie.movieid + '" class="weui_media_box weui_media_appmsg"> \
                         <div style="height:90px;width:65px;"class="weui_media_hd"> \
@@ -71,9 +72,8 @@ function searchEvent(value) {
     })
 }
 
-
 function searchEventClean() {
-    $('#select').empty();
+    $('.search-out').empty();
     $("#select").slideUp();
 }
 
