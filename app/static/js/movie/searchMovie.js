@@ -13,23 +13,23 @@ $(document).ready(function () {
         }
     },500));
 
-    $("#select").children("div").hover(function () {
+    $(".search-out").children("div").hover(function () {
         $(this).addClass("touch");
     }, function () {
         $(this).removeClass("touch");
     });
 
-    $("#select").children("div").click(function () {
+    $(".search-out").children("div").click(function () {
         var str = $(this).attr("data-id");
         $(".input").val(str);
         $("#select").slideUp();
     });
 
-    $("#select").children("div").on("touchstart", function () {
+    $(".search-out").children("div").on("touchstart", function () {
         $(this).addClass("touch");
     });
 
-    $("#select").children("div").on("touchend", function () {
+    $(".search-out").children("div").on("touchend", function () {
         $(this).removeClass("touch");
     });
 });
