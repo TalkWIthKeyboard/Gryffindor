@@ -64,7 +64,7 @@ def ready_out_date(eventList):
         out = select_by_id(BasicInfo, id)
         detail = select_by_id(Details, id)
         #  上映年份
-        date = detail['release'][0]['date'].year if len(detail['release']) > 0 else '-'
+        date = detail['release'][0]['date'].year if detail is not None and len(detail['release']) > 0 else '-'
         out['cnname'] = '{}({})'.format(out['cnname'], date)
         each = dict(each,**out)
         info.append(each)
