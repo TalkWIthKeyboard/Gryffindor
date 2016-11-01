@@ -44,6 +44,8 @@ function searchEvent(value) {
           $('.search-out').empty();
     }
 
+    console.log(num);
+
     $.ajax({
         url: '/selectMovieByName/' + value + '/' + num,
         type: 'GET',
@@ -107,7 +109,4 @@ function listenInfinite(){
         }, 1000);   //模拟延迟
     });
 }
-
-
-
 
