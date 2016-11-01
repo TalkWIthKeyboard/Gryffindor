@@ -8,20 +8,20 @@ from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   click_for_user_movie_save)
 import sys
 
-DEFAULT_PAGE_SIZE = 10
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-@app.route('/selectMovieByName/<string:name>', methods=['GET'])
+@app.route('/selectMovieByName/<string:name>/<string:num>', methods=['GET'])
 @login_required
-def select_movie_by_name(name):
+def select_movie_by_name(name,num):
     '''
     通过电影名字输入，模糊匹配所有可能的电影
     :param name: 电影名字片段
+    :param num: 跳过前多少个
     :return:
     '''
-    list = ready_for_SelectMovieByName(str(name))
-    return jsonify({'movieList' : list})
+    list = ready_for_SelectMovieByName(str(name), int(num))
+    return jsonify({'movieList' : list, 'movieNum': str(int(num) + 1)})
 
 
 @app.route('/selectMovieById/<int:id>', methods=['GET'])

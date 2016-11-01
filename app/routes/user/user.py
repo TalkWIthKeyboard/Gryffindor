@@ -46,31 +46,28 @@ def post_user_register():
             return jsonify(dict(message='fail'))
 
 
-@app.route('/user/login',methods=['GET'])
+@app.route('/user/login',methods=['POST','GET'])
 def get_user_login():
-    '''
-    登陆页面
-    :return:
-    '''
-    return render_template('user/login.html')
-
-
-@app.route('/user/login',methods=['POST'])
-def post_user_login():
     '''
     用户登陆
     :return:
     '''
+    next_url = request.args
+    next_url = str(next_url['next']) if next_url else ''
+
     if request.method == 'POST':
         try:
             if check_user_info(request.form):
                 user = User.objects(account=str(request.form['account'])).first()
                 login_user(user)
-                return jsonify(dict(message='success'))
+                next_url = request.form['next']
+                return jsonify(dict(message='success',next=str(next_url)))
             else:
                 return jsonify(dict(message='fail'))
         except Exception,e:
             return jsonify(dict(message='error'))
+    else:
+        return render_template('user/login.html',next=next_url)
 
 
 
