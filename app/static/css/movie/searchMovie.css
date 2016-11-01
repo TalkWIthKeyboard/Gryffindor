@@ -1,8 +1,9 @@
 #select {
     margin-top: 0px;
     overflow-y: scroll;
-    height: 94%;
+    height: 100%;
     width:100%;
+    margin-top: 12%;
     border-bottom: #e4e4e4 5px solid;
     display: none;
 }
@@ -70,6 +71,9 @@ html,body{
 
 #search_bar{
     height:6.6%;
+    position: fixed !important;
+    top: 0px;
+    width: 100%;
 }
 
 #main_onshow{
