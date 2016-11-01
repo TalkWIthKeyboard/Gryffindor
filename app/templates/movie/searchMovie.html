@@ -28,7 +28,7 @@
     <script src="/libs/underscore-min.js"></script>
     <script src="/js/movie/searchMovie.js"></script>
 
- <div class="title"><p>电影详情</p></div>
+
     <!--搜索框-->
     <div class="weui_search_bar" id="search_bar">
       <form class="weui_search_outer">
@@ -46,7 +46,16 @@
     </div>
 
     <!-- 搜索结果电影列表 -->
-    <div id="select"></div>
+    <div id="select">
+         <div class="weui_cell" href="javascript:;" id="search_title">
+            <div class="weui_cell_hd">
+                <img src="image/icons/search_icon.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <p style="font-size:18px;">搜索结果</p>
+            </div>
+        </div>
+    </div>
 
     <!--正在上映电影列表-->
     <div id ="main_onshow" class="weui_panel weui_panel_access">
