@@ -58,6 +58,8 @@ function searchEvent(value) {
         startInfinite();
     }
 
+    console.log(num);
+
     $.ajax({
         url: '/selectMovieByName/' + value + '/' + num,
         type: 'GET',
@@ -119,8 +121,5 @@ function killInfinite() {
     $(document.body).destroyInfinite();
     $('#infinite').addClass('infi-display');
 }
-
-
-
 
 
