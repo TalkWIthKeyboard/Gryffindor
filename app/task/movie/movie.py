@@ -6,16 +6,17 @@ from app.core.movie.movie import (select_basic_info_by_name_blur,
 from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent,MovieFeatureEvent
 import datetime
 
-def ready_for_SelectMovieByName(name):
+def ready_for_SelectMovieByName(name, num):
     '''
     为SelectMovieByName做数据准备
     :param name:
+    :param num:
     :return:
     '''
     out = []
-    movie_list = select_basic_info_by_name_blur(name)
+    movie_list = select_basic_info_by_name_blur(name, num)
     if movie_list is not None:
-        for each in movie_list:
+        for each in movie_list.items:
             id = each['movieid']
             info = each.to_dict()
             score = select_by_id(Score,id)
