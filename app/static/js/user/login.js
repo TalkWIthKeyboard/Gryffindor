@@ -4,6 +4,7 @@
 
 $(document).ready(function () {
 
+    var url = '/calendar/getCalendar';
     $('#sureBtn').click(function () {
         var account = $('#account').val() || false;
         var password = $('#password').val() || false;
@@ -11,6 +12,8 @@ $(document).ready(function () {
         if (!account || !password){
             $.toast('账号/密码未输入！', 'forbidden');
         } else{
+            $.showLoading();
+            $.showLoading("正在加载...");
             $.ajax({
                 url:'/user/login',
                 type: 'POST',
@@ -21,12 +24,19 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     var message = data.message;
-                    var url = '/calendar/getCalendar';
+                    var img = data.img;
                     if (data.next != ''){
                         url = data.next;
                     }
                     if (message == 'success'){
-                        window.location.href = url
+                        if (img != ''){
+                            $('.head-image').attr('src',img);
+                        }
+                        setTimeout(jumpUrl,1000);
+                        function jumpUrl() {
+                            $.hideLoading();
+                            window.location.href = url;
+                        }
                     } else {
                         $.toast('账号输入有误！', 'forbidden');
                     }

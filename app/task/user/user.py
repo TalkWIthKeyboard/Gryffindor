@@ -3,7 +3,7 @@
 from app.core.user.user import query_first,query_user_by_account
 from app import User
 from app.core.basic import get_md5
-from config import ALLOWED_EXTENSIONS,UPLOAD_FOLDER
+from config import ALLOWED_EXTENSIONS,UPLOAD_FOLDER,UPLOADS_DEFAULT_URL
 import os
 
 
@@ -71,7 +71,7 @@ def save_image(file, account):
             save_name = str(account + '.' + fileName.rsplit('.',1)[1])
             path = os.path.join(UPLOAD_FOLDER, save_name)
             file.save(path)
-            return UPLOAD_FOLDER + save_name
+            return os.path.join(UPLOADS_DEFAULT_URL,save_name)
         else:
             return 'fail'
     except Exception,e:

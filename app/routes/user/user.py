@@ -56,7 +56,7 @@ def get_user_login():
                 user = User.objects(account=str(request.form['account'])).first()
                 login_user(user)
                 next_url = request.form['next']
-                return jsonify(dict(message='success',next=str(next_url)))
+                return jsonify(dict(message='success',next=str(next_url),img=str(user['userimage'])))
             else:
                 return jsonify(dict(message='fail'))
         except Exception,e:
