@@ -6,6 +6,7 @@ from app.task.user.user import (query_user_by_account,
                                 check_user_info)
 from flask import render_template, request, jsonify, redirect, url_for
 from flask_login import login_user
+import os
 
 
 @app.route('/',methods=['GET'])
@@ -17,16 +18,7 @@ def default_url():
     return redirect(url_for('get_user_login'))
 
 
-@app.route('/user/register',methods=['GET'])
-def get_user_register():
-    '''
-    注册页面
-    :return:
-    '''
-    return render_template('user/register.html')
-
-
-@app.route('/user/register',methods=['POST'])
+@app.route('/user/register',methods=['POST', 'GET'])
 def post_user_register():
     '''
     用户注册
@@ -40,10 +32,13 @@ def post_user_register():
             if query_user_by_account(info['account']):
                 return jsonify(dict(message='repeat'))
             else:
-                save_user_info(request.form,info)
+                file = request.files['file'] if request.files['file'] else None
+                save_user_info(file, request.form, info)
                 return jsonify(dict(message='success'))
         except Exception,e:
             return jsonify(dict(message='fail'))
+    else:
+        return render_template('user/register.html')
 
 
 @app.route('/user/login',methods=['POST','GET'])
@@ -68,6 +63,5 @@ def get_user_login():
             return jsonify(dict(message='error'))
     else:
         return render_template('user/login.html',next=next_url)
-
 
 

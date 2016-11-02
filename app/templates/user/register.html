@@ -9,31 +9,43 @@
         <!-- css -->
         <link rel="stylesheet" href="/libs/jquery-weui.min.css">
         <link rel="stylesheet" href="/libs/weui.css">
+        <link rel="stylesheet" href="/css/user/register.css">
     </head>
     <body>
-        <div class="weui_cells weui_cells_form">
-            <div class="weui_cell">
-                <div class="weui_cell_hd"><label class="weui_label">账号</label></div>
-                <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="number" placeholder="请输入您的账号" id="account">
+        <!-- 头像上传 -->
+        <div class="weui_uploader_input_wrp image-input-hidden">
+            <input class="weui_uploader_input image-input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
+        </div>
+
+        <div class="weui-row">
+            <img class="head-image" src="/image/photo/basic_photo.jpg">
+        </div>
+
+        <div class="weui-row">
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">账号</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="number" placeholder="请输入您的账号" id="account">
+                    </div>
                 </div>
-            </div>
-            <div class="weui_cell">
-                <div class="weui_cell_hd"><label class="weui_label">密码</label></div>
-                <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="password" placeholder="请输入登录密码" id="password">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">密码</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="password" placeholder="请输入登录密码" id="password">
+                    </div>
                 </div>
-            </div>
-            <div class="weui_cell">
-                <div class="weui_cell_hd"><label class="weui_label">重复密码</label></div>
-                <div class="weui_cell_bd weui_cell_primary">
-                  <input class="weui_input" type="password" placeholder="请再次输入密码" id="repassword">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">重复密码</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                      <input class="weui_input" type="password" placeholder="请再次输入密码" id="repassword">
+                    </div>
                 </div>
-            </div>
-            <div class="weui_cell">
-                <div class="weui_cell_hd"><label class="weui_label">用户名</label></div>
-                <div class="weui_cell_bd weui_cell_primary">
-                  <input class="weui_input" type="text" placeholder="请输入用户名" id="username">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">用户名</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                      <input class="weui_input" type="text" placeholder="请输入用户名" id="username">
+                    </div>
                 </div>
             </div>
         </div>

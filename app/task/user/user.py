@@ -3,6 +3,8 @@
 from app.core.user.user import query_first,query_user_by_account
 from app import User
 from app.core.basic import get_md5
+from config import ALLOWED_EXTENSIONS,UPLOAD_FOLDER
+import os
 
 
 def ready_myid():
@@ -17,19 +19,28 @@ def ready_myid():
         return 1
 
 
-def save_user_info(form,info):
+def save_user_info(image, form,info):
     '''
     保存用户账号信息
     :param form: 表单
     :param info: 中转dict
     :return:
     '''
-    info['password'] = get_md5(str(form['password']))
-    info['username'] = str(form['username'])
-    info['myid'] = ready_myid()
-    info['state'] = 1
-    User(**info).save()
+    try:
+        info['password'] = get_md5(str(form['password']))
+        info['username'] = str(form['username'])
+        info['myid'] = ready_myid()
+        info['state'] = 1
+        # 头像保存
+        if image != None:
+            path = save_image(image, info['username'])
+            info['userimage'] = path if path != 'fail' and path != 'error' else ''
+        else:
+            info['userimage'] = ''
 
+        User(**info).save()
+    except Exception,e:
+        print e.message
 
 def check_user_info(form):
     '''
@@ -45,3 +56,33 @@ def check_user_info(form):
         password = str(user['password'])
         re_password = get_md5(str(form['password']))
         return (password == re_password and user['state'] == 1)
+
+
+def save_image(file, account):
+    '''
+    保存图片
+    :param file: 文件
+    :param id:
+    :return:
+    '''
+    try:
+        fileName = file.filename
+        if file and allowed_file(fileName):
+            save_name = str(account + '.' + fileName.rsplit('.',1)[1])
+            path = os.path.join(UPLOAD_FOLDER, save_name)
+            file.save(path)
+            return UPLOAD_FOLDER + save_name
+        else:
+            return 'fail'
+    except Exception,e:
+        print e.message
+        return 'error'
+
+
+def allowed_file(filename):
+    '''
+    验证上传文件的格式是否合法
+    :param filename: 文件名字
+    '''
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
