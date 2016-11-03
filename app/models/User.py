@@ -14,7 +14,7 @@ class User(db.Document, UserMixin):
     # 用户名
     username = db.StringField(max_length=60,required=True)
     # 头像路径
-    userimage = db.StringField
+    userimage = db.StringField(max_length=240)
     # 用户类型(0为管理员、1为用户)
     state = db.IntField(required=True)
 

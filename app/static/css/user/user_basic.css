@@ -1,0 +1,11 @@
+.head-image{
+    height: 77px;
+    width: 77px;
+    margin: auto;
+    margin-top: 5px;
+    border-radius: 38.5px;
+}
+
+.image-input-hidden{
+    display: none;
+}
