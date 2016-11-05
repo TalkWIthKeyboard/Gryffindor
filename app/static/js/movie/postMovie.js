@@ -5,6 +5,15 @@ $(document).ready(function () {
 
     $('#time').calendar();
     $('#ftime').calendar();
+    $('.describe').focus(function () {
+        console.log('1 ok');
+        $(this).css({'background-color':'#234','color':'#fff'});
+    });
+    $('.describe').blur(function () {
+        console.log('2 ok');
+        $(this).css({'background-color':'#fff', 'color':'#000'});
+    });
+
     init();
     postMovie();
 });
@@ -24,7 +33,7 @@ function init() {
     $('#time').val(dateStr);
     getLocation();
     $('#where').click(function () {
-        getLocation()
+        getLocation();
     });
 }
 

@@ -25,8 +25,10 @@
             </div>
         </div>
 
+        <input class="describe" type="text" value="了解详情" readonly/>
+
         <div class="record">
-            <i class="weui_icon_success"><span>观影感想</span></i>
+            <div class="nav"><i class="icon_text">观影记录</i></div>
             <div class="rectext">
                 <textarea class="weui_textarea" id="impression"></textarea>
             </div>
@@ -37,15 +39,17 @@
         </div>
 
         <div class="date">
-            <i class="weui_icon_success"><span>再刷提醒</span></i>
-            <p readonly>
+            <div class="nav">
+                <i class="icon_clock">再刷提醒</i>
+                <p readonly>
                 {% if movie.num == None %}
                     尚未观影
                 {% else %}
                     {{ '观影次数: ' + movie.num }}
                 {% endif %}
-            </p>
-            <div>
+                </p>
+            </div>
+            <div id="sec">
                 <input type="text" value="日期" readonly/>
                 <input id="ftime" type="text" placeholder=
                        {% if movie.featureDate == None %}

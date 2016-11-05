@@ -16,43 +16,45 @@ a {
     color: #0037a8;
 }
 
+input{
+    border: none;
+}
+
 body {
     background: #e4e4e4;
     height: 100%;
+    overflow: hidden;
 }
 
-.title>p {
-    font-size: 20px;
-    text-align: center;
-    color: #fff;
-    padding: 10px 0;
+div {
+    overflow: hidden;
 }
 
 .detail {
-    height: 24%;
     background: #fff;
-    padding: 2%;
+    padding: 15px 15px;
     margin-bottom: 2%;
+    height: 25%;
 }
 
 .detail>img {
     float: left;
     background: #000;
-    width: 33%;
+    /*width: 96px;*/
+    /*height: 142px;*/
+    width: 30%;
+    height: 95%;
     margin-right: 7%;
-    height: 100%;
 }
 
 .detail>div {
     float: left;
     background: #fff;
-    height: 100%;
-    width: 60%;
-    overflow-y: scroll;
+    width: 55%;
 }
 
 #mov_name {
-    font-size: 19px;
+    font-size: 17px;
 }
 
 #eng_name {
@@ -62,42 +64,64 @@ body {
 }
 
 #director {
-    font-size: 19px;
+    font-size: 17px;
 }
 
 #scenarist {
-    font-size: 19px;
+    font-size: 17px;
+}
+
+.describe {
+    /*height: 6%;*/
+    width: 100%;
+    height: 5%;
+    background-color: #fff;
+    margin-bottom: 2%;
+    font-size: 18px;
+    padding: 0 42px;
 }
 
 .record {
-    height: 52%;
+    height: 40%;
+    /*height: 38%;*/
     background: #fff;
     margin-bottom: 2%;
 }
 
-.record>.weui_icon_success {
-    font-size: 20px;
-    height: 10%;
-    font-style: normal;
-    margin: 0px 2%;
-    display: block;
+.icon_text {
+    background-image: url("/image/icons/text.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 22px 20px;
 }
 
-.weui_icon_success>span {
-    padding-left: 3%;
-    height: 100%;
-    vertical-align: middle;
+/*padding最好使用固定像素，以保持形状*/
+.nav {
+    padding: 10px 15px;
+}
+
+.record>.nav {
+    height: 10%;
+}
+
+.nav>i {
+    font-size: 18px;
+    font-style: normal;
+    margin-left: 0;
+    width: 100px;
+    display: block;
+    text-align: right;
 }
 
 .rectext {
-    height: 73%;
-    margin-top: 2%;
-    padding: 0px 10px;
+    height: 65%;
+    /*height: 150px;*/
+    padding: 0px 15px;
 }
 
 .rectext>textarea {
     background: rgba(228,228,228, 0.6);
-    height: 100%;
+    height: 90%;
     width: 95%;
     border-radius: 5px;
     font-size: 18px;
@@ -105,7 +129,7 @@ body {
 }
 
 .time_where {
-    height: 13%
+    height: 15%
 }
 .time_where>input {
     display: block;
@@ -124,40 +148,43 @@ body {
 
 .date {
     font-size: 20px;
-    height: 12%;
+    height: 13%;
     background: #fff;
     margin-bottom: 2%;
 }
 
-.date>.weui_icon_success {
-    float: left;
-    display: block;
-    margin-left: 2%;
-    font-style: normal;
-    height: 40%;
-    font-size: 20px;
-    width: 48%;
+.icon_clock {
+    background-image: url("/image/icons/clock.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 22px 22px;
 }
 
-.date>p {
+.date>.nav {
+    height: 30%;
+}
+
+.date>.nav>i {
     float: left;
-    width: 48%;
-    height: 40%;
-    border: none;
-    /*background: #f7ecb5;*/
-    font-size: 17px;
+}
+
+
+.date>.nav>p {
+    float: right;
+    width: 50%;
+    font-size: 15px;
     color: #999999;
     text-align: center;
 }
 
 
 .date>div {
-    height: 60%;
+    height: 40%;
 }
 
 
 .date>div>input {
-    font-size: 19px;
+    font-size: 17px;
     float: left;
     background: #fff;
     width: 50%;
@@ -168,12 +195,12 @@ body {
 
 .foot-btn{
     width: 100%;
-    padding-bottom: 0px;
     height: 7%;
     min-height: 7%;
+    border-radius: 0px;
 }
 
 .bottom_fix{
     bottom: 0px;
-    /*position: fixed !important;*/
+    position: fixed !important;
 }
