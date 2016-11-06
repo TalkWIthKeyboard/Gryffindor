@@ -5,7 +5,8 @@ from flask_login import current_user,login_required
 from app import app
 from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
-                                  click_for_user_movie_save)
+                                  click_for_user_movie_save,
+                                  user_movie_impression)
 import sys
 
 reload(sys)
@@ -64,3 +65,15 @@ def get_search_page():
     :return:
     '''
     return render_template('movie/searchMovie.html')
+
+
+@app.route('/movie/getAllImpression/<int:id>',methods=['GET'])
+@login_required
+def get_all_impression(id):
+    '''
+    获取用户对于这个电影的所有感想
+    :return:
+    '''
+    user = current_user
+    info = user_movie_impression(user.myid,id)
+    return jsonify(dict({'impression':info}))

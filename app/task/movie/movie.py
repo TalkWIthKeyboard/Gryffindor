@@ -2,8 +2,9 @@
 
 from app.core.movie.movie import (select_basic_info_by_name_blur,
                                   select_by_id,
-                                  select_by_userid_movieid)
-from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent,MovieFeatureEvent
+                                  select_by_userid_movieid,
+                                  select_by_userid_movieid_all)
+from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent,MovieFeatureEvent,Awards,Comment,Plot,Scenes
 import datetime
 
 def ready_for_SelectMovieByName(name, num):
@@ -103,6 +104,41 @@ def click_for_user_movie_save(info):
             info.pop('address')
             MovieFeatureEvent(**info).save()
 
+def user_movie_impression(userid,movieid):
+    '''
+    返回用户对于一个电影的所有评论
+    :param userid: 用户id
+    :param moiveid: 电影id
+    :return:
+    '''
+    out = []
+    info = select_by_userid_movieid_all(MovieRecordEvent, userid, movieid)
+    if info is not None:
+        for each in info:
+            out.append(each.to_dict())
+        return out
+    else:
+        return None
+
+
+def movie_detail_info(movieid):
+    '''
+    获取一个电影的详细信息
+    :param movieid:
+    :return:
+    '''
+    out = {}
+    awards = select_by_id(Awards,movieid)       # 获奖信息
+    comment = select_by_id(Comment,movieid)     # 评论
+    plot = select_by_id(Plot,movieid)           # 简介
+    scenes = select_by_id(Scenes,movieid)       # 揭秘
+
+    out['awards'] = awards['awards'] if len(awards['awards']) > 0 else None
+    out['comment'] = comment['comment'] if len(comment['comment']) > 0 else None
+    out['plot'] = plot['content'] if len(plot['content']) > 0 else None
+    out['scenes'] = scenes['scene'] if len(scenes['scene']) > 0 else None
+
+    return out
 
 
 
