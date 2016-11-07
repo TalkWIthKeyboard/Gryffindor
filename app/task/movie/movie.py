@@ -2,9 +2,12 @@
 
 from app.core.movie.movie import (select_basic_info_by_name_blur,
                                   select_by_id,
-                                  select_by_userid_movieid)
-from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent,MovieFeatureEvent
+                                  select_by_userid_movieid,
+                                  select_by_userid_movieid_all,
+                                  select_by_objectid)
+from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent,MovieFeatureEvent,Awards,Comment,Plot,Scenes
 import datetime
+from app import db
 
 def ready_for_SelectMovieByName(name, num):
     '''
@@ -103,6 +106,55 @@ def click_for_user_movie_save(info):
             info.pop('address')
             MovieFeatureEvent(**info).save()
 
+def user_movie_impression(userid,movieid,id):
+    '''
+    返回用户对于一个电影的所有评论
+    :param userid: 用户id
+    :param moiveid: 电影id
+    :return:
+    '''
+    this = -1
+    out = []
+    num = 0
+    info = select_by_userid_movieid_all(MovieRecordEvent, userid, movieid)
+    if info is not None:
+        for each in info:
+            if str(each.id) == id:
+                this = num
+            num += 1
+            out.append(each.to_dict())
+        return dict({'out':out,'this':this})
+    else:
+        return None
+
+
+def movie_detail_info(movieid):
+    '''
+    获取一个电影的详细信息
+    :param movieid:
+    :return:
+    '''
+    out = {}
+    awards = select_by_id(Awards,movieid)       # 获奖信息
+    comment = select_by_id(Comment,movieid)     # 评论
+    plot = select_by_id(Plot,movieid)           # 简介
+    scenes = select_by_id(Scenes,movieid)       # 揭秘
+
+    out['awards'] = awards['awards'] if awards and len(awards['awards']) > 0 else None
+    out['comment'] = comment['comment'] if comment and len(comment['comment']) > 0 else None
+    out['plot'] = plot['content'] if plot and len(plot['content']) > 0 else None
+    out['scenes'] = scenes['scene'] if scenes and len(scenes['scene']) > 0 else None
+
+    return out
+
+def user_movie_one_impression(impressionid):
+    '''
+    通过默认id获取电影记录
+    :param impressionid:
+    :return:
+    '''
+    info = select_by_objectid(MovieRecordEvent,impressionid)
+    return info
 
 
 

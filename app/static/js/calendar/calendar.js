@@ -77,7 +77,7 @@ startEventDay = function () {
 
             $('.event-btn').click(function () {
                 var id = $(this).attr('data-id');
-                window.location.href = '/calendar/getOneActivity/' + id;
+                window.location.href = '/movie/getAllImpression/' + id;
             })
 
             $.hideLoading();
