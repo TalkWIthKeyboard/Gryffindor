@@ -5,17 +5,20 @@ $(document).ready(function () {
 
     $('#time').calendar();
     $('#ftime').calendar();
-    $('.describe').focus(function () {
-        console.log('1 ok');
-        $(this).css({'background-color':'#234','color':'#fff'});
-    });
-    $('.describe').blur(function () {
-        console.log('2 ok');
-        $(this).css({'background-color':'#fff', 'color':'#000'});
-    });
-
     init();
     postMovie();
+    var click = 0;
+    $('.info').click(function () {
+        $('.about').slideToggle();
+        $('.record').slideToggle();
+        if (0 == click) {
+            $(this).css({'background':'rgba(255,255,255, 0.8)'});
+            click = 1;
+        } else {
+            $(this).css({'background':'#fff'});
+            click = 0;
+        }
+    });
 });
 
 // 初始化页面信息
