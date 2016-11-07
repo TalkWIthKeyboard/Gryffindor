@@ -6,7 +6,9 @@ from app import app
 from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
                                   click_for_user_movie_save,
-                                  user_movie_impression)
+                                  user_movie_impression,
+                                  user_movie_one_impression,
+                                  movie_detail_info)
 import sys
 
 reload(sys)
@@ -35,7 +37,8 @@ def select_movie_by_id(id):
     '''
     userid = current_user.myid
     movie = ready_for_SelectMovieById(userid,id)
-    return render_template('movie/postMovie.html',movie=movie)
+    detail = movie_detail_info(id)
+    return render_template('movie/postMovie.html',movie=movie, detail=detail)
 
 
 @app.route('/postMovieInfo', methods=['POST'])
@@ -67,7 +70,7 @@ def get_search_page():
     return render_template('movie/searchMovie.html')
 
 
-@app.route('/movie/getAllImpression/<int:id>',methods=['GET'])
+@app.route('/movie/getAllImpression/<string:id>',methods=['GET'])
 @login_required
 def get_all_impression(id):
     '''
@@ -75,5 +78,9 @@ def get_all_impression(id):
     :return:
     '''
     user = current_user
-    info = user_movie_impression(user.myid,id)
-    return jsonify(dict({'impression':info}))
+    info = user_movie_one_impression(str(id))
+    movieid = str(info['movieId'])
+    info = user_movie_impression(str(user.myid),movieid,str(id))
+    movie = ready_for_SelectMovieById(str(user.myid),int(movieid))
+    detail = movie_detail_info(int(movieid))
+    return jsonify(dict({'impression':info['out'], 'this':info['this'], 'movie':movie, 'detail':detail}))
