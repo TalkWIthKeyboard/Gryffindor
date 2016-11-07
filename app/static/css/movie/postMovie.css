@@ -16,43 +16,59 @@ a {
     color: #0037a8;
 }
 
+input{
+    border: none;
+}
+
 body {
     background: #e4e4e4;
     height: 100%;
+    overflow: hidden;
 }
 
-.title>p {
-    font-size: 20px;
-    text-align: center;
-    color: #fff;
-    padding: 10px 0;
+div {
+    overflow: hidden;
 }
+
+.nav {
+    padding: 6px 15px;
+}
+
+.nav>i {
+    font-size: 18px;
+    font-style: normal;
+    margin-left: 0;
+    width: 110px;
+    display: block;
+    text-align: right;
+}
+
 
 .detail {
-    height: 24%;
     background: #fff;
-    padding: 2%;
+    padding: 15px 15px;
     margin-bottom: 2%;
+    height: 25%;
 }
 
 .detail>img {
     float: left;
     background: #000;
-    width: 33%;
+    /*width: 96px;*/
+    /*height: 142px;*/
+    width: 30%;
+    height: 95%;
     margin-right: 7%;
-    height: 100%;
 }
 
 .detail>div {
     float: left;
     background: #fff;
-    height: 100%;
-    width: 60%;
-    overflow-y: scroll;
+    width: 55%;
 }
 
 #mov_name {
-    font-size: 19px;
+    font-size: 17px;
 }
 
 #eng_name {
@@ -62,102 +78,160 @@ body {
 }
 
 #director {
-    font-size: 19px;
+    font-size: 17px;
 }
 
 #scenarist {
-    font-size: 19px;
+    font-size: 17px;
 }
 
+.describe {
+    /*height: 6%;*/
+    width: 100%;
+    height: 5%;
+    background-color: #fff;
+    margin-bottom: 2%;
+    font-size: 18px;
+    padding: 0 42px;
+}
+
+.info {
+    background-color: #fff;
+    margin-bottom: 2%;
+}
+
+.icon_info {
+    background-image: url("/image/icons/info.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 22px 19px;
+}
+/*about class部分---------------------------------------------------------------------------*/
+.about {
+    height: 40%;
+    margin-bottom: 2%;
+    background-color: #fff;
+    display: none;
+}
+
+/*record class部分---------------------------------------------------------------------------*/
 .record {
-    height: 52%;
+    height: 40%;
+    /*height: 38%;*/
     background: #fff;
     margin-bottom: 2%;
 }
 
-.record>.weui_icon_success {
-    font-size: 20px;
-    height: 10%;
-    font-style: normal;
-    margin: 0px 2%;
-    display: block;
+.icon_text {
+    background-image: url("/image/icons/text.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 22px 20px;
 }
 
-.weui_icon_success>span {
-    padding-left: 3%;
-    height: 100%;
-    vertical-align: middle;
+
+.record>.nav {
+    height: 13%;
 }
 
 .rectext {
-    height: 73%;
-    margin-top: 2%;
-    padding: 0px 10px;
+    height: 65%;
+    padding: 0px 15px;
 }
 
 .rectext>textarea {
     background: rgba(228,228,228, 0.6);
-    height: 100%;
+    height: 90%;
     width: 95%;
     border-radius: 5px;
     font-size: 18px;
     padding: 3px 10px;
 }
 
-.time_where {
-    height: 13%
+.icon_date {
+    background-image: url("/image/icons/date.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 17px 17px;
 }
-.time_where>input {
+
+.icon_locate {
+    background-image: url("/image/icons/locate.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 17px 17px;
+}
+
+.time_where {
+    height: 15%;
+    padding:0 16px;
+}
+
+.time_where>i {
     display: block;
     height: 100%;
     float: left;
     border: none;
-    background: #fff;
-    color: #999999;
-    font-size: 15px;
-    text-align: center;
+}
+
+.time_where>.icon_locate {
+    width: 54%;
+}
+
+.time_where>.icon_date {
+    width: 46%;
 }
 
 #where, #time {
-    width: 50%
+    font-size: 13px;
+    text-align: center;
+    display: block;
+    color: #999999;
+    height: 100%;
+    width: 75%;
 }
+
+/*date class部分----------------------------------------------------------------------------*/
 
 .date {
     font-size: 20px;
-    height: 12%;
+    height: 13%;
     background: #fff;
     margin-bottom: 2%;
 }
 
-.date>.weui_icon_success {
-    float: left;
-    display: block;
-    margin-left: 2%;
-    font-style: normal;
-    height: 40%;
-    font-size: 20px;
-    width: 48%;
+.icon_clock {
+    background-image: url("/image/icons/clock.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 22px 22px;
 }
 
-.date>p {
+.date>.nav {
+    height: 30%;
+}
+
+.date>.nav>i {
     float: left;
-    width: 48%;
-    height: 40%;
-    border: none;
-    /*background: #f7ecb5;*/
-    font-size: 17px;
+}
+
+
+.date>.nav>p {
+    float: right;
+    width: 50%;
+    font-size: 15px;
     color: #999999;
     text-align: center;
 }
 
 
 .date>div {
-    height: 60%;
+    height: 40%;
 }
 
 
 .date>div>input {
-    font-size: 19px;
+    font-size: 17px;
     float: left;
     background: #fff;
     width: 50%;
@@ -166,11 +240,17 @@ body {
     text-align: center;
 }
 
+/*foot class部分-------------------------------------------------------------------------------*/
+.foot {
+    background-color: #fff;
+    height: 8%;
+    min-height: 7%;
+}
+
 .foot-btn{
     width: 100%;
-    padding-bottom: 0px;
-    height: 7%;
-    min-height: 7%;
+    background-color: #0da6a8;
+    border-radius: 5px;
 }
 
 .bottom_fix{

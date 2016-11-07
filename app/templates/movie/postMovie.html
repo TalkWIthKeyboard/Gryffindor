@@ -25,27 +25,36 @@
             </div>
         </div>
 
+        <!--<input class="describe" type="text" value="了解详情" readonly/>-->
+        <div class="info">
+            <div class="nav"><i class="icon_info">详细信息</i></div>
+        </div>
+
+        <div class="about"></div>
+
         <div class="record">
-            <i class="weui_icon_success"><span>观影感想</span></i>
+            <div class="nav"><i class="icon_text">观影记录</i></div>
             <div class="rectext">
                 <textarea class="weui_textarea" id="impression"></textarea>
             </div>
             <div class="time_where">
-                <input id="where" type="text" value="加载中.." readonly/>
-                <input id="time" type="text" placeholder="请选择日期" readonly/>
+                <i class="icon_locate"><input id="where" type="text" value="加载中.." readonly/></i>
+                <i class="icon_date"><input id="time" type="text" placeholder="请选择日期" readonly/></i>
             </div>
         </div>
 
         <div class="date">
-            <i class="weui_icon_success"><span>再刷提醒</span></i>
-            <p readonly>
+            <div class="nav">
+                <i class="icon_clock">再刷提醒</i>
+                <p readonly>
                 {% if movie.num == None %}
                     尚未观影
                 {% else %}
                     {{ '观影次数: ' + movie.num }}
                 {% endif %}
-            </p>
-            <div>
+                </p>
+            </div>
+            <div id="sec">
                 <input type="text" value="日期" readonly/>
                 <input id="ftime" type="text" placeholder=
                        {% if movie.featureDate == None %}
@@ -57,7 +66,9 @@
             </div>
         </div>
 
-        <a class="weui_btn weui_btn_primary foot-btn bottom_fix" data-id="{{ movie.movieid }}">添加记录</a>
+        <div class="foot">
+            <a class="weui_btn weui_btn_primary foot-btn bottom_fix" data-id="{{ movie.movieid }}">添加记录</a>
+        </div>
 
         <!-- js -->
         <script src="/libs/jquery-2.1.4.js"></script>
