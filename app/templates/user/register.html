@@ -9,7 +9,7 @@
         <!-- css -->
         <link rel="stylesheet" href="/libs/jquery-weui.min.css">
         <link rel="stylesheet" href="/libs/weui.css">
-        <link rel="stylesheet" href="/css/user/user_basic.css">
+        <link rel="stylesheet" href="/css/user/register.css">
     </head>
     <body>
         <!-- 头像上传 -->
@@ -20,7 +20,9 @@
         <div class="weui-row">
             <img class="head-image" src="/image/photo/basic_photo.jpg">
         </div>
-
+        <div id="tip">
+            <p>点击上传头像</p>
+        </div>
         <div class="weui-row">
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
@@ -37,19 +39,21 @@
                 </div>
                 <div class="weui_cell">
                     <div class="weui_cell_hd"><label class="weui_label">重复密码</label></div>
-                    <div class="weui_cell_bd weui_cell_primary">
+                    <div  id="again_pw" class="weui_cell_bd weui_cell_primary">
                       <input class="weui_input" type="password" placeholder="请再次输入密码" id="repassword">
                     </div>
                 </div>
                 <div class="weui_cell">
                     <div class="weui_cell_hd"><label class="weui_label">用户名</label></div>
-                    <div class="weui_cell_bd weui_cell_primary">
+                    <div id ="user_name" class="weui_cell_bd weui_cell_primary">
                       <input class="weui_input" type="text" placeholder="请输入用户名" id="username">
                     </div>
                 </div>
             </div>
         </div>
+        <div id="kong">
 
+        </div>
         <div class="tj-padded tj-margin-top">
           <button class="weui_btn weui_btn_primary" type="submit" id="sureBtn">注册</button>
           <button class="weui_btn weui_btn_warn" type="submit" id="exitBtn">返回</button>
