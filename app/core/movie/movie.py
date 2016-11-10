@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from app import BasicInfo
+from app import BasicInfo,AliasName
 from config import DEFAULT_PAGE_SIZE
 import re
 
@@ -86,6 +86,22 @@ def select_by_objectid(db,id):
     '''
     try:
         info=db.objects(id=id).first()
+        if info:
+            return info.to_dict()
+        else:
+            return None
+    except Exception,e:
+        print e.message
+        return None
+
+def select_by_enname(enname):
+    '''
+    通过英文名字查找中文名字
+    :param enname:
+    :return:
+    '''
+    try:
+        info=AliasName.objects(name=enname).first()
         if info:
             return info.to_dict()
         else:

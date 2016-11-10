@@ -20,7 +20,6 @@ class YearFinished(db.Document):
         'ordering' : ['-year']
     }
 
-
 class IdFinished(db.Document):
     '''
         按年份爬虫列表完成后保存电影的id
@@ -37,6 +36,10 @@ class AliasName(db.Document):
     '''
     name = db.StringField(max_lenghth=60, required=True) # 数据库中存在的名字
     alias = db.ListField(db.StringField(max_length=60, required=True)) # 这个人的别名
+    def to_dict(self):
+        return dict(
+            alias = list(self.alias)
+        )
 
 class Actor(db.EmbeddedDocument):
     '''
@@ -46,6 +49,12 @@ class Actor(db.EmbeddedDocument):
     poster = db.StringField(max_length=100) # 海报缩略图
     name = db.StringField(max_length=60, required=True) # 演员的名字
     play = db.StringField(max_length=60, required=True) #剧中人物
+    def to_dict(self):
+        return dict(
+            poster = self.poster,
+            name = self.name,
+            play = self.play
+        )
 
 class Director(db.EmbeddedDocument):
     '''
@@ -55,29 +64,37 @@ class Director(db.EmbeddedDocument):
     name = db.StringField(max_length=60)  # 导演名字
     cnname = db.StringField(max_length=60)  # 可能有中文翻译过来的名字
     poster =db. StringField(max_length=100)  # 海报缩略图
+    def to_dict(self):
+        return dict(
+            name = self.name,
+            cnname = self.cnname,
+            poster = self.poster
+        )
 
 class Fullcredits(db.Document, MtimeMixin):
     '''
         演职员表
     '''
     director = db.ListField(db.EmbeddedDocumentField(Director))  # 导演
-    writer = db.ListField(db.StringField(max_length=30, required=True))  # 编剧
+    writer = db.ListField(db.StringField(max_length=30))  # 编剧
     actor = db.ListField(db.EmbeddedDocumentField(Actor))  # 演员
-    produced = db.ListField(db.StringField(max_length=60, required=True))  # 制作人
-    originalmusic = db.ListField(
-        db.StringField(max_length=60, required=True))  # 原创音乐
-    cinematography = db.ListField(db.StringField(max_length=60, required=True))  # 摄影
-    filmediting = db.ListField(db.StringField(max_length=60, required=True))  # 剪辑
-    artdirection = db.ListField(db.StringField(max_length=60, required=True))  # 美术设计
-    costumedesign = db.ListField(
-        db.StringField(max_length=60, required=True))  # 服装设计
-    assistantdirector = db.ListField(
-        db.StringField(max_length=60, required=True))  # 副导演/助理导演
+    produced = db.ListField(db.StringField(max_length=60))  # 制作人
+    originalmusic = db.ListField(db.StringField(max_length=60))  # 原创音乐
+    cinematography = db.ListField(db.StringField(max_length=60))  # 摄影
+    filmediting = db.ListField(db.StringField(max_length=60))  # 剪辑
+    artdirection = db.ListField(db.StringField(max_length=60))  # 美术设计
+    costumedesign = db.ListField(db.StringField(max_length=60))  # 服装设计
+    assistantdirector = db.ListField(db.StringField(max_length=60))  # 副导演/助理导演
     def to_dict(self):
+        director_list = []
+        to_list(self.director,director_list)
+        actor_list = []
+        to_list(self.actor,actor_list)
+
         return dict(
-            director=self.director,
-            writer=self.writer,
-            actor=self.actor
+            director=director_list,
+            writer=list(self.writer),
+            actor=actor_list
         )
 
 
@@ -101,16 +118,29 @@ class Plot(db.Document, MtimeMixin):
         电影剧情
     '''
     content = db.ListField(db.StringField())  # 剧情片段
+    def to_dict(self):
+        return dict(
+            content = self.content
+        )
 
 class EmbeddedScenes(db.EmbeddedDocument):
     title = db.StringField(max_length=30, required=True)  # 主题
     content = db.ListField(db.StringField())
+    def to_dict(self):
+        return dict(
+            title = self.title,
+            content = self.content
+        )
 
 class Scenes(db.Document, MtimeMixin):
     '''
         幕后揭秘
     '''
     scene = db.ListField(db.EmbeddedDocumentField(EmbeddedScenes))  # 花絮
+    def to_dict(self):
+        return dict(
+            scene = self.scene
+        )
 
 class Company(db.EmbeddedDocument):
     '''
@@ -171,10 +201,19 @@ class Awards(db.Document, MtimeMixin):
         获奖记录
     '''
     awards = db.ListField(db.EmbeddedDocumentField(Oneawards))
+    def to_dict(self):
+        return dict(
+            awards = self.awards
+        )
 
 class EmbeddedContent(db.EmbeddedDocument):
     type = db.StringField(max_length=10, required=True)  # 比如文本,视频,图片, 内嵌
     content = db.StringField()  # 内容
+    def to_dict(self):
+        return dict(
+            type = self.type,
+            content = self.content
+        )
 
 class EmbeddedComment(db.EmbeddedDocument):
     name = db.StringField(max_length=30, required=True)  # 发评论人
@@ -192,6 +231,26 @@ class EmbeddedComment(db.EmbeddedDocument):
     publishdate = db.DateTimeField(default=datetime.now())  # 发表时间
 
     meta = {'allow_inheritance': True}
+    def to_dict(self):
+        list = []
+        to_list(self.content,list)
+
+        return dict(
+            name = self.name,
+            ac = self.ac,
+            poster = self.poster,
+            image = self.image,
+            title = self.title,
+            content = list,
+            score = self.score,
+            shortcontent = self.shortcontent,
+            publishdate = self.publishdate
+        )
+
+def to_list(content,list):
+    if len(content) > 0:
+        for each in content:
+            list.append(each.to_dict())
 
 
 class EmbeddedMicroComment(EmbeddedComment):
@@ -200,6 +259,10 @@ class EmbeddedMicroComment(EmbeddedComment):
 
 class Comment(db.Document, MtimeMixin):
     comments = db.ListField(db.EmbeddedDocumentField(EmbeddedComment))  # 长评
+    def to_dict(self):
+        return dict(
+            comments = self.comments
+        )
 
 
 class MicroComment(db.Document, MtimeMixin):

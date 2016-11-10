@@ -4,7 +4,8 @@ from app.core.movie.movie import (select_basic_info_by_name_blur,
                                   select_by_id,
                                   select_by_userid_movieid,
                                   select_by_userid_movieid_all,
-                                  select_by_objectid)
+                                  select_by_objectid,
+                                  select_by_enname)
 from app import BasicInfo,Score,Details,Fullcredits,MovieRecordEvent,MovieFeatureEvent,Awards,Comment,Plot,Scenes
 import datetime
 from app import db
@@ -139,13 +140,39 @@ def movie_detail_info(movieid):
     comment = select_by_id(Comment,movieid)     # 评论
     plot = select_by_id(Plot,movieid)           # 简介
     scenes = select_by_id(Scenes,movieid)       # 揭秘
+    fullcredits = getCnname(select_by_id(Fullcredits,movieid))  # 演职人员信息
 
     out['awards'] = awards['awards'] if awards and len(awards['awards']) > 0 else None
-    out['comment'] = comment['comment'] if comment and len(comment['comment']) > 0 else None
     out['plot'] = plot['content'] if plot and len(plot['content']) > 0 else None
-    out['scenes'] = scenes['scene'] if scenes and len(scenes['scene']) > 0 else None
+    out['fullcredits'] = fullcredits
+    db_to_dict(comment,'comments',out)
+    db_to_dict(scenes,'scene',out)
+
+    plot_str = ''
+    for each in out['plot']:
+        plot_str += each
+
+    out['plot_str'] = plot_str
 
     return out
+
+
+def db_to_dict(db,key,out):
+    '''
+    转换一下数据格式
+    :param db: 表名
+    :param key: 字段名
+    :param out: 结果数组
+    :return:
+    '''
+    if db and len(db[key]) > 0:
+        list = []
+        for each in db[key]:
+            list.append(each.to_dict())
+        out[key] = list
+    else:
+        out[key] = None
+
 
 def user_movie_one_impression(impressionid):
     '''
@@ -155,6 +182,29 @@ def user_movie_one_impression(impressionid):
     '''
     info = select_by_objectid(MovieRecordEvent,impressionid)
     return info
+
+def getCnname(list):
+    '''
+    获取相对应的中文名字
+    :param list:
+    :return:
+    '''
+    for (key,value) in list.items():
+        if (key == 'actor'):
+            for each in value:
+                alias = select_by_enname(str(each['name']))
+                each['cnname'] = alias['alias'][0] if alias is not None and len(alias['alias']) > 0 else None
+        elif (key != 'director'):
+            for each in value:
+                enname = str(each)
+                alias = select_by_enname(enname)
+                each = alias['alias'][0] if alias is not None and len(alias['alias']) > 0 else None
+
+    return list
+
+
+
+
 
 
 
