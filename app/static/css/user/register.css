@@ -42,7 +42,7 @@ button.weui_btn, input.weui_btn{
 }
 
 .weui_cell{
-padding:10px 60px;
+padding:10px 40px;
 padding-top:8%;
 }
 
@@ -53,7 +53,7 @@ html,body{
 height:100%;}
 
 .weui-row{
-padding-top:5%;}
+padding-top:4%;}
 
 
 #empty-one{
