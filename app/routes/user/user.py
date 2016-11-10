@@ -32,7 +32,7 @@ def post_user_register():
             if query_user_by_account(info['account']):
                 return jsonify(dict(message='repeat'))
             else:
-                file = request.files['file'] if request.files['file'] else None
+                file = request.files['file'] if len(request.files) > 0 else None
                 save_user_info(file, request.form, info)
                 return jsonify(dict(message='success'))
         except Exception,e:

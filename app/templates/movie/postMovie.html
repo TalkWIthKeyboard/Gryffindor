@@ -30,7 +30,23 @@
             <div class="nav"><i class="icon_info">详细信息</i></div>
         </div>
 
-        <div class="about"></div>
+        <div class="movie-director">
+            电影导演：
+            {{ detail.fullcredits.director[0].name }}
+        </div>
+        <div class="movie-actor">
+            电影演员：
+            {% for each in detail.fullcredits.actor %}
+                {% if each.cnname != None %}
+                    <p>{{ each.cnname }}</p>
+                {% else %}
+                    <p>{{ each.name }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="movie-about">
+            电影简介：<p class="about-plot">{{ detail.plot_str }}</p>
+        </div>
 
         <div class="record">
             <div class="nav"><i class="icon_text">观影记录</i></div>
