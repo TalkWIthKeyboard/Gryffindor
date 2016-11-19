@@ -29,8 +29,39 @@ tbody tr td{
 .has-event {
     cursor: pointer;
     position: relative;
-}
 
+}
+#fp{
+    height:90px;
+    width:65px;
+}
+#fpp{
+    height:90px;
+}
+#text{
+    padding:6px;
+}
+.weui_cell:before{
+border-top:0px;
+left:0px;}
+
+#add_button{
+width:20%;
+padding-left:80%;
+padding-top:2%;
+}
+#onshow_title{
+    height:3.7%;
+    padding:0px 15px 10px 15px;
+}
+#em{
+height:5px;}
+#left{
+float:left;
+padding-left:18px;
+}
+#test1{
+float:left;}
 .has-event:after {
     background: #010101;
     border-radius: 50%;
@@ -42,6 +73,8 @@ tbody tr td{
     margin: -4px 0 0 -4px;
     position: absolute;
     width: 6px;
+
+
 }
 
 .first-line{
@@ -58,7 +91,13 @@ tbody tr td{
 }
 
 .current-day {
-    background-color: #ffdf39;
+     width: 10px;
+    height: 10px;
+    background: black;
+    color:white;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
     /*border: 2px solid #ffdf39;*/
 }
 
@@ -108,7 +147,7 @@ tbody tr td{
     height: 56px;
     background-color: #f1f1f1;
     border-bottom: 2px solid #eaeaea;
-    padding-left: 18px;
+
     padding-top: 5px;
 }
 
@@ -141,3 +180,21 @@ tbody tr td{
     position: absolute;
     width: 6px;
 }
+#shape{
+  width:15px;
+  height:15px;
+  border-radius:0 0 50px 0;
+  background-color:red;
+    }
+
+#first{
+background-color:#C0F4BE;
+width:100%;
+}
+#second{
+background-color:#B5EBEC;
+width:100%;}
+#test1{
+width:100%;}
+#test2{
+width:100%;}

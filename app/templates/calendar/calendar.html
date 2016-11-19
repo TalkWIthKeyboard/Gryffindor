@@ -36,16 +36,38 @@
                     </tbody>
                 </table>
             </div>
-
+            <div id = "em"></div>
             <!-- 事件模块 -->
             <div class="event">
                 <div class="event-header">
-                    <h3 class="dayInfo"></h3>
-                    <p class="activeInfo"></p>
+                    <div id = left>
+                        <h3 id="time_title" class="dayInfo"></h3>
+                        <p id="text" class="activeInfo"></p>
+                    </div>
+                    <div id="add_button">
+                     <a><img src="/image/icons/add_button.png"> </a>
+                    </div>
                 </div>
-                <div class="event-list"></div>
+                <!--<div id="em"></div>-->
+
+                <!--<div class="weui_cell" href="javascript:;" id="onshow_title">-->
+                    <!--<div class="weui_cell_hd">-->
+                        <!--<img src="/image/icons/remind.png" alt="icon" style="width:20px;margin-right:5px;display:block">-->
+                    <!--</div>-->
+                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                        <!--<p style="font-size:18px;">观影提醒</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="event-list">
+                </div>
+
             </div>
-        </body>
+
+
+
+
+            </div>
 
         <script src="/libs/jquery-2.1.4.js"></script>
         <script src="/libs/jquery-weui.min.js"></script>
