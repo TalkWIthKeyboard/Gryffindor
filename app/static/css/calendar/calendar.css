@@ -31,14 +31,26 @@ tbody tr td{
     position: relative;
 
 }
-#fp{
+#remind_pic_div{
     height:90px;
     width:65px;
+    padding-left:5%;
 }
-#fpp{
+#record_pic_div{
+    height:90px;
+    width:65px;
+    padding-left:5%;
+}
+#remind_pic{
     height:90px;
 }
-#text{
+#record_pic{
+    height:90px;
+}
+#remind_text{
+    padding:6px;
+}
+#record_text{
     padding:6px;
 }
 .weui_cell:before{
@@ -55,13 +67,15 @@ padding-top:2%;
     padding:0px 15px 10px 15px;
 }
 #em{
-height:5px;}
-#left{
-float:left;
-padding-left:18px;
+    height:5px;
 }
-#test1{
-float:left;}
+#left{
+    float:left;
+    padding-left:18px;
+}
+#remind_div{
+    float:left;
+}
 .has-event:after {
     background: #010101;
     border-radius: 50%;
@@ -187,14 +201,34 @@ float:left;}
   background-color:red;
     }
 
-#first{
+#remind_btn{
 background-color:#C0F4BE;
 width:100%;
 }
-#second{
-background-color:#B5EBEC;
-width:100%;}
-#test1{
-width:100%;}
-#test2{
-width:100%;}
+#record_btn{
+    background-color:#B5EBEC;
+    width:100%;
+}
+#remind_div{
+    width:100%;
+}
+#record_div{
+    width:100%;
+    }
+.movie_title_e{
+    font-family:Times New Roman,Times,serif;
+    font-size:10px;
+    color:gray;
+}
+.dw_title{
+    float:left;
+    font-size:15px
+    }
+.dw_name{
+    float:left;
+    font-size:15px;
+    color:#0052BA;
+}
+.weui_media_box{
+    padding:15px 0px 15px 0px ;
+    }
