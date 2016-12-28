@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>电影记录</title>
+
+        <!-- css -->
+        <link rel="stylesheet" href="/libs/jquery-weui.min.css">
+        <link rel="stylesheet" href="/libs/weui.css">
+        <link rel="stylesheet" href="/css/movie/detailInfo.css">
+    </head>
+
+    <body>
+         <div class="detail">
+            <img class="" src="{{ movie.img }}"/>
+            <div>
+                <ul>
+                    <li id="mov_name">{{ movie.cnname }}</li>
+                    <li id="eng_name">{{ movie.enname }}</li>
+                    <li id="director">导演: <a href=";">{{ movie.director }}</a></li>
+                    <li id="scenarist">主演: <a href=";">{{ movie.actor }}</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="nav"><i class="icon_info">详细信息</i></div>
+        </div>
+
+        <div class="about">
+            <div class="movie-director gap">
+                <p class="title">电影导演：</p>
+                <p class="content">{{ detail.fullcredits.director[0].name }}</p>
+            </div>
+            <div class="movie-actor gap">
+                <p class="title">电影演员：</p>
+                {% for each in detail.fullcredits.actor %}
+                    {% if each.cnname != None %}
+                        <p class="content">{{ each.cnname }}</p>
+                    {% else %}
+                        <p class="content">{{ each.name }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="movie-about gap">
+                <p class="title">电影简介：</p>
+                <p class="about-plot content">&nbsp &nbsp &nbsp &nbsp{{ detail.plot_str }}</p>
+            </div>
+        </div>
+
+         <div class="record_title">
+            <div class="nav" id="left_title"><i class="icon_text">观影记录</i></div>
+             <div class="nav" id="time_title">2016-12-28</div>
+         </div>
+
+        <div class="record">
+            <!--<div class="nav"><i class="icon_text">观影记录</i></div>-->
+            <div class="rectext">
+                <textarea class="weui_textarea" id="impression"></textarea>
+            </div>
+            <div class="time_where">
+                <i class="icon_locate"><input id="where" type="text" value="加载中.." readonly/></i>
+                <i class="icon_date"><input id="time" type="text" placeholder="请选择日期" readonly/></i>
+            </div>
+        </div>
+
+        <!--<div class="date">-->
+            <!--<div class="nav">-->
+                <!--<i class="icon_clock">再刷提醒</i>-->
+                <!--<p readonly>-->
+                <!--{% if movie.num == None %}-->
+                    <!--尚未观影-->
+                <!--{% else %}-->
+                    <!--{{ '观影次数: ' + movie.num }}-->
+                <!--{% endif %}-->
+                <!--</p>-->
+            <!--</div>-->
+            <!--<div id="sec">-->
+                <!--<input type="text" value="日期" readonly/>-->
+                <!--<input id="ftime" type="text" placeholder=-->
+                       <!--{% if movie.featureDate == None %}-->
+                        <!--"请选择日期"-->
+                       <!--{% else %}-->
+                        <!--{{ movie.featureDate }}-->
+                       <!--{% endif %}-->
+                <!--readonly／>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="foot">-->
+            <!--<a class="foot-btn weui_btn weui_btn_primary bottom_fix" data-id="{{ movie.movieid }}">添加记录</a>-->
+        <!--</div>-->
+
+
+        <!-- js -->
+        <script src="/libs/jquery-2.1.4.js"></script>
+        <script src="/libs/jquery-weui.min.js"></script>
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=l28tQqC0MN6pK7RWf4kjt0gnzUhXUNmp" type="text/javascript"></script>
+        <script src="/js/movie/detailInfo.js"></script>
+    </body>
+</html>
