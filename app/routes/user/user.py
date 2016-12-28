@@ -90,4 +90,4 @@ def wecaht_check():
             req = requests.get(wechat_get_info % (access_token, open_id))
             return req.json
         except Exception, e:
-            return jsonify(dict(message='error'))
+            return jsonify(dict(message='error',e=e.message))
