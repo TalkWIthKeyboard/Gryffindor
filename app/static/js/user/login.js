@@ -4,35 +4,35 @@
 
 $(document).ready(function () {
 
-    var url = '/calendar/getCalendar';
+    var url = '/calendar';
     $('#sureBtn').click(function () {
         var account = $('#account').val() || false;
         var password = $('#password').val() || false;
         var next = $('.next-url').html() || false;
-        if (!account || !password){
+        if (!account || !password) {
             $.toast('账号/密码未输入！', 'forbidden');
-        } else{
+        } else {
             $.showLoading();
             $.showLoading("正在加载...");
             $.ajax({
-                url:'/user/login',
+                url: '/users/user',
                 type: 'POST',
                 data: {
-                    'account' : account,
-                    'password' : password,
+                    'account': account,
+                    'password': password,
                     'next': next
                 },
                 success: function (data) {
                     var message = data.message;
                     var img = data.img;
-                    if (data.next != ''){
+                    if (data.next != '') {
                         url = data.next;
                     }
-                    if (message == 'success'){
-                        if (img != ''){
-                            $('.head-image').attr('src',img);
+                    if (message == 'success') {
+                        if (img != '') {
+                            $('.head-image').attr('src', img);
                         }
-                        setTimeout(jumpUrl,1000);
+                        setTimeout(jumpUrl, 1000);
                         function jumpUrl() {
                             $.hideLoading();
                             window.location.href = url;
@@ -46,7 +46,7 @@ $(document).ready(function () {
     })
 
     $('#register').click(function () {
-        window.location.href = '/user/register'
+        window.location.href = '／users'
     })
 
 });

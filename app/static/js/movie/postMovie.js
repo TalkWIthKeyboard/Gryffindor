@@ -84,7 +84,7 @@ function postMovie() {
         }
         else{
             $.ajax({
-                url: '/postMovieInfo',
+                url: '/movies',
                 type: 'POST',
                 data: {
                     'impression': $('#impression').val(),
@@ -95,7 +95,7 @@ function postMovie() {
                 },
                 success: function (data) {
                     if (data.message == 'success'){
-                        window.location.href = '/searchPage';
+                        window.location.href = '/movies';
                     }
                 }
             })

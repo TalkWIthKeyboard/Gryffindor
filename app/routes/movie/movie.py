@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from flask import render_template, request, jsonify
-from flask_login import current_user,login_required
+from flask_login import current_user, login_required
 from app import app
 from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
@@ -14,9 +14,10 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-@app.route('/selectMovieByName/<string:name>/<string:num>', methods=['GET'])
+
+@app.route('/movies/<string:name>/<string:num>', methods=['GET'])
 @login_required
-def select_movie_by_name(name,num):
+def select_movie_by_name(name, num):
     '''
     通过电影名字输入，模糊匹配所有可能的电影
     :param name: 电影名字片段
@@ -24,10 +25,10 @@ def select_movie_by_name(name,num):
     :return:
     '''
     list = ready_for_SelectMovieByName(str(name), int(num))
-    return jsonify({'movieList' : list, 'movieNum': str(int(num) + 1)})
+    return jsonify({'movieList': list, 'movieNum': str(int(num) + 1)})
 
 
-@app.route('/selectMovieById/<int:id>', methods=['GET'])
+@app.route('/movies/<int:id>', methods=['GET'])
 @login_required
 def select_movie_by_id(id):
     '''
@@ -36,12 +37,12 @@ def select_movie_by_id(id):
     :return:
     '''
     userid = current_user.myid
-    movie = ready_for_SelectMovieById(userid,id)
+    movie = ready_for_SelectMovieById(userid, id)
     detail = movie_detail_info(id)
-    return render_template('movie/postMovie.html',movie=movie, detail=detail)
+    return render_template('movie/postMovie.html', movie=movie, detail=detail)
 
 
-@app.route('/postMovieInfo', methods=['POST'])
+@app.route('/movies', methods=['POST', 'GET'])
 @login_required
 def post_movie_info():
     '''
@@ -56,21 +57,14 @@ def post_movie_info():
                 form[key] = str(value)
             click_for_user_movie_save(form)
             return jsonify(dict(message='success'))
-        except Exception,e:
+        except Exception, e:
             return jsonify(dict(message='fail'))
+    else:
+        # 获取电影搜索页面
+        return render_template('movie/searchMovie.html')
 
 
-@app.route('/searchPage',methods=['GET'])
-@login_required
-def get_search_page():
-    '''
-    获取电影搜索页面
-    :return:
-    '''
-    return render_template('movie/searchMovie.html')
-
-
-@app.route('/movie/getAllImpression/<string:id>',methods=['GET'])
+@app.route('/movies/impressions/<string:id>', methods=['GET'])
 @login_required
 def get_all_impression(id):
     '''
@@ -80,7 +74,7 @@ def get_all_impression(id):
     user = current_user
     info = user_movie_one_impression(str(id))
     movieid = str(info['movieId'])
-    info = user_movie_impression(str(user.myid),movieid,str(id))
-    movie = ready_for_SelectMovieById(str(user.myid),int(movieid))
+    info = user_movie_impression(str(user.myid), movieid, str(id))
+    movie = ready_for_SelectMovieById(str(user.myid), int(movieid))
     detail = movie_detail_info(int(movieid))
-    return jsonify(dict({'impression':info['out'], 'this':info['this'], 'movie':movie, 'detail':detail}))
+    return jsonify(dict({'impression': info['out'], 'this': info['this'], 'movie': movie, 'detail': detail}))
