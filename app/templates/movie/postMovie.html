@@ -25,27 +25,29 @@
             </div>
         </div>
 
-        <!--<input class="describe" type="text" value="了解详情" readonly/>-->
         <div class="info">
             <div class="nav"><i class="icon_info">详细信息</i></div>
         </div>
 
-        <div class="movie-director">
-            电影导演：
-            {{ detail.fullcredits.director[0].name }}
-        </div>
-        <div class="movie-actor">
-            电影演员：
-            {% for each in detail.fullcredits.actor %}
-                {% if each.cnname != None %}
-                    <p>{{ each.cnname }}</p>
-                {% else %}
-                    <p>{{ each.name }}</p>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div class="movie-about">
-            电影简介：<p class="about-plot">{{ detail.plot_str }}</p>
+        <div class="about">
+            <div class="movie-director gap">
+                <p class="title">电影导演：</p>
+                <p class="content">{{ detail.fullcredits.director[0].name }}</p>
+            </div>
+            <div class="movie-actor gap">
+                <p class="title">电影演员：</p>
+                {% for each in detail.fullcredits.actor %}
+                    {% if each.cnname != None %}
+                        <p class="content">{{ each.cnname }}</p>
+                    {% else %}
+                        <p class="content">{{ each.name }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="movie-about gap">
+                <p class="title">电影简介：</p>
+                <p class="about-plot content">&nbsp &nbsp &nbsp &nbsp{{ detail.plot_str }}</p>
+            </div>
         </div>
 
         <div class="record">
@@ -83,7 +85,7 @@
         </div>
 
         <div class="foot">
-            <a class="weui_btn weui_btn_primary foot-btn bottom_fix" data-id="{{ movie.movieid }}">添加记录</a>
+            <a class="foot-btn weui_btn weui_btn_primary bottom_fix" data-id="{{ movie.movieid }}">添加记录</a>
         </div>
 
         <!-- js -->
