@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from app import app,User
+from app import app, User
 from app.task.user.user import (query_user_by_account,
                                 save_user_info,
                                 check_user_info)
@@ -9,7 +9,7 @@ from flask_login import login_user
 import os
 
 
-@app.route('/',methods=['GET'])
+@app.route('/', methods=['GET'])
 def default_url():
     '''
     默认路由
@@ -18,7 +18,7 @@ def default_url():
     return redirect(url_for('get_user_login'))
 
 
-@app.route('/user/register',methods=['POST', 'GET'])
+@app.route('/users', methods=['POST', 'GET'])
 def post_user_register():
     '''
     用户注册
@@ -35,13 +35,13 @@ def post_user_register():
                 file = request.files['file'] if len(request.files) > 0 else None
                 save_user_info(file, request.form, info)
                 return jsonify(dict(message='success'))
-        except Exception,e:
+        except Exception, e:
             return jsonify(dict(message='fail'))
     else:
         return render_template('user/register.html')
 
 
-@app.route('/user/login',methods=['POST','GET'])
+@app.route('/users/user', methods=['POST', 'GET'])
 def get_user_login():
     '''
     用户登陆
@@ -58,12 +58,10 @@ def get_user_login():
                 next_url = request.form['next']
                 if (str(next_url)):
                     next_url = ''
-                return jsonify(dict(message='success',next=str(next_url),img=str(user['userimage'])))
+                return jsonify(dict(message='success', next=str(next_url), img=str(user['userimage'])))
             else:
                 return jsonify(dict(message='fail'))
-        except Exception,e:
+        except Exception, e:
             return jsonify(dict(message='error'))
     else:
-        return render_template('user/login.html',next=next_url)
-
-
+        return render_template('user/login.html', next=next_url)

@@ -11,26 +11,26 @@ $(document).ready(function () {
         var username = $('#username').val() || false;
         var img = $('.image-input')[0].files[0];
 
-        if (!account || !password || !repassword || !username){
+        if (!account || !password || !repassword || !username) {
             $.toast('请将账户信息输入完整！', 'forbidden');
         } else {
             var fd = new FormData();
             fd.append('file', img);
-            fd.append('account',account);
-            fd.append('password',password);
-            fd.append('repassword',repassword);
-            fd.append('username',username);
+            fd.append('account', account);
+            fd.append('password', password);
+            fd.append('repassword', repassword);
+            fd.append('username', username);
             $.ajax({
-                url:'/user/register',
+                url: '/users',
                 type: 'POST',
                 data: fd,
                 processData: false,
                 contentType: false,
                 success: function (data) {
                     var message = data.message;
-                    if (message == 'success'){
-                        window.location.href = '/calendar/getCalendar'
-                    } else if (message == 'repeat'){
+                    if (message == 'success') {
+                        window.location.href = '/calendar'
+                    } else if (message == 'repeat') {
                         $.toast('账号已存在！', 'forbidden');
                     } else {
                         $.toast('出现异常！', 'forbidden');
@@ -39,9 +39,9 @@ $(document).ready(function () {
             })
         }
     });
-    
+
     $('#exitBtn').click(function () {
-        window.location.href = '/user/login';
+        window.location.href = '/users/user';
     });
 
     $(".head-image").click(function () {

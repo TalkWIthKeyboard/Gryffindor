@@ -61,7 +61,7 @@ function searchEvent(value) {
     console.log(num);
 
     $.ajax({
-        url: '/selectMovieByName/' + value + '/' + num,
+        url: '/movies/' + value + '/' + num,
         type: 'GET',
         success: function (data) {
             var movies = data.movieList;
@@ -73,7 +73,7 @@ function searchEvent(value) {
                     var movie = movies[index];
                     $('.search-out').append(
                     '<div id="aa" data-id="'+ movie.movieid +'"> \
-                        <a href="' + '/selectMovieById/' + movie.movieid + '" class="weui_media_box weui_media_appmsg"> \
+                        <a href="' + '/movies/' + movie.movieid + '" class="weui_media_box weui_media_appmsg"> \
                             <div style="height:90px;width:65px;"class="weui_media_hd"> \
                                 <img style="height:90px;"class="weui_media_appmsg_thumb" src="' + movie.img + '"> \
                             </div> \

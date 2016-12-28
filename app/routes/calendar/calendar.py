@@ -15,34 +15,31 @@ reload(sys)
 
 sys.setdefaultencoding('utf8')
 
-@app.route('/calendar/getCalendar',methods=['GET'])
+@app.route('/calendar',methods=['GET', 'POST'])
 @login_required
 def get_calendar():
     '''
     获取日历页面
     :return:
     '''
-    user = current_user
-    if user.is_active:
-        return render_template('calendar/calendar.html')
+    if request.method == 'GET':
+        user = current_user
+        if user.is_active:
+            return render_template('calendar/calendar.html')
+        else:
+            return render_template('user/login.html')
     else:
-        return render_template('user/login.html')
-
-@app.route('/calendar/getActivities',methods=['POST'])
-@login_required
-def get_activities():
-    '''
-    获取日历一页的所有活动
-    :param firstDay: 日历一页的起始日期
-    :param lastDay: 日历一页的结束日期
-    :return: 活动list
-    '''
-    if request.method == 'POST':
-        firstDay = datetime.datetime.strptime(str(request.form['firstDay']),'%Y-%m-%d')
-        lastDay = datetime.datetime.strptime(str(request.form['lastDay']),'%Y-%m-%d')
+        '''
+        获取日历一页的所有活动
+        :param firstDay: 日历一页的起始日期
+        :param lastDay: 日历一页的结束日期
+        :return: 活动list
+        '''
+        firstDay = datetime.datetime.strptime(str(request.form['firstDay']), '%Y-%m-%d')
+        lastDay = datetime.datetime.strptime(str(request.form['lastDay']), '%Y-%m-%d')
         userid = str(current_user.myid)
 
-        info = ready_out_date(ready_getActivities(userid,firstDay,lastDay))
+        info = ready_out_date(ready_getActivities(userid, firstDay, lastDay))
         dateDict = create_dates_by_first_last(firstDay, lastDay)
         for each in info:
             dateDict[each['date']] += 1

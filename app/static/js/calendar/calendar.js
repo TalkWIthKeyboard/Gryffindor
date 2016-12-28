@@ -25,7 +25,7 @@ startEventDay = function () {
     $.showLoading("正在加载数据...");
 
     $.ajax({
-        url:'/calendar/getActivities',
+        url:'/calendar',
         type:'POST',
         data:{
             'firstDay': firstDay,
@@ -117,7 +117,7 @@ startEventDay = function () {
 
             $('.event-btn').click(function () {
                 var id = $(this).attr('data-id');
-                window.location.href = '/movie/getAllImpression/' + id;
+                window.location.href = '/movies/impressions/' + id;
             })
 
             $.hideLoading();
