@@ -51,7 +51,7 @@ startEventDay = function () {
                     '<div class="weui_panel"> \
                         <div class="weui_panel_bd"> \
                             <div class="weui_media_box weui_media_small_appmsg event-btn event-hidden" data-id=' + event[i].id + ' data-date=' + event[i].date + '> \
-                                    <div class="weui_cells weui_cells_access"> \
+                                    <div class="weui_cells weui_cells_access "> \
                                         <a class="weui_cell" href="javascript:;"> \
                                             <div class="weui_cell_hd"> \
                                                 <img class="box-img" src="' + event[i].img + '"> \
@@ -62,6 +62,8 @@ startEventDay = function () {
                                                 <p class="weui_media_desc">&nbsp&nbsp&nbsp&nbsp观影地址：' + event[i].address + '</p> \
                                             </div> \
                                         </a> \
+                                        <div class="mark">\
+                                            </div>\
                                     </div> \
                                 </div> \
                             </div> \
