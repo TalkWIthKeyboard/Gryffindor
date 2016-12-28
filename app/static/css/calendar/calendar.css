@@ -27,9 +27,25 @@ tbody tr td {
 }
 
 .has-event {
+/*
     cursor: pointer;
     position: relative;
+    background-color: #FFB939;
 
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    */
+}
+/*  er shua*/
+.second_watch{
+    cursor: pointer;
+    position: relative;
+    background-color: #FF5050;
+
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
 }
 
 #remind_pic_div {
@@ -111,20 +127,23 @@ tbody tr td {
     border-bottom: 0px;
 }
 
-.event-calendar tr td:hover {
-    background-color: #ffdf39;
-    color: #010101;
+.event-calendar tr td div:hover {
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background-color:gray;
+    margin:0 auto;
+    background-color:darkgray;
+    color:white;
 }
 
 .current-day {
-    width: 10px;
-    height: 10px;
-    background: black;
-    color: white;
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    /*border: 2px solid #ffdf39;*/
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background-color:black;
+    margin:0 auto;
+    color:white;
 }
 
 .calendar {
@@ -173,7 +192,6 @@ tbody tr td {
     height: 56px;
     background-color: #f1f1f1;
     border-bottom: 2px solid #eaeaea;
-
     padding-top: 5px;
 }
 
@@ -252,3 +270,26 @@ tbody tr td {
 .weui_media_box {
     padding: 15px 0px 15px 0px;
 }
+.circle{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background-color:gray;
+    margin:0 auto;}
+
+
+.half_circle{
+  width:10px;
+  height:10px;
+  background-color:#FFB939;
+  border-radius:0 0 50px 0;
+  }
+.mark{
+    width:60px;
+  height:60px;
+  background-color:#FFB939;
+  border-radius:0 0 0 50px;
+  float:right;
+}
+.weui_cell{
+float:left;}

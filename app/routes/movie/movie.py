@@ -77,4 +77,8 @@ def get_all_impression(id):
     info = user_movie_impression(str(user.myid), movieid, str(id))
     movie = ready_for_SelectMovieById(str(user.myid), int(movieid))
     detail = movie_detail_info(int(movieid))
-    return jsonify(dict({'impression': info['out'], 'this': info['this'], 'movie': movie, 'detail': detail}))
+    return render_template('movie/detailInfo.html',
+                           impression=info['out'],
+                           this=info['this'],
+                           movie=movie,
+                           detail=detail)
