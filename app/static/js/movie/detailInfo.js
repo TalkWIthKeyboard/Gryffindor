@@ -10,7 +10,7 @@ $(document).ready(function () {
     var click = 0;
     $('.info').click(function () {
         $('.about').slideToggle();
-        $('.record').slideToggle();
+//        $('.record').slideToggle();
         if (0 == click) {
             $(this).css({'background':'rgba(255,255,255, 0.8)'});
             click = 1;
@@ -20,9 +20,9 @@ $(document).ready(function () {
         }
     });
 
-      $('.record_title').click(function () {
-        $('.record').slideToggle();
-//        $('.about').slideToggle();
+//      $('.record_title').click(function () {
+    $('.record_click').click(function () {
+        $(this).next().slideToggle();
         if (0 == click) {
             $(this).css({'background':'rgba(255,255,255, 0.8)'});
             click = 1;

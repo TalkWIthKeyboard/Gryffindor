@@ -27,6 +27,7 @@ tbody tr td {
 }
 
 .has-event {
+/*
     cursor: pointer;
     position: relative;
     background-color: #FFB939;
@@ -34,6 +35,7 @@ tbody tr td {
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
+    */
 }
 /*  er shua*/
 .second_watch{
@@ -125,13 +127,23 @@ tbody tr td {
     border-bottom: 0px;
 }
 
-.event-calendar tr td:hover {
-    background-color: #ffdf39;
-    color: #010101;
+.event-calendar tr td div:hover {
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background-color:gray;
+    margin:0 auto;
+    background-color:darkgray;
+    color:white;
 }
 
 .current-day {
-
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background-color:black;
+    margin:0 auto;
+    color:white;
 }
 
 .calendar {
@@ -258,3 +270,18 @@ tbody tr td {
 .weui_media_box {
     padding: 15px 0px 15px 0px;
 }
+.circle{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background-color:gray;
+    margin:0 auto;}
+
+
+.half_circle{
+  width:10px;
+  height:10px;
+  background-color:#FFB939;
+  border-radius:0 0 50px 0;
+
+  }
