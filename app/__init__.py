@@ -10,20 +10,20 @@ app.secret_key = 'GryffindorProject'
 db = MongoEngine(app)
 loginManager = LoginManager()
 loginManager.init_app(app)
-loginManager.login_view='get_user_login'
+loginManager.login_view = 'get_user_login'
 
 # models
-from app.models.Movie import BasicInfo # 电影基本信息
-from app.models.Movie import Details # 电影细节信息
-from app.models.Movie import Score # 电影分数信息
-from app.models.Movie import Fullcredits # 电影演职人员
-from app.models.Movie import Awards # 电影得奖信息
-from app.models.Movie import Comment # 电影评论信息
-from app.models.Movie import Plot # 电影简介信息
-from app.models.Movie import Scenes # 电影幕后解密
-from app.models.Movie import AliasName # 中英文名字对照
-from app.models.MovieEvent import MovieRecordEvent # 电影记录事件
-from app.models.MovieEvent import MovieFeatureEvent # 电影未来观看事件
+from app.models.Movie import BasicInfo  # 电影基本信息
+from app.models.Movie import Details  # 电影细节信息
+from app.models.Movie import Score  # 电影分数信息
+from app.models.Movie import Fullcredits  # 电影演职人员
+from app.models.Movie import Awards  # 电影得奖信息
+from app.models.Movie import Comment  # 电影评论信息
+from app.models.Movie import Plot  # 电影简介信息
+from app.models.Movie import Scenes  # 电影幕后解密
+from app.models.Movie import AliasName  # 中英文名字对照
+from app.models.MovieEvent import MovieRecordEvent  # 电影记录事件
+from app.models.MovieEvent import MovieFeatureEvent  # 电影未来观看事件
 from app.models.User import User
 
 # router

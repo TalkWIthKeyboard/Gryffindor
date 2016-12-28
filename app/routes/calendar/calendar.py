@@ -15,7 +15,8 @@ reload(sys)
 
 sys.setdefaultencoding('utf8')
 
-@app.route('/calendar',methods=['GET', 'POST'])
+
+@app.route('/calendar', methods=['GET', 'POST'])
 @login_required
 def get_calendar():
     '''
@@ -45,5 +46,3 @@ def get_calendar():
             dateDict[each['date']] += 1
 
         return jsonify({'dateDict': dateDict, 'event': info})
-
-

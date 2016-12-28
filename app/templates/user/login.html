@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <title>登陆</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>登陆</title>
 
-        <!-- css -->
-        <link rel="stylesheet" href="/libs/jquery-weui.min.css">
-        <link rel="stylesheet" href="/libs/weui.css">
-        <link rel="stylesheet" href="/css/user/user_basic.css">
-    </head>
+    <!-- css -->
+    <link rel="stylesheet" href="/libs/jquery-weui.min.css">
+    <link rel="stylesheet" href="/libs/weui.css">
+    <link rel="stylesheet" href="/css/user/user_basic.css">
+</head>
 
-    <body>
+<body>
 
-    <div class="weui-row">
-        <img class="head-image" src="/image/photo/basic_photo.jpg">
+<div class="weui-row">
+    <img class="head-image" src="/image/photo/basic_photo.jpg">
+</div>
+
+<p class="next-url" style="display: none">{{ next }}</p>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_hd">
+            <img src="/image/icons/user_icon.png" alt="icon" style="width:26px;display:block">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" placeholder="请输入您的账号" id="account">
+        </div>
     </div>
-
-    <p class="next-url" style="display: none">{{ next }}</p>
-    <div class="weui_cells weui_cells_form">
-      <div class="weui_cell">
-          <div class="weui_cell_hd">
-              <img src="/image/icons/user_icon.png" alt="icon" style="width:26px;display:block">
-          </div>
-          <div class="weui_cell_bd weui_cell_primary">
-              <input class="weui_input" placeholder="请输入您的账号" id="account">
-          </div>
-      </div>
-      <div class="weui_cell">
-          <div class="weui_cell_hd">
-              <img src="/image/icons/password_icon.png" alt="icon" style="width:26px;display:block">
-          </div>
-          <div class="weui_cell_bd weui_cell_primary">
-              <input class="weui_input" type="password" placeholder="请输入登录密码" id="password">
-          </div>
-      </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd">
+            <img src="/image/icons/password_icon.png" alt="icon" style="width:26px;display:block">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" type="password" placeholder="请输入登录密码" id="password">
+        </div>
     </div>
+</div>
 
-    <div id="empty-one"></div>
-    <div class="tj-padded tj-margin-top">
-      <button class="weui_btn weui_btn_primary" type="submit" id="sureBtn">登录</button>
-      <button class="weui_btn weui_btn_primary" id="register">现在注册</button>
-    </div>
+<div id="empty-one"></div>
+<div class="tj-padded tj-margin-top">
+    <button class="weui_btn weui_btn_primary" type="submit" id="sureBtn">登录</button>
+    <button class="weui_btn weui_btn_primary" id="register">现在注册</button>
+</div>
 
-    <!-- js -->
-    <script src="/libs/jquery-2.1.4.js"></script>
-    <script src="/libs/jquery-weui.min.js"></script>
-    <script src="/js/user/login.js"></script>
-    </body>
+<!-- js -->
+<script src="/libs/jquery-2.1.4.js"></script>
+<script src="/libs/jquery-weui.min.js"></script>
+<script src="/js/user/login.js"></script>
+</body>
 </html>
