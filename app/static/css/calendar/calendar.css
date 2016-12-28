@@ -29,7 +29,21 @@ tbody tr td{
 .has-event {
     cursor: pointer;
     position: relative;
+    background-color: #FFB939;
 
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+/*  er shua*/
+.second_watch{
+    cursor: pointer;
+    position: relative;
+    background-color: #FF5050;
+
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
 }
 #remind_pic_div{
     height:90px;
@@ -105,14 +119,7 @@ padding-top:2%;
 }
 
 .current-day {
-     width: 10px;
-    height: 10px;
-    background: black;
-    color:white;
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    /*border: 2px solid #ffdf39;*/
+
 }
 
 .calendar {
@@ -161,7 +168,6 @@ padding-top:2%;
     height: 56px;
     background-color: #f1f1f1;
     border-bottom: 2px solid #eaeaea;
-
     padding-top: 5px;
 }
 
