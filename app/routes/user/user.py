@@ -80,15 +80,17 @@ def wecaht_check():
     params = request.args
     code = str(params['code']) if params else ''
     state = str(params['state']) if params else ''
+    nsukey = str(params['nsukey']) if params else ''
 
     if request.method == 'GET':
         try:
-            req = requests.get(wechat_get_code % (code))
-            json_data = json.loads(str(req.text))
-            access_token = json_data[u'access_token']
-            open_id = json_data[u'openid']
-            req = requests.get(wechat_get_info % (access_token, open_id))
-            json_data = json.loads(str(req.text))
-            return json_data
+            if not nsukey == '':
+                req = requests.get(wechat_get_code % (code))
+                json_data = json.loads(str(req.text))
+                access_token = json_data[u'access_token']
+                open_id = json_data[u'openid']
+                req = requests.get(wechat_get_info % (access_token, open_id))
+                json_data = json.loads(str(req.text))
+                return jsonify(json_data)
         except Exception, e:
             return jsonify(dict(message='error',error=e))
