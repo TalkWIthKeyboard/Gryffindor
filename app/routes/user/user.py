@@ -73,7 +73,6 @@ def wecaht_check():
     用户使用微信登陆跳转
     :return:
     '''
-
     wechat_get_code = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx66cec940989dba07&secret=b9303733c764fe5cdab5de672383194f&code=%s&grant_type=authorization_code'
     wechat_get_info = 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s'
 
@@ -84,10 +83,11 @@ def wecaht_check():
     if request.method == 'GET':
         try:
             req = requests.get(wechat_get_code % (code))
-            json_data = json.loads(str(req.text))
-            access_token = json_data['access_token']
-            open_id = json_data['openid']
-            req = requests.get(wechat_get_info % (access_token, open_id))
-            return req.json
+       	    json_data = json.loads(str(req.text))
+            #access_token = json_data[u'access_token']
+            #open_id = json_data[u'openid']
+            #req = requests.get(wechat_get_info % (access_token, open_id))
+	    #json_data = json.loads(str(req.text))
+            return jsonify(json_data)
         except Exception, e:
-            return jsonify(dict(message='error',e=e.message))
+            return jsonify(dict(message='error',err=e.message))
