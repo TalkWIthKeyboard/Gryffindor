@@ -85,9 +85,10 @@ def wecaht_check():
         try:
             req = requests.get(wechat_get_code % (code))
             json_data = json.loads(str(req.text))
-            access_token = json_data['access_token']
-            open_id = json_data['openid']
+            access_token = json_data[u'access_token']
+            open_id = json_data[u'openid']
             req = requests.get(wechat_get_info % (access_token, open_id))
-            return req.json
+            json_data = json.loads(str(req.text))
+            return json_data
         except Exception, e:
-            return jsonify(dict(message='error',e=e.message))
+            return jsonify(dict(message='error',error=e))
