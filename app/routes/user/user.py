@@ -6,7 +6,7 @@ from app.task.user.user import (query_user_by_account,
                                 check_user_info)
 from flask import render_template, request, jsonify, redirect, url_for
 from flask_login import login_user
-import os
+import requests, json
 
 
 @app.route('/', methods=['GET'])
@@ -65,3 +65,47 @@ def get_user_login():
             return jsonify(dict(message='error'))
     else:
         return render_template('user/login.html', next=next_url)
+
+
+@app.route('/user/wechat', methods=['GET'])
+def wecaht_check():
+    '''
+    用户使用微信登陆跳转
+    :return:
+    '''
+
+    wechat_get_token = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx66cec940989dba07&secret=b9303733c764fe5cdab5de672383194f&code=%s&grant_type=authorization_code'
+
+    params = request.args
+    code = str(params['code']) if params else ''
+    state = str(params['state']) if params else ''
+
+    if request.method == 'GET':
+        try:
+            requests.get(wechat_get_token % (code), hooks=dict(response=wechat_get_token_func))
+        except Exception, e:
+            return jsonify(dict(message='error'))
+
+
+def wechat_get_token_func(req):
+    '''
+    第一次调用的钩子函数
+    :param req:
+    :return:
+    '''
+    wechat_get_info = 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s'
+
+    access_token = req.json['access_token']
+    open_id = req.json['openid']
+    print "第一次的信息: " + req.json
+    requests.get(wechat_get_info % (str(access_token), str(open_id)), hooks=dict(response=wechat_get_info_func))
+
+
+def wechat_get_info_func(req):
+    '''
+    第二次调用的钩子函数
+    :param req:
+    :return:
+    '''
+
+    print "第二次的信息：" + req.json
