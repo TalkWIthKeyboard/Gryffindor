@@ -68,12 +68,52 @@ startEventDay = function () {
                 )
             }
 
-            // $('.event-list').append(
-            //         '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
-            //             <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
-            //             <p class="p-t-sm empty_text">空空如也</p> \
-            //         </div>'
-            // )
+             $('.event-list').append(
+//                     '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
+//                         <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
+//                         <p class="p-t-sm empty_text">空空如也</p> \
+//                     </div>'
+                                  '<div  id ="remind_div" class="weui_panel_bd">\
+          <a id="remind_btn"  href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">\
+              <div  id="remind_pic_div" class=" weui_media_hd order_pic">\
+                  <img id="remind_pic" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">\
+              </div>\
+             <div id = "remind_text" class="weui_media_bd">\
+                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>\
+                  <p class="movie_title_e" >All About Lily Chou-Chou</p>\
+                  <div style="display:inline">\
+                      <div  class="dw_title" >导演:</div>\
+                      <div  class="dw_name" >&nbsp&nbsp岩井俊二</div>\
+                  </div>\
+                  <br>\
+                  <div style="display:inline">\
+                      <div class="dw_title" >编剧:</div>\
+                      <div class="dw_name" >&nbsp&nbsp岩井俊二</div>\
+                  </div>\
+              </div>\
+          </a>\
+        </div>\
+        <div  id ="record_div" class="weui_panel_bd">\
+          <a id="record_btn"  href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">\
+              <div  id="record_pic_div" class=" weui_media_hd order_pic">\
+                  <img id="record_pic" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">\
+              </div>\
+             <div id = "record_text" class="weui_media_bd">\
+                  <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>\
+                  <p class="movie_title_e" >All About Lily Chou-Chou</p>\
+                  <div style="display:inline">\
+                      <div  class="dw_title" >导演:</div>\
+                      <div  class="dw_name" >&nbsp&nbsp岩井俊二</div>\
+                  </div>\
+                  <br>\
+                  <div style="display:inline">\
+                      <div class="dw_title">编剧:</div>\
+                      <div class="dw_name">&nbsp&nbsp岩井俊二</div>\
+                  </div>\
+              </div>\
+          </a>\
+        </div>'
+             )
 
             $('.event-btn').click(function () {
                 var id = $(this).attr('data-id');

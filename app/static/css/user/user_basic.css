@@ -1,4 +1,4 @@
-.head-image{
+.head-image {
     height: 124px;
     width: 124px;
     margin: auto;
@@ -6,54 +6,59 @@
     border-radius: 38.5px;
 }
 
-.image-input-hidden{
+.image-input-hidden {
     display: none;
 }
 
-button.weui_btn, input.weui_btn{
-    width:73.6%;
+button.weui_btn, input.weui_btn {
+    width: 73.6%;
 }
 
-#sureBtn{
-    background-color:#00B9BD;
+#sureBtn {
+    background-color: #00B9BD;
 }
 
-#register{
-    background-color:#FB710D;
-}
-.weui_cells:before{
-    border-top:0px;
+#register {
+    background-color: #FB710D;
 }
 
-.weui_cell:before{
-    left:13%;
-    width:73.6%;
+.weui_cells:before {
+    border-top: 0px;
 }
 
-.weui_cells{
-    margin:auto;
-    text-align:center;
-    padding-top:10%;
+.weui_cell:before {
+    left: 13%;
+    width: 73.6%;
 }
 
-.weui_cells:after{
-    left:13%;
-    width:73.6%;
+.weui_cells {
+    margin: auto;
+    text-align: center;
+    padding-top: 10%;
 }
 
-.weui_cell{
-padding:10px 60px;
-padding-top:8%;}
+.weui_cells:after {
+    left: 13%;
+    width: 73.6%;
+}
 
-.weui_input{
-width:70%;}
+.weui_cell {
+    padding: 10px 60px;
+    padding-top: 8%;
+}
 
-html,body{
-height:100%;}
+.weui_input {
+    width: 70%;
+}
 
-.weui-row{
-padding-top:20%;}
+html, body {
+    height: 100%;
+}
 
+.weui-row {
+    padding-top: 20%;
+}
 
-#empty-one{
-height:7%;}
+#empty-one {
+    height: 7%;
+}
