@@ -67,14 +67,15 @@ def get_user_login():
         return render_template('user/login.html', next=next_url)
 
 
-@app.route('/user/wechat', methods=['GET'])
+@app.route('/users/wechat', methods=['GET'])
 def wecaht_check():
     '''
     用户使用微信登陆跳转
     :return:
     '''
 
-    wechat_get_token = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx66cec940989dba07&secret=b9303733c764fe5cdab5de672383194f&code=%s&grant_type=authorization_code'
+    wechat_get_code = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx66cec940989dba07&secret=b9303733c764fe5cdab5de672383194f&code=%s&grant_type=authorization_code'
+    wechat_get_info = 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s'
 
     params = request.args
     code = str(params['code']) if params else ''
@@ -82,30 +83,11 @@ def wecaht_check():
 
     if request.method == 'GET':
         try:
-            requests.get(wechat_get_token % (code), hooks=dict(response=wechat_get_token_func))
+            req = requests.get(wechat_get_code % (code))
+            json_data = json.loads(str(req.text))
+            access_token = json_data['access_token']
+            open_id = json_data['openid']
+            req = requests.get(wechat_get_info % (access_token, open_id))
+            return req.json
         except Exception, e:
             return jsonify(dict(message='error'))
-
-
-def wechat_get_token_func(req):
-    '''
-    第一次调用的钩子函数
-    :param req:
-    :return:
-    '''
-    wechat_get_info = 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s'
-
-    access_token = req.json['access_token']
-    open_id = req.json['openid']
-    print "第一次的信息: " + req.json
-    requests.get(wechat_get_info % (str(access_token), str(open_id)), hooks=dict(response=wechat_get_info_func))
-
-
-def wechat_get_info_func(req):
-    '''
-    第二次调用的钩子函数
-    :param req:
-    :return:
-    '''
-
-    print "第二次的信息：" + req.json
