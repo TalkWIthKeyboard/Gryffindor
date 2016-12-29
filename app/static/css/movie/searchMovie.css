@@ -172,6 +172,65 @@ padding:0px;
 
 
 
+#head{
+    height:35%;
+
+    }
+
+
+header {
+    position: relative;
+    height:35%;
+}
+#mark{
+    height:8%;
+
+    }
+#main{
+    height:57%;
+    background-color:red;
+    }
+#avt,#user-name {
+    position: absolute
+}
+
+#bg {
+    width: 100%
+}
+#user-name {
+    text-align: right;
+    right: 114px;
+    bottom: 15px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    text-shadow: 0 1px .5px #000
+}
+
+#avt {
+/*
+    width: 74px;
+    height: 74px;
+    border: 1px solid #dbdbdb;
+    right: 15px;
+    bottom: -22px;
+    padding: 1px;
+    background-color: #fff
+    border-radius: 38.5px;
+  */
+
+    height: 80px;
+    width: 80px;
+    right: 15px;
+    bottom: -22px;
+    margin: auto;
+    margin-top: 5px;
+    border-radius: 50px;
+}
+
+
+
+
 
 
 
