@@ -104,7 +104,7 @@ def get_user_info_by_wechat():
 
     if request.method == 'GET':
         try:
-            if not nsukey == '':
+            if nsukey == '':
                 req = requests.get(wechat_get_code % (code))
                 json_data = json.loads(str(req.text))
                 access_token = json_data[u'access_token']
