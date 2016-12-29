@@ -113,8 +113,8 @@ def get_user_info_by_wechat():
                      save_wechat_user_info(json_data, info)
                      user = query_user_by_openId(open_id)
 
-                # login_user(user)
-                return jsonify(user)
+                login_user(user)
+                return redirect(state)
             else:
                 return ''
         except Exception, e:
