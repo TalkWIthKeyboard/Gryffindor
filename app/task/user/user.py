@@ -58,6 +58,8 @@ def save_wechat_user_info(json, info):
         info['myid'] = ready_myid()
         info['sex'] = int(json[u'sex'])
         info['state'] = 1
+        info['account'] = 'myAccount:' + json[u'nickname']
+        info['password'] = get_md5('123456')
 
         User(**info).save()
     except Exception, e:
