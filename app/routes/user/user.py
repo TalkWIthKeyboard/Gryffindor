@@ -36,7 +36,6 @@ def wechat_check():
         next = next_url
 
     return redirect(wechat_check_url % (next))
-    # return jsonify(dict(nextUrl=next_url))
 
 
 @app.route('/users', methods=['POST', 'GET'])
@@ -69,7 +68,7 @@ def get_user_login():
     :return:
     '''
     next_url = request.args
-    next_url = str(next_url['next']) if next_url else ''
+    next_url = str(next_url['next']) if next_url.has_key('next') else ''
 
     if request.method == 'POST':
         try:
@@ -98,9 +97,9 @@ def get_user_info_by_wechat():
     wechat_get_info = 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s'
 
     params = request.args
-    code = str(params['code']) if params else ''
-    state = str(params['state']) if params else ''
-    nsukey = str(params['nsukey']) if params else ''
+    code = str(params['code']) if params.has_key('code') else ''
+    state = str(params['state']) if params.has_key('state') else ''
+    nsukey = str(params['nsukey']) if params.has_key('nsukey') else ''
 
     if request.method == 'GET':
         try:
