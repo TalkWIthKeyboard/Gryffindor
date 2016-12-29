@@ -46,7 +46,7 @@ $(document).ready(function () {
     })
 
     $('#register').click(function () {
-        window.location.href = '／users'
+        window.location.href = '/users'
     })
 
 });

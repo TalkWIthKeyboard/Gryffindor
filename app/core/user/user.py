@@ -2,6 +2,7 @@
 
 from app import User
 
+
 def query_first(db):
     '''
     返回数据库默认第一个（按照myid排序）
@@ -14,9 +15,10 @@ def query_first(db):
             return info.to_dict()
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None
+
 
 def query_user_by_account(account):
     '''
@@ -30,6 +32,6 @@ def query_user_by_account(account):
             return info.to_dict()
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None

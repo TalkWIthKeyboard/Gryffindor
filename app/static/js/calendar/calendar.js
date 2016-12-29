@@ -41,6 +41,7 @@ startEventDay = function () {
 
                 var dateStr = year + '-' + month + '-' + day;
                 if (dict[dateStr] > 0) {
+                    $(this).prepend('<div class="half_circle"></div>')
                     $(this).addClass('has-event');
                 }
             })
@@ -50,17 +51,19 @@ startEventDay = function () {
                     '<div class="weui_panel"> \
                         <div class="weui_panel_bd"> \
                             <div class="weui_media_box weui_media_small_appmsg event-btn event-hidden" data-id=' + event[i].id + ' data-date=' + event[i].date + '> \
-                                    <div class="weui_cells weui_cells_access"> \
+                                    <div class="weui_cells weui_cells_access "> \
                                         <a class="weui_cell" href="javascript:;"> \
                                             <div class="weui_cell_hd"> \
                                                 <img class="box-img" src="' + event[i].img + '"> \
                                             </div> \
                                             <div class="weui_media_bd"> \
-                                                <h4 class="weui_media_title">' + event[i].cnname + '</h4> \
-                                                <p class="weui_media_desc">观影日期：' + event[i].date + '</p> \
-                                                <p class="weui_media_desc">观影地址：' + event[i].address + '</p> \
+                                                <h4 class="weui_media_title">&nbsp&nbsp&nbsp' + event[i].cnname + '</h4> \
+                                                <p class="weui_media_desc">&nbsp&nbsp&nbsp&nbsp观影日期：' + event[i].date + '</p> \
+                                                <p class="weui_media_desc">&nbsp&nbsp&nbsp&nbsp观影地址：' + event[i].address + '</p> \
                                             </div> \
                                         </a> \
+                                        <div class="mark">\
+                                            </div>\
                                     </div> \
                                 </div> \
                             </div> \
@@ -69,10 +72,10 @@ startEventDay = function () {
             }
 
             $('.event-list').append(
-//                     '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
-//                         <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
-//                         <p class="p-t-sm empty_text">空空如也</p> \
-//                     </div>'
+                     '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
+                         <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
+                         <p class="p-t-sm empty_text">空空如也</p> \
+                     </div>'
             )
 
             $('.event-btn').click(function () {
@@ -213,7 +216,8 @@ startCalendar = function () {
         var month = date.getMonth() + 1;
         var thisyear = new Date().getFullYear();
         //对今天特殊的样式处理
-        $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"]').addClass('current-day');
+//        $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"]').append('<div class="circle">aaa</div>');
+        $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"] div').addClass('current-day');
         startEventDay();
 
         function getAllDays(month, year) {
@@ -255,24 +259,24 @@ startCalendar = function () {
         function printWeek() {
             $('thead.event-days tr').append('<td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td>');
         }
-
+//        <div class="half-circle"></div>
         //填天数栏
         function printDay(monthNumber) {
             var days = getAllDays(monthNumber - 1, yearNumber);
             for (var index = 0; index < days.length; index++) {
                 var each = new Date(days[index]);
                 if (index < 7) {
-                    $('tbody.event-calendar tr.1').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="first-line">' + each.getDate() + '</td>');
+                    $('tbody.event-calendar tr.1').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="first-line">' + '<div class="">'+ each.getDate() + '</div></td>');
                 } else if (index < 14) {
-                    $('tbody.event-calendar tr.2').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + each.getDate() + '</td>');
+                    $('tbody.event-calendar tr.2').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">'+each.getDate() + '</div></td>');
                 } else if (index < 21) {
-                    $('tbody.event-calendar tr.3').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + each.getDate() + '</td>');
+                    $('tbody.event-calendar tr.3').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">'+each.getDate() + '</div></td>');
                 } else if (index < 28) {
-                    $('tbody.event-calendar tr.4').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + each.getDate() + '</td>');
+                    $('tbody.event-calendar tr.4').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' +'<div class="">'+ each.getDate() + '</div></td>');
                 } else if (index < 35) {
-                    $('tbody.event-calendar tr.5').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + each.getDate() + '</td>');
+                    $('tbody.event-calendar tr.5').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' +'<div class="">'+ each.getDate() + '</div></td>');
                 } else if (index < 42) {
-                    $('tbody.event-calendar tr.6').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="last-line">' + each.getDate() + '</td>');
+                    $('tbody.event-calendar tr.6').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="last-line">' + each.getDate() + '</div></td>');
                 }
             }
 
