@@ -10,7 +10,7 @@ app.secret_key = 'GryffindorProject'
 db = MongoEngine(app)
 loginManager = LoginManager()
 loginManager.init_app(app)
-loginManager.login_view = 'get_user_login'
+loginManager.login_view = 'wechat_check'
 
 # models
 from app.models.Movie import BasicInfo  # 电影基本信息
