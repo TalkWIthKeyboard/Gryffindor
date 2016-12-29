@@ -63,7 +63,7 @@ def post_movie_info():
         except Exception, e:
             return jsonify(dict(message='fail'))
     else:
-        if nsukey:
+        if not nsukey == '':
             return redirect('/movies')
         else:
             # 获取电影搜索页面
