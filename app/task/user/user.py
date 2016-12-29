@@ -43,7 +43,7 @@ def save_user_info(image, form, info):
         print e.message
 
 
-def save_wechat_user_info(json, info):
+def save_wechat_user_info(json, open_id, info):
     '''
     保存微信端过来的用户账号信息
     :param json:
@@ -52,13 +52,13 @@ def save_wechat_user_info(json, info):
     '''
     try:
         info['headImgUrl'] = json[u'headimgurl']
-        info['nickName'] = json[u'nickname']
+        info['nickName'] = str(json[u'nickname'])
         info['province'] = json[u'province']
         info['city'] = json[u'city']
         info['myid'] = ready_myid()
         info['sex'] = int(json[u'sex'])
         info['state'] = 1
-        info['account'] = 'myAccount:' + json[u'nickname']
+        info['account'] = 'myAccount:' + open_id
         info['password'] = get_md5('123456')
 
         User(**info).save()

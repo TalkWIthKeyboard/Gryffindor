@@ -116,7 +116,7 @@ def get_user_info_by_wechat():
                 if user == None:
                     info = {}
                     info['openId'] = open_id
-                    save_wechat_user_info(json_data, info)
+                    save_wechat_user_info(json_data, open_id, info)
 
                 userObj = User.objects(openId=open_id).first()
                 login_user(userObj)
