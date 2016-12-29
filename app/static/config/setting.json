@@ -1,0 +1,19 @@
+{
+	"button":[
+	{
+		"type":"view",
+		"name":"电影日历",
+		"url":"http://moviebox.sw77.live/calendar"
+	},
+	{
+		"type":"view",
+		"name":"电影记录",
+		"url":"http://moviebox.sw77.live/movies"
+	},
+	{
+		"type":"view",
+		"name":"朋友圈",
+		"url":"http://moviebox.sw77.live/movies"
+	}
+ ］
+}
