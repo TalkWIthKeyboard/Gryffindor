@@ -116,7 +116,7 @@ def query_user_by_openId(openId):
     :return:
     '''
     try:
-        info = User.objects(openid=openId).first()
+        info = User.objects(openId=openId).first()
         if info:
             return info.to_dict()
         else:
