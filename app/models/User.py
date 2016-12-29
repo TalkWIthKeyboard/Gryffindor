@@ -25,6 +25,8 @@ class User(db.Document, UserMixin):
     province = db.StringField(max_length=60)
     # 城市
     city = db.StringField(max_lengtg=60)
+    # 性别
+    sex = db.IntField()
 
     meta = {
         'ordering': ['-myid']
@@ -32,18 +34,6 @@ class User(db.Document, UserMixin):
 
     def __repr__(self):
         return '<User %r>' % self.username
-
-    def is_authenticated(self):
-        return True
-
-    def is_active(self):
-        return True
-
-    def is_anonymous(self):
-        return False
-
-    def get_id(self):
-        return unicode(self.id)
 
     def to_dict(self):
         return dict(
@@ -55,5 +45,6 @@ class User(db.Document, UserMixin):
             headImgUrl=self.headImgUrl,
             nickName=self.nickName,
             province=self.province,
-            city=self.city
+            city=self.city,
+            sex=self.sex
         )

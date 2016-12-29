@@ -56,6 +56,7 @@ def save_wechat_user_info(json, info):
         info['province'] = json[u'province']
         info['city'] = json[u'city']
         info['myid'] = ready_myid()
+        info['sex'] = int(json[u'sex'])
         info['state'] = 1
 
         User(**info).save()
