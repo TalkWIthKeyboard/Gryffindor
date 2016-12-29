@@ -52,7 +52,7 @@ def save_wechat_user_info(json, open_id, info):
     '''
     try:
         info['headImgUrl'] = json[u'headimgurl']
-        info['nickName'] = str(json[u'nickname'])
+        info['nickName'] = json[u'nickname'].decode('utf-8')
         info['province'] = json[u'province']
         info['city'] = json[u'city']
         info['myid'] = ready_myid()
