@@ -3,7 +3,9 @@
 from app import app, User
 from app.task.user.user import (query_user_by_account,
                                 save_user_info,
-                                check_user_info)
+                                check_user_info,
+                                query_user_by_openId,
+                                save_wechat_user_info)
 from flask import render_template, request, jsonify, redirect, url_for
 from flask_login import login_user
 import requests, json
@@ -15,7 +17,20 @@ def default_url():
     默认路由
     :return:
     '''
-    return redirect(url_for('get_user_login'))
+    return redirect(url_for('get_calendar'))
+
+
+@app.route('/users/wechat/check', methods=['GET'])
+def wechat_check():
+    '''
+    重定向到微信检测页面
+    :return:
+    '''
+    next_url = request.args
+    next_url = str(next_url['next']) if next_url else ''
+
+    return redirect(
+        'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66cec940989dba07&redirect_uri=http://moviebox.sw77.live/users/wechat&response_type=code&scope=snsapi_userinfo&state=％s#wechat_redirect' % (next_url))
 
 
 @app.route('/users', methods=['POST', 'GET'])
@@ -68,7 +83,7 @@ def get_user_login():
 
 
 @app.route('/users/wechat', methods=['GET'])
-def wecaht_check():
+def get_user_info_by_wechat():
     '''
     用户使用微信登陆跳转
     :return:
@@ -91,6 +106,17 @@ def wecaht_check():
                 open_id = json_data[u'openid']
                 req = requests.get(wechat_get_info % (access_token, open_id))
                 json_data = json.loads(str(req.text))
-                return jsonify(json_data)
+
+                # 第一次登陆先保存一下
+                user = query_user_by_openId(json_data[u'openid'])
+                if user == None:
+                    info = {}
+                    save_wechat_user_info(json_data, info)
+                    user = query_user_by_openId(json_data[u'openid'])
+
+                login_user(user)
+                return redirect(state)
+            else:
+                return ''
         except Exception, e:
-            return jsonify(dict(message='error',error=e))
+            return jsonify(dict(message='error', error=e))

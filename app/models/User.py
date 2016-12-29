@@ -2,21 +2,29 @@
 from app import db
 from flask_login import UserMixin
 
+
 class User(db.Document, UserMixin):
     '''
         用户信息类
     '''
     myid = db.IntField(required=True)
     # 账号
-    account = db.StringField(max_length=60,required=True)
+    account = db.StringField(max_length=60)
     # 密码（md5加密）
-    password = db.StringField(max_length=60,required=True)
-    # 用户名
-    username = db.StringField(max_length=60,required=True)
-    # 头像路径
-    userimage = db.StringField(max_length=240)
+    password = db.StringField(max_length=60)
     # 用户类型(0为管理员、1为用户)
     state = db.IntField(required=True)
+
+    # 微信平台openId
+    openId = db.StringField(max_length=60)
+    # 头像
+    headImgUrl = db.StringField(max_length=60)
+    # 用户名
+    nickName = db.StringField(max_length=60)
+    # 省份
+    province = db.StringField(max_length=60)
+    # 城市
+    city = db.StringField(max_lengtg=60)
 
     meta = {
         'ordering': ['-myid']
@@ -27,10 +35,13 @@ class User(db.Document, UserMixin):
 
     def to_dict(self):
         return dict(
-            myid = self.myid,
-            account = self.account,
-            password = self.password,
-            username = self.username,
-            userimage = self.userimage,
-            state = self.state
+            myid=self.myid,
+            account=self.account,
+            password=self.password,
+            state=self.state,
+            openId=self.openId,
+            headImgUrl=self.headImgUrl,
+            nickName=self.nickName,
+            province=self.province,
+            city=self.city
         )

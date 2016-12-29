@@ -35,3 +35,4 @@ def query_user_by_account(account):
     except Exception, e:
         print e.message
         return None
+

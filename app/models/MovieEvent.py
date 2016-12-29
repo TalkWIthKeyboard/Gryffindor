@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from app import db
 
+
 class MovieBasic(object):
     '''
         电影事件基础类
@@ -31,20 +32,21 @@ class MovieRecordEvent(db.Document, MovieBasic):
     date = db.DateTimeField(required=True)
 
     meta = {
-        'ordering' : ['-num']
+        'ordering': ['-num']
     }
 
     def to_dict(self):
         return dict(
-            userId = self.userId,
-            movieId = self.movieId,
-            date = self.date,
-            num = self.num,
-            address = self.address,
-            impression = self.impression,
-            createTime = self.createTime,
-            updateTime = self.updateTime
+            userId=self.userId,
+            movieId=self.movieId,
+            date=self.date,
+            num=self.num,
+            address=self.address,
+            impression=self.impression,
+            createTime=self.createTime,
+            updateTime=self.updateTime
         )
+
 
 class MovieFeatureEvent(db.Document, MovieBasic):
     '''
@@ -52,6 +54,7 @@ class MovieFeatureEvent(db.Document, MovieBasic):
     '''
     # 未来观看日期
     date = db.DateTimeField(required=True)
+
     def to_dict(self):
         return dict(
             userId=self.userId,

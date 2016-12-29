@@ -2,6 +2,7 @@
 from app import db
 from datetime import datetime
 
+
 class Basic(object):
     '''
         数据库的基本共有属性

@@ -11,11 +11,11 @@ def select_event_by_user_date(db, userid, firstDay, lastDay):
     '''
 
     try:
-        info = db.objects(userId=userid,date__gte=firstDay,date__lte=lastDay).all()
+        info = db.objects(userId=userid, date__gte=firstDay, date__lte=lastDay).all()
         if info:
             return info
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None

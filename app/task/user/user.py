@@ -1,9 +1,9 @@
 # coding=utf-8
 
-from app.core.user.user import query_first,query_user_by_account
+from app.core.user.user import query_first, query_user_by_account
 from app import User
 from app.core.basic import get_md5
-from config import ALLOWED_EXTENSIONS,UPLOAD_FOLDER,UPLOADS_DEFAULT_URL
+from config import ALLOWED_EXTENSIONS, UPLOAD_FOLDER, UPLOADS_DEFAULT_URL
 import os
 
 
@@ -19,7 +19,7 @@ def ready_myid():
         return 1
 
 
-def save_user_info(image, form,info):
+def save_user_info(image, form, info):
     '''
     保存用户账号信息
     :param form: 表单
@@ -39,8 +39,29 @@ def save_user_info(image, form,info):
             info['userimage'] = ''
 
         User(**info).save()
-    except Exception,e:
+    except Exception, e:
         print e.message
+
+
+def save_wechat_user_info(json, info):
+    '''
+    保存微信端过来的用户账号信息
+    :param json:
+    :param info:
+    :return:
+    '''
+    try:
+        info['headImgUrl'] = json[u'headimgurl']
+        info['openId'] = json[u'openid']
+        info['nickName'] = json[u'nickname']
+        info['province'] = json[u'province']
+        info['city'] = json[u'city']
+        info['state'] = 1
+
+        User(**info).save()
+    except Exception, e:
+        print e.message
+
 
 def check_user_info(form):
     '''
@@ -68,13 +89,13 @@ def save_image(file, account):
     try:
         fileName = file.filename
         if file and allowed_file(fileName):
-            save_name = str(account + '.' + fileName.rsplit('.',1)[1])
+            save_name = str(account + '.' + fileName.rsplit('.', 1)[1])
             path = os.path.join(UPLOAD_FOLDER, save_name)
             file.save(path)
-            return os.path.join(UPLOADS_DEFAULT_URL,save_name)
+            return os.path.join(UPLOADS_DEFAULT_URL, save_name)
         else:
             return 'fail'
-    except Exception,e:
+    except Exception, e:
         print e.message
         return 'error'
 
@@ -86,3 +107,20 @@ def allowed_file(filename):
     '''
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+def query_user_by_openId(openId):
+    '''
+    通过openid查询
+    :param id:
+    :return:
+    '''
+    try:
+        info = User.objects(openid=openId).first()
+        if info:
+            return info.to_dict()
+        else:
+            return None
+    except Exception, e:
+        print e.message
+        return None

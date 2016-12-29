@@ -1,6 +1,7 @@
 # coding=utf-8
 import hashlib
 
+
 def query_by_id(db, id):
     '''
     通过mongodb生成的id查询
@@ -14,9 +15,10 @@ def query_by_id(db, id):
             return info.to_dict()
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None
+
 
 def get_md5(str1=None):
     '''
