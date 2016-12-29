@@ -26,11 +26,10 @@ def wechat_check():
     重定向到微信检测页面
     :return:
     '''
+    wechat_check_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66cec940989dba07&redirect_uri=http://moviebox.sw77.live/users/wechat&response_type=code&scope=snsapi_userinfo&state=%s#wechat_redirect'
     next_url = request.args
     next_url = str(next_url['next']) if next_url else ''
-
-    return redirect(
-        'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66cec940989dba07&redirect_uri=http://moviebox.sw77.live/users/wechat&response_type=code&scope=snsapi_userinfo&state=％s#wechat_redirect' % (next_url))
+    return redirect(wechat_check_url % (next_url))
 
 
 @app.route('/users', methods=['POST', 'GET'])
