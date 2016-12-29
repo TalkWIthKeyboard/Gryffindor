@@ -108,13 +108,13 @@ def get_user_info_by_wechat():
                 # 第一次登陆先保存一下
                 user = query_user_by_openId(open_id)
                 if user == None:
-                    # info = {}
-                    # info['openId'] = open_id
-                    # save_wechat_user_info(json_data, info)
-                    # user = query_user_by_openId(open_id)
-                    return "haha"
+                     info = {}
+                     info['openId'] = open_id
+                     save_wechat_user_info(json_data, info)
+                     user = query_user_by_openId(open_id)
+
                 # login_user(user)
-                # return redirect(state)
+                return jsonify(user)
             else:
                 return ''
         except Exception, e:
