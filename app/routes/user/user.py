@@ -111,9 +111,9 @@ def get_user_info_by_wechat():
                      info = {}
                      info['openId'] = open_id
                      save_wechat_user_info(json_data, info)
-                     user = query_user_by_openId(open_id)
 
-                login_user(user)
+                userObj = User.objects(openId=open_id).first()
+                login_user(userObj)
                 return redirect(state)
             else:
                 return ''
