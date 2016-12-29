@@ -49,9 +49,6 @@ def post_movie_info():
     将表单信息存入数据库
     :return:
     '''
-    args = request.args
-    nsukey = args['nsukey'] if args else ''
-
     if request.method == 'POST':
         try:
             form = {}
@@ -63,11 +60,8 @@ def post_movie_info():
         except Exception, e:
             return jsonify(dict(message='fail'))
     else:
-        if not nsukey == '':
-            return redirect('/movies')
-        else:
-            # 获取电影搜索页面
-            return render_template('movie/searchMovie.html')
+        # 获取电影搜索页面
+        return render_template('movie/searchMovie.html')
 
 
 @app.route('/movies/impressions/<string:id>', methods=['GET'])

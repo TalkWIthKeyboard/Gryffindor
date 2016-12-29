@@ -29,7 +29,9 @@ def wechat_check():
     wechat_check_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66cec940989dba07&redirect_uri=http://moviebox.sw77.live/users/wechat&response_type=code&scope=snsapi_userinfo&state=%s#wechat_redirect'
     next_url = request.args
     next_url = str(next_url['next']) if next_url else ''
-    return redirect(wechat_check_url % (next_url))
+    next = '%' + next_url.split('%')[1]
+
+    return redirect(wechat_check_url % (next))
 
 
 @app.route('/users', methods=['POST', 'GET'])
@@ -108,9 +110,9 @@ def get_user_info_by_wechat():
                 # 第一次登陆先保存一下
                 user = query_user_by_openId(open_id)
                 if user == None:
-                     info = {}
-                     info['openId'] = open_id
-                     save_wechat_user_info(json_data, info)
+                    info = {}
+                    info['openId'] = open_id
+                    save_wechat_user_info(json_data, info)
 
                 userObj = User.objects(openId=open_id).first()
                 login_user(userObj)
