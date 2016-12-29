@@ -18,7 +18,7 @@ class User(db.Document, UserMixin):
     # 微信平台openId
     openId = db.StringField(max_length=60)
     # 头像
-    headImgUrl = db.StringField(max_length=60)
+    headImgUrl = db.StringField(max_length=2400)
     # 用户名
     nickName = db.StringField(max_length=60)
     # 省份
