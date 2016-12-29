@@ -29,10 +29,15 @@ def wechat_check():
     wechat_check_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx66cec940989dba07&redirect_uri=http://moviebox.sw77.live/users/wechat&response_type=code&scope=snsapi_userinfo&state=%s#wechat_redirect'
     next_url = request.args
     next_url = str(next_url['next']) if next_url else ''
-    # next = '%' + next_url.split('%')[1]
 
-    # return redirect(wechat_check_url % (next))
-    return jsonify(dict(nextUrl=next_url))
+    if len(next_url.split('?')) > 0:
+        next = next_url.split('?')[0]
+    else:
+        next = next_url
+
+    return redirect(wechat_check_url % (next))
+    # return jsonify(dict(nextUrl=next_url))
+
 
 @app.route('/users', methods=['POST', 'GET'])
 def post_user_register():
