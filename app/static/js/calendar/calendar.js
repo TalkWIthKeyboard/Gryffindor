@@ -5,6 +5,15 @@
 
 $(function () {
     startCalendar();
+     $(".event-calendar tr td div").hover(function () {
+       $(this).addClass('pick');
+//       if($(this).hasClass('current-day')){
+//            $(this).removeClass('current-day');
+//            }
+    },function(){
+       $(this).removeClass('pick');
+        }
+    )
 });
 
 startEventDay = function () {
