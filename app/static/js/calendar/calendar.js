@@ -51,7 +51,17 @@ startEventDay = function () {
                 var dateStr = year + '-' + month + '-' + day;
                 if (dict[dateStr] > 0) {
                     $(this).prepend('<div class="half_circle"></div>')
-                    // $(this).addClass('has-event');
+                     $(this).addClass('pos-fix');
+                     var d = new Date();
+                     var m = d.getMonth()+1;
+                     if(m>12) m = m-12;
+                     console.log(m);
+                     console.log(month);
+                     if(d.getDate()==day&&m==month&&d.getFullYear()==year){
+                     $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"] ').removeClass('pos-fix');
+                     console.log("ddd");
+                     }
+
                 }
             })
             var event = data.event;
@@ -224,10 +234,11 @@ startCalendar = function () {
         var date = new Date();
         var month = date.getMonth() + 1;
         var thisyear = new Date().getFullYear();
+        startEventDay();
         //对今天特殊的样式处理
 //        $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"]').append('<div class="circle">aaa</div>');
         $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"] div').addClass('current-day');
-        startEventDay();
+//        startEventDay();
 
         function getAllDays(month, year) {
             var days = getDaysInMonth(month, year);

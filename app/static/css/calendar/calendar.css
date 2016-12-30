@@ -151,13 +151,18 @@ tbody tr td {
     background-color: darkgray !important;
     color: white;
 }
+.pos-fix{
+    padding-right:10px;
+    }
 .current-day {
+
     width: 25px;
     height: 25px;
     border-radius: 50%;
     background-color: black;
     margin: 0 auto;
     color: white;
+
 }
 
 .calendar {
