@@ -28,7 +28,7 @@ def search_user(name, num):
     list = ready_for_MakeFriends(str(name), int(num))
     return jsonify({'userList': list, 'userNum': str(int(num) + 1)})
 
-
-@app.route('/friends/one/<int:myid>', methods=['GET'])
-@login_required
-def make_friends(myid):
+#
+# @app.route('/friends/one/<int:myid>', methods=['GET'])
+# @login_required
+# def make_friends(myid):

@@ -1,0 +1,11 @@
+.empty-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6%;
+}
+
+.empty-list img {
+    height: 30%;
+}
