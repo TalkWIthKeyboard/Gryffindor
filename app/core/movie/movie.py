@@ -1,8 +1,9 @@
 # coding=utf-8
 
-from app import BasicInfo,AliasName
+from app import BasicInfo, AliasName
 from config import DEFAULT_PAGE_SIZE
 import re
+
 
 def select_basic_info_by_name_blur(name, num):
     '''
@@ -11,20 +12,21 @@ def select_basic_info_by_name_blur(name, num):
     :param name: 名字片段
     :return:
     '''
-    search = { '__raw__' :
-                   { '$or': [{'info.cnname': re.compile(name)},
-                             {'info.enname': re.compile(name)}] }}
+    search = {'__raw__':
+                  {'$or': [{'info.cnname': re.compile(name)},
+                           {'info.enname': re.compile(name)}]}}
     try:
         basic = BasicInfo.objects(**search).paginate(page=num, per_page=DEFAULT_PAGE_SIZE)
         if basic:
             return basic
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None
 
-def select_by_id(db,id):
+
+def select_by_id(db, id):
     '''
     通过id查找电影的某种信息
     :param db: 表
@@ -37,11 +39,12 @@ def select_by_id(db,id):
             return info.to_dict()
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None
 
-def select_by_userid_movieid(db,userid,movieid):
+
+def select_by_userid_movieid(db, userid, movieid, state):
     '''
     通过用户id、电影id查找表里面的信息
     :param db: 表
@@ -50,16 +53,17 @@ def select_by_userid_movieid(db,userid,movieid):
     :return:
     '''
     try:
-        info = db.objects(userId=userid,movieId=movieid).first()
+        info = db.objects(userId=userid, movieId=movieid, state=state).first()
         if info:
             return info
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None
 
-def select_by_userid_movieid_all(db,userid,movieid):
+
+def select_by_userid_movieid_all(db, userid, movieid, state):
     '''
     通过用户id、电影id查找表里面的所有信息
     :param db: 表
@@ -68,16 +72,17 @@ def select_by_userid_movieid_all(db,userid,movieid):
     :return:
     '''
     try:
-        info = db.objects(userId=userid,movieId=movieid).all()
+        info = db.objects(userId=userid, movieId=movieid, state=state).all()
         if info:
             return info
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None
 
-def select_by_objectid(db,id):
+
+def select_by_objectid(db, id):
     '''
     通过默认的id进行查询
     :param db:
@@ -85,14 +90,15 @@ def select_by_objectid(db,id):
     :return:
     '''
     try:
-        info=db.objects(id=id).first()
+        info = db.objects(id=id).first()
         if info:
             return info.to_dict()
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None
+
 
 def select_by_enname(enname):
     '''
@@ -101,11 +107,11 @@ def select_by_enname(enname):
     :return:
     '''
     try:
-        info=AliasName.objects(name=enname).first()
+        info = AliasName.objects(name=enname).first()
         if info:
             return info.to_dict()
         else:
             return None
-    except Exception,e:
+    except Exception, e:
         print e.message
         return None

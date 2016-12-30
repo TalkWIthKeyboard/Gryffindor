@@ -64,21 +64,20 @@ def post_movie_info():
         return render_template('movie/searchMovie.html')
 
 
-@app.route('/movies/impressions/<string:id>', methods=['GET'])
-# @login_required
-def get_all_impression(id):
+@app.route('/movies/impressions/<string:movieId>', methods=['GET'])
+@login_required
+def get_all_impression(movieId):
     '''
     获取用户对于这个电影的所有感想
     :return:
     '''
     user = current_user
-    info = user_movie_one_impression(str(id))
-    movieid = str(info['movieId'])
-    info = user_movie_impression(str(user.myid), movieid, str(id))
-    movie = ready_for_SelectMovieById(str(user.myid), int(movieid))
+    movieid = str(movieId)
+    info = user_movie_impression(str(user.myid), movieid)
+    movie = ready_for_SelectMovieById(str(user.myid), movieid)
     detail = movie_detail_info(int(movieid))
     return render_template('movie/detailInfo.html',
                            impression=info['out'],
-                           this=info['this'],
+                           num=info['num'],
                            movie=movie,
                            detail=detail)

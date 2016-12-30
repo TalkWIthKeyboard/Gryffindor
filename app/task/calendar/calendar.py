@@ -3,7 +3,7 @@
 import datetime
 from app.core.calendar.calendar import select_event_by_user_date
 from app.core.movie.movie import (select_by_id)
-from app import MovieRecordEvent,MovieFeatureEvent,BasicInfo,Details
+from app import MovieRecordEvent,BasicInfo,Details
 
 
 def ready_getActivities(userid, firstDay, lastDay):
@@ -15,12 +15,9 @@ def ready_getActivities(userid, firstDay, lastDay):
     :return:
     '''
     recordList = select_event_by_user_date(MovieRecordEvent, userid, firstDay, lastDay)
-    featrueList = select_event_by_user_date(MovieFeatureEvent, userid, firstDay, lastDay)
     out = []
     if recordList is not None:
         out.extend(ready_date(recordList))
-    if featrueList is not None:
-        out.extend(ready_date(featrueList))
     return out
 
 

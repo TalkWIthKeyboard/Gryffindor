@@ -12,10 +12,10 @@ $(document).ready(function () {
         $('.about').slideToggle();
         $('.record').slideToggle();
         if (0 == click) {
-            $(this).css({'background':'rgba(255,255,255, 0.8)'});
+            $(this).css({'background': 'rgba(255,255,255, 0.8)'});
             click = 1;
         } else {
-            $(this).css({'background':'#fff'});
+            $(this).css({'background': '#fff'});
             click = 0;
         }
     });
@@ -25,11 +25,11 @@ $(document).ready(function () {
 function init() {
     var date = new Date();
     var month = date.getMonth() + 1;
-    if (month < 10){
+    if (month < 10) {
         month = '0' + month;
     }
     var day = date.getDate();
-    if (day < 10){
+    if (day < 10) {
         day = '0' + day;
     }
     var dateStr = date.getFullYear() + '-' + month + '-' + day;
@@ -44,24 +44,24 @@ function init() {
 function getLocation() {
 
     var geolocation = new BMap.Geolocation();
-    geolocation.getCurrentPosition(function(r) {
+    geolocation.getCurrentPosition(function (r) {
         if (this.getStatus() == BMAP_STATUS_SUCCESS) {
             var mk = new BMap.Marker(r.point);
             var myGeo = new BMap.Geocoder();
             myGeo.getLocation(new BMap.Point(r.point.lng, r.point.lat),
-                function(rs) {
+                function (rs) {
                     var addComp = rs.addressComponents;
                     var data = '';
-                    if (addComp.province != addComp.city){
+                    if (addComp.province != addComp.city) {
                         data = addComp.province + addComp.city + addComp.district + addComp.street
-                    } else{
+                    } else {
                         data = addComp.city + addComp.district + addComp.street
                     }
                     $('#where').val(data);
                 });
 
         } else {
-             $.toast('获取地理位置失败！', 'forbidden');
+            $.toast('获取地理位置失败！', 'forbidden');
         }
     });
 }
@@ -73,16 +73,10 @@ function postMovie() {
         var date = $('#time').val() || false;
         var impression = $('#impression').val() || false;
 
-        if (!date || !impression){
-            if (date == ''){
-                $.toast('没有填写观影日期！', 'forbidden');
-            }
-
-            if (impression == ''){
-                $.toast('没有填写观影感想！', 'forbidden');
-            }
+        if (!date || !featureDate) {
+            $.toast('请至少填写观影日期或者未来观影日期！', 'forbidden');
         }
-        else{
+        else {
             $.ajax({
                 url: '/movies',
                 type: 'POST',
@@ -94,7 +88,7 @@ function postMovie() {
                     'address': $('#where').val()
                 },
                 success: function (data) {
-                    if (data.message == 'success'){
+                    if (data.message == 'success') {
                         window.location.href = '/movies';
                     }
                 }

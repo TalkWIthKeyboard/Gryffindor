@@ -30,9 +30,11 @@ class MovieRecordEvent(db.Document, MovieBasic):
     address = db.StringField(max_length=2048)
     # 观看日期
     date = db.DateTimeField(required=True)
+    # 类型(0 是曾经观看，1是将要观看)
+    state = db.IntField()
 
     meta = {
-        'ordering': ['-num']
+        'ordering': ['-updateTime']
     }
 
     def to_dict(self):
@@ -44,22 +46,6 @@ class MovieRecordEvent(db.Document, MovieBasic):
             address=self.address,
             impression=self.impression,
             createTime=self.createTime,
-            updateTime=self.updateTime
-        )
-
-
-class MovieFeatureEvent(db.Document, MovieBasic):
-    '''
-        日历中的未来观影事件
-    '''
-    # 未来观看日期
-    date = db.DateTimeField(required=True)
-
-    def to_dict(self):
-        return dict(
-            userId=self.userId,
-            movieId=self.movieId,
-            date=self.date,
-            createTime=self.createTime,
-            updateTime=self.updateTime
+            updateTime=self.updateTime,
+            state=self.state
         )

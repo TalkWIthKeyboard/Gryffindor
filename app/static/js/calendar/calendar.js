@@ -59,7 +59,7 @@ startEventDay = function () {
                 $('.event-list').append(
                     '<div class="weui_panel"> \
                         <div class="weui_panel_bd"> \
-                            <div class="weui_media_box weui_media_small_appmsg event-btn event-hidden" data-id=' + event[i].id + ' data-date=' + event[i].date + '> \
+                            <div class="weui_media_box weui_media_small_appmsg event-btn event-hidden" data-id=' + event[i].movieId + ' data-date=' + event[i].date + '> \
                                     <div class="weui_cells weui_cells_access "> \
                                         <a class="weui_cell" href="javascript:;"> \
                                             <div class="weui_cell_hd"> \
