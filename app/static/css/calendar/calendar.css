@@ -319,6 +319,7 @@ tbody tr td {
 
 .weui_cell {
     float: left;
+    width:70%;
 }
 .weui_media_box .weui_media_desc{
 padding-left:10px;}
