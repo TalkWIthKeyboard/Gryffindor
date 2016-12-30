@@ -9,45 +9,45 @@
     <!-- css -->
     <link rel="stylesheet" href="/libs/jquery-weui.min.css">
     <link rel="stylesheet" href="/libs/weui.css">
-    <link rel="stylesheet" href="/css/movie/searchMovie.css" >
+    <link rel="stylesheet" href="/css/movie/searchMovie.css">
 
 </head>
 <body>
-  <!-- js -->
-    <script src="/libs/jquery-2.1.4.js"></script>
-    <script src="/libs/jquery-weui.min.js"></script>
-    <script src="/libs/underscore-min.js"></script>
-    <script src="/js/movie/searchMovie.js"></script>
+<!--搜索框-->
+<div id="search_bar">
+    <div class="weui_search_bar">
+        <form class="weui_search_outer">
+            <div class="weui_search_inner">
+                <i class="weui_icon_search"></i>
+                <input id="mov_input" type="search" class="weui_search_input" placeholder="搜索" required/>
+                <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+            </div>
+        </form>
+    </div>
+</div>
 
-    <!--搜索框-->
-    <div id="search_bar">
-        <div class="weui_search_bar">
-            <form class="weui_search_outer">
-                <div class="weui_search_inner">
-                  <i class="weui_icon_search"></i>
-                  <input  id ="mov_input" type="search" class="weui_search_input" placeholder="搜索" required/>
-                  <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
-                </div>
-            </form>
+<!-- 搜索结果电影列表 -->
+<div id="select">
+    <div class="weui_cell" id="search_title">
+        <div class="weui_cell_hd">
+            <img src="image/icons/search_icon.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p style="font-size:18px;">搜索结果</p>
         </div>
     </div>
-
-    <!-- 搜索结果电影列表 -->
-    <div id="select">
-         <div class="weui_cell" id="search_title">
-            <div class="weui_cell_hd">
-                <img src="image/icons/search_icon.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-            </div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <p style="font-size:18px;">搜索结果</p>
-            </div>
-        </div>
-        <div class="search-out weui-panel-bd" data-id="1" data-value="/"></div>
-        <div class="weui-infinite-scroll" id="infinite">
-          <div class="infinite-preloader"></div><!-- 菊花 -->
-            正在加载... <!-- 文案，可以自行修改 -->
-        </div>
+    <div class="search-out weui-panel-bd" data-id="1" data-value="/"></div>
+    <div class="weui-infinite-scroll" id="infinite">
+        <div class="infinite-preloader"></div><!-- 菊花 -->
+        正在加载... <!-- 文案，可以自行修改 -->
     </div>
+</div>
+
+<!-- js -->
+<script src="/libs/jquery-2.1.4.js"></script>
+<script src="/libs/jquery-weui.min.js"></script>
+<script src="/libs/underscore-min.js"></script>
+<script src="/js/movie/searchMovie.js"></script>
 
 </body>
 </html>

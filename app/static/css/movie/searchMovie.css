@@ -1,9 +1,8 @@
-/*
 #select {
     margin-top: 0px;
     overflow-y: scroll;
     height: 100%;
-    width:100%;
+    width: 100%;
     margin-top: 12%;
     display: none;
 }
@@ -20,31 +19,32 @@
     color: white;
 }
 
-.movie-enname{
-    font-family:Times New Roman Times serif;
-    font-size:10px;
-    color:gray;
+.movie-enname {
+    font-family: Times New Roman Times serif;
+    font-size: 10px;
+    color: gray;
 }
 
-.table-title{
-    float:left;
-    font-size:15px
+.table-title {
+    float: left;
+    font-size: 15px
 }
 
-.table-value{
-    float:left;
-    font-size:15px;
-    color:#0052BA;
-}
-.weui_panel:before{
-    border-top:0px;
+.table-value {
+    float: left;
+    font-size: 15px;
+    color: #0052BA;
 }
 
-.weui_panel_hd:after{
-    border-bottom:0px;
+.weui_panel:before {
+    border-top: 0px;
 }
 
-.weui_media_box:before{
+.weui_panel_hd:after {
+    border-bottom: 0px;
+}
+
+.weui_media_box:before {
     border-top: 0px;
 }
 
@@ -53,99 +53,100 @@
     position: relative;
 }
 
-
-html,body{
-    height:100%;
+html, body {
+    height: 100%;
 }
 
-#title_bar{
-    background-color:#192331;
-    height:9.6%;
-    text-align:center;
-}
-#head_title{
-    padding:25px 5px 17px;
-    size:16px;
-    color:white;
+#title_bar {
+    background-color: #192331;
+    height: 9.6%;
+    text-align: center;
 }
 
-#search_bar{
-    height:6.6%;
+#head_title {
+    padding: 25px 5px 17px;
+    size: 16px;
+    color: white;
+}
+
+#search_bar {
+    height: 6.6%;
     position: fixed !important;
     top: 0px;
     width: 100%;
     z-index: 10;
 }
 
-#main_onshow{
-    height:83.8%;
+#main_onshow {
+    height: 83.8%;
 }
 
-#onshow_title{
-    height:3.7%;
-    padding:0px 15px 10px 15px;
+#onshow_title {
+    height: 3.7%;
+    padding: 0px 15px 10px 15px;
 }
 
-#test1{
-    height:86.7%;
+#test1 {
+    height: 86.7%;
 }
 
-.order{
-    height:24.5%;
+.order {
+    height: 24.5%;
 }
 
-#second:before{
+#second:before {
     border-top: 5px solid #E5E5E5;
     color: #E5E5E5;
 }
 
-#third:before{
+#third:before {
     border-top: 5px solid #E5E5E5;
     color: #E5E5E5;
 }
 
-#four:before{
+#four:before {
     border-top: 5px solid #E5E5E5;
     color: #E5E5E5;
 }
 
-.weui_panel_hd{
-    padding:1px 15px 10px;
+.weui_panel_hd {
+    padding: 1px 15px 10px;
 }
 
-#search_title{
-    padding:5px 15px 5px;
+#search_title {
+    padding: 5px 15px 5px;
 }
 
-.order_pic{
-    height:90px;
-    width:65px;
+.order_pic {
+    height: 90px;
+    width: 65px;
 }
 
-
-
-#sp{
-    height:90px;
-    width:65px;
+#sp {
+    height: 90px;
+    width: 65px;
 }
 
-#tp{
-    height:90px;
-    width:65px;
+#tp {
+    height: 90px;
+    width: 65px;
 }
 
-#fp{
-    height:90px;
-    width:65px;
+#fp {
+    height: 90px;
+    width: 65px;
 }
-#fpp{
-    height:90px;
+
+#fpp {
+    height: 90px;
 }
-#spp{
-    height:90px;
+
+#spp {
+    height: 90px;
 }
-#tpp{
-    height:90px;
+
+#tpp {
+    height: 90px;
 }
 
 .title {
@@ -153,7 +154,7 @@ html,body{
     background: #151a26;
 }
 
-.title>p {
+.title > p {
     font-size: 20px;
     text-align: center;
     color: #fff;
@@ -161,244 +162,12 @@ html,body{
 }
 
 #aa {
-width:100%;
-padding:0px;
+    width: 100%;
+    padding: 0px;
 }
 
-.infi-display{
+.infi-display {
     display: none;
-}
-
-*/
-
-
-/*之前的是搜索电影界面css,之后是朋友圈*/
-
-
-
-
-header {
-    position: relative;
-    height:35%;
-}
-#mark{
-    height:8%;
-    padding-left:20px;
-
-
-    font-family: PingFangSC-Light;
-font-size: 20px;
-color: #7D7D7D;
-letter-spacing: -0.49px;
-    }
-#main{
-    height:57%;
-
-    }
-
-
-#bg {
-    width: 100%
-}
-#user-name {
-    text-align: right;
-    left:20px;
-    bottom: 5px;
-
-    font-weight: 700;
-
-    text-shadow: 0 1px .5px #000
-
-
-    font-family: PingFangSC-Medium;
-font-size: 36px;
-color: #FFFFFF;
-letter-spacing: -0.87px;
-}
-
-
-#avt,#user-name {
-    position: absolute
-}
-#avt {
-
-
-    height: 90px;
-    width: 90px;
-    right: 15px;
-    bottom: -40px;
-    margin: auto;
-    margin-top: 5px;
-    border-radius: 50px;
-    border: 1px solid #dbdbdb;
-}
-#fp{
-    height:89px;
-    width:65px;
-}
-#fpp{
-    height:89px;
-}
-.weui_media_box{
-padding:0px;}
-
-.weui_media_box:before{
-    border-top:0px;}
-.weui_media_box.weui_media_appmsg .weui_media_bd{
-background-color:#F3F3F3;}
-/*........................*/
-#list,#list li,.po-hd,.post {
-    overflow: hidden
-}
-
-.po-cmt,.post .list-img:nth-child(1),.time {
-    float: left
-}
-
-#list li,.cmt-wrap,.r,.time {
-    clear: both
-}
-blockquote,body,code,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,pre,td,textarea,th,ul {
-    margin: 0;
-    padding: 0
-}
-
-html {
-    background-color: #f8f8f8;
-    font-family: Arial,sans-serif;
-    font-size: 13px
-}
-
-.hide {
-    display: none
-}
-
-#share a,.btn {
-    font-size: 14px
-}
-
-.btn,b {
-    font-weight: 400
-}
-
-#share a,#share p,.btn {
-    text-align: center
-}
-
-
-#list li,.po-hd {
-    position: relative
-}
-
-#list {
-
-}
-
-#list li {
-    line-height: 1.5;
-    padding-bottom: 15px
-}
-
-#share a:nth-child(2),.ads,.po-avt {
-    position: absolute
-}
-
-.ads {
-    color: #999;
-    right: 5px;
-    top: 0
-}
-
-.ads img {
-    width: 10px;
-    padding-left: 8px
-}
-
-.ad-link {
-    color: #3b5384
-}
-
-.post .ad-link img {
-    width: 11px;
-    padding: 0;
-    display: inline-block
-}
-
-.po-avt-wrap {
-    padding-left: 10px
-    border: 0px solid #dbdbdb;
-}
-
-.po-avt {
-     height: 40px;
-    width: 40px;
-    left: 10px;
-    border-radius: 50px;
-    border: 1px solid #dbdbdb;
-}
-
-.r {
-    border-bottom: 8px solid #eee;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    width: 1px;
-    margin-top: 5px;
-    margin-left: 10px
-}
-
-.po-cmt {
-    padding-left: 60px;
-    padding-right: 10px;
-    width: 90%;
-    box-sizing: border-box;
-    float:left;
-}
-
-.watch{
-    font-family: PingFangSC-Light;
-    font-size: 18px;
-    color: #555555;
-    letter-spacing: -0.44px;
-}
-.po-name {
-    font-family: PingFangSC-Semibold;
-    font-size: 20px;
-    color: #000000;
-    letter-spacing: -0.49px;
-}
-
-.post {
-    color: #252525;
-    padding-bottom: 10px
-}
-
-.post img {
-    display: block;
-    max-height: 130px;
-    max-width: 130px
-}
-
-#share a,.btn {
-    display: inline-block
-}
-
-.post .list-img {
-    width: 30%;
-    max-height: 80px;
-    max-width: 80px;
-    padding-right: 5px;
-    float: left;
-    object-fit: cover
-}
-
-.post .list-img:last-child {
-    padding-right: 0
-}
-.time {
-    font-family: PingFangSC-Light;
-    font-size: 10px;
-    color: #555555;
-    letter-spacing: -0.25px;
 }
 
 
