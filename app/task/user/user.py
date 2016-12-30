@@ -28,15 +28,15 @@ def save_user_info(image, form, info):
     '''
     try:
         info['password'] = get_md5(str(form['password']))
-        info['username'] = str(form['username'])
+        info['nickName'] = str(form['username'])
         info['myid'] = ready_myid()
         info['state'] = 1
         # 头像保存
         if image != None:
-            path = save_image(image, info['username'])
-            info['userimage'] = path if path != 'fail' and path != 'error' else ''
+            path = save_image(image, info['nickName'])
+            info['headImgUrl'] = path if path != 'fail' and path != 'error' else ''
         else:
-            info['userimage'] = ''
+            info['headImgUrl'] = ''
 
         User(**info).save()
     except Exception, e:

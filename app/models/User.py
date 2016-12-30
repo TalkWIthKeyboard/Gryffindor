@@ -33,7 +33,7 @@ class User(db.Document, UserMixin):
     }
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.nickName
 
     def to_dict(self):
         return dict(

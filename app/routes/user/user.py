@@ -78,7 +78,7 @@ def get_user_login():
                 next_url = request.form['next']
                 if (str(next_url)):
                     next_url = ''
-                return jsonify(dict(message='success', next=str(next_url), img=str(user['userimage'])))
+                return jsonify(dict(message='success', next=str(next_url), img=str(user['headImgUrl'])))
             else:
                 return jsonify(dict(message='fail'))
         except Exception, e:

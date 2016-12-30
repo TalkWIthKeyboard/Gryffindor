@@ -42,7 +42,7 @@ startEventDay = function () {
                 var dateStr = year + '-' + month + '-' + day;
                 if (dict[dateStr] > 0) {
                     $(this).prepend('<div class="half_circle"></div>')
-                    $(this).addClass('has-event');
+                    // $(this).addClass('has-event');
                 }
             })
             var event = data.event;
@@ -56,10 +56,10 @@ startEventDay = function () {
                                             <div class="weui_cell_hd"> \
                                                 <img class="box-img" src="' + event[i].img + '"> \
                                             </div> \
-                                            <div class="weui_media_bd"> \
-                                                <h4 class="weui_media_title">&nbsp&nbsp&nbsp' + event[i].cnname + '</h4> \
-                                                <p class="weui_media_desc">&nbsp&nbsp&nbsp&nbsp观影日期：' + event[i].date + '</p> \
-                                                <p class="weui_media_desc">&nbsp&nbsp&nbsp&nbsp观影地址：' + event[i].address + '</p> \
+                                            <div class="weui_media_bd media-margin-left"> \
+                                                <h4 class="weui_media_title">' + event[i].cnname + '</h4> \
+                                                <p class="weui_media_desc">观影日期：' + event[i].date + '</p> \
+                                                <p class="weui_media_desc">观影地址：' + event[i].address + '</p> \
                                             </div> \
                                         </a> \
                                         <div class="mark">\
@@ -72,10 +72,10 @@ startEventDay = function () {
             }
 
             $('.event-list').append(
-                     '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
-                         <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
-                         <p class="p-t-sm empty_text">空空如也</p> \
-                     </div>'
+                     // '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
+                     //     <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
+                     //     <p class="p-t-sm empty_text">空空如也</p> \
+                     // </div>'
             )
 
             $('.event-btn').click(function () {

@@ -65,7 +65,7 @@ def post_movie_info():
 
 
 @app.route('/movies/impressions/<string:id>', methods=['GET'])
-@login_required
+# @login_required
 def get_all_impression(id):
     '''
     获取用户对于这个电影的所有感想

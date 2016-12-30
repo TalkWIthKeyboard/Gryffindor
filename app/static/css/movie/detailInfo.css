@@ -8,7 +8,7 @@ html {
     min-height: 568px;
 }
 
-ul,li {
+ul, li {
     list-style: none;
 }
 
@@ -17,7 +17,7 @@ a {
     font-family: sans-serif;
 }
 
-input{
+input {
     border: none;
 }
 
@@ -34,7 +34,7 @@ div {
     padding: 6px 15px;
 }
 
-.nav>i {
+.nav > i {
     font-size: 18px;
     font-style: normal;
     margin-left: 0;
@@ -50,7 +50,7 @@ div {
     height: 25%;
 }
 
-.detail>img {
+.detail > img {
     float: left;
     background: #000;
     /*width: 96px;*/
@@ -60,7 +60,7 @@ div {
     margin-right: 7%;
 }
 
-.detail>div {
+.detail > div {
     float: left;
     background: #fff;
     width: 60%;
@@ -99,23 +99,27 @@ div {
     background-color: #fff;
     margin-bottom: 2%;
 }
+
 .record_title {
     background-color: #fff;
 
 }
 
-.left_title{
-    float:left;
-    }
-.time_title{
-    float:right;
-    }
+.left_title {
+    float: left;
+}
+
+.time_title {
+    float: right;
+}
+
 .icon_info {
     background-image: url("/image/icons/info.png");
     background-repeat: no-repeat;
     background-position: left;
     background-size: 22px 19px;
 }
+
 /*about class部分*/
 .about {
     height: 52%;
@@ -144,7 +148,7 @@ div {
     height: 37.5%;
     background: #fff;
 
-    display:none;
+    display: none;
 }
 
 .icon_text {
@@ -154,18 +158,16 @@ div {
     background-size: 22px 20px;
 }
 
-
-.record>.nav {
+.record > .nav {
     height: 13%;
 }
 
 .rectext {
-    height: 73%;
+    height: 80%;
     padding: 0px 15px;
-    padding-top: 5%;
 }
 
-.rectext>textarea {
+.rectext > textarea {
     background: #f2f2f2;
     height: 90%;
     width: 95%;
@@ -190,21 +192,21 @@ div {
 
 .time_where {
     height: 15%;
-    padding:0 16px;
+    padding: 0 16px;
 }
 
-.time_where>i {
+.time_where > i {
     display: block;
     height: 100%;
     float: left;
     border: none;
 }
 
-.time_where>.icon_locate {
+.time_where > .icon_locate {
     width: 54%;
 }
 
-.time_where>.icon_date {
+.time_where > .icon_date {
     width: 46%;
 }
 
@@ -233,16 +235,15 @@ div {
     background-size: 22px 22px;
 }
 
-.date>.nav {
+.date > .nav {
     height: 30%;
 }
 
-.date>.nav>i {
+.date > .nav > i {
     float: left;
 }
 
-
-.date>.nav>p {
+.date > .nav > p {
     float: right;
     width: 50%;
     font-size: 15px;
@@ -250,13 +251,11 @@ div {
     text-align: center;
 }
 
-
-.date>div {
+.date > div {
     height: 40%;
 }
 
-
-.date>div>input {
+.date > div > input {
     font-size: 17px;
     float: left;
     background: #fff;
@@ -274,38 +273,47 @@ div {
     padding: 0 5%;
 }
 
-.foot-btn{
+.foot-btn {
     width: 90%;
     background-color: #0dbdce;
     border-radius: 5px;
 }
 
-.bottom_fix{
+.bottom_fix {
     bottom: 0px;
     position: fixed;
 }
-.record_list{
-    height:100%;}
-.list{
-    height:90%;
-    }
- .comment{
- height:40%;}
- .hehe{
- }
- .record{
- }
- .disvi{
- display:none;}
- .vi{
- display:inline;}
 
- .weui_cell:before{
- border-top:1px solid #D9D9D9
- }
- .weui_cells{
- margin-top:0em;
- }
- .weui_cells:before{
+.record_list {
+    height: 100%;
+}
 
- }
+.list {
+    height: 90%;
+}
+
+.comment {
+    height: 40%;
+}
+
+.hehe {
+}
+
+.record {
+}
+
+.disvi {
+    display: none;
+}
+
+.vi {
+    display: inline;
+}
+
+.weui_cell:before {
+    border-top: 1px solid #D9D9D9
+}
+
+.weui_cells {
+    margin-top: 0em;
+}

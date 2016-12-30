@@ -27,18 +27,19 @@ tbody tr td {
 }
 
 .has-event {
-/*
-    cursor: pointer;
-    position: relative;
-    background-color: #FFB939;
+    /*
+        cursor: pointer;
+        position: relative;
+        background-color: #FFB939;
 
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    */
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        */
 }
+
 /*  er shua*/
-.second_watch{
+.second_watch {
     cursor: pointer;
     position: relative;
     background-color: #FF5050;
@@ -83,8 +84,12 @@ tbody tr td {
 
 #add_button {
     width: 20%;
-    padding-left: 80%;
-    padding-top: 2%;
+    padding-left: 85%;
+    padding-top: 3%;
+}
+
+#add_button .add-button-img {
+    height: 30px;
 }
 
 #onshow_title {
@@ -93,7 +98,8 @@ tbody tr td {
 }
 
 #em {
-    height: 5px;
+    height: 2px;
+    background-color: #eaeaea;
 }
 
 #left {
@@ -116,7 +122,6 @@ tbody tr td {
     margin: -4px 0 0 -4px;
     position: absolute;
     width: 6px;
-
 }
 
 .first-line {
@@ -128,22 +133,22 @@ tbody tr td {
 }
 
 .event-calendar tr td div:hover {
-    width:25px;
-    height:25px;
-    border-radius:50%;
-    background-color:gray;
-    margin:0 auto;
-    background-color:darkgray;
-    color:white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: gray;
+    margin: 0 auto;
+    background-color: darkgray;
+    color: white;
 }
 
 .current-day {
-    width:25px;
-    height:25px;
-    border-radius:50%;
-    background-color:black;
-    margin:0 auto;
-    color:white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: black;
+    margin: 0 auto;
+    color: white;
 }
 
 .calendar {
@@ -270,26 +275,34 @@ tbody tr td {
 .weui_media_box {
     padding: 15px 0px 15px 0px;
 }
-.circle{
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background-color:gray;
-    margin:0 auto;}
 
-
-.half_circle{
-  width:10px;
-  height:10px;
-  background-color:#FFB939;
-  border-radius:0 0 50px 0;
-  }
-.mark{
-    width:60px;
-  height:60px;
-  background-color:#FFB939;
-  border-radius:0 0 0 50px;
-  float:right;
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: gray;
+    margin: 0 auto;
 }
-.weui_cell{
-float:left;}
+
+.half_circle {
+    width: 10px;
+    height: 10px;
+    background-color: #FFB939;
+    border-radius: 0 0 50px 0;
+}
+
+.mark {
+    width: 60px;
+    height: 60px;
+    background-color: #FFB939;
+    border-radius: 0 0 0 50px;
+    float: right;
+}
+
+.weui_cell {
+    float: left;
+}
+
+.media-margin-left {
+    margin-left: 5px;
+}
