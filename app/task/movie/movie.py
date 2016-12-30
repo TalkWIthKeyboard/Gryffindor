@@ -9,7 +9,6 @@ from app.core.movie.movie import (select_basic_info_by_name_blur,
 from app import BasicInfo, Score, Details, Fullcredits, MovieRecordEvent, Awards, Comment, Plot, \
     Scenes
 import datetime
-from app import db
 
 
 def ready_for_SelectMovieByName(name, num):
