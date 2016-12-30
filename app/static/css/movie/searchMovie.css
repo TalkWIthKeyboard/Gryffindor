@@ -122,10 +122,7 @@ html,body{
     width:65px;
 }
 
-#fp{
-    height:90px;
-    width:65px;
-}
+
 
 #sp{
     height:90px;
@@ -137,6 +134,10 @@ html,body{
     width:65px;
 }
 
+#fp{
+    height:90px;
+    width:65px;
+}
 #fpp{
     height:90px;
 }
@@ -182,6 +183,7 @@ header {
 }
 #mark{
     height:8%;
+
     }
 #main{
     height:57%;
@@ -194,7 +196,7 @@ header {
 }
 #user-name {
     text-align: right;
-    right: 114px;
+    left:20px;
     bottom: 15px;
     color: #fff;
     font-weight: 700;
@@ -209,19 +211,29 @@ header {
 #avt {
 
 
-    height: 80px;
-    width: 80px;
+    height: 90px;
+    width: 90px;
     right: 15px;
-    bottom: -22px;
+    bottom: -40px;
     margin: auto;
     margin-top: 5px;
     border-radius: 50px;
     border: 1px solid #dbdbdb;
 }
+#fp{
+    height:89px;
+    width:65px;
+}
+#fpp{
+    height:89px;
+}
+.weui_media_box{
+padding:0px;}
 
-
-
-
+.weui_media_box:before{
+    border-top:0px;}
+.weui_media_box.weui_media_appmsg .weui_media_bd{
+background-color:#F3F3F3;}
 /*........................*/
 #list,#list li,.po-hd,.post {
     overflow: hidden
@@ -353,8 +365,8 @@ html {
 
 #list li {
     line-height: 1.5;
-    border-bottom: 1px solid #e2e2e2;
-    margin-top: 15px;
+    /*border-bottom: 1px solid #e2e2e2;*/
+
     padding-bottom: 15px
 }
 
@@ -385,13 +397,22 @@ html {
 
 .po-avt-wrap {
     padding-left: 10px
+    border: 0px solid #dbdbdb;
 }
 
 .po-avt {
+/*
     width: 40px;
     height: 40px;
     top: 0;
-    left: 10px
+    left: 10px;
+    border-radius:50px;
+    */
+     height: 40px;
+    width: 40px;
+    left: 10px;
+    border-radius: 50px;
+    border: 1px solid #dbdbdb;
 }
 
 .r {
@@ -420,7 +441,7 @@ html {
 }
 
 .post img {
-    padding: 10px 5px 0 0;
+
     display: block;
     max-height: 130px;
     max-width: 130px
@@ -441,6 +462,9 @@ html {
 
 .post .list-img:last-child {
     padding-right: 0
+}
+.time {
+    color: #b1b1b1
 }
 /*
 .time {
