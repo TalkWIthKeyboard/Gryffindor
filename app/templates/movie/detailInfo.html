@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/libs/jquery-weui.min.css">
     <link rel="stylesheet" href="/libs/weui.css">
     <link rel="stylesheet" href="/css/movie/detailInfo.css">
+    <link rel="stylesheet" href="/css/basic.css">
 </head>
 
 <body>
@@ -77,7 +78,10 @@
         {% endfor %}
     </div>
 {% else %}
-    空空如也
+    <div class="empty-list">
+        <span>空空如也</span>
+        <img src="image/photo/popcorn.png"/>
+    </div>
 {% endif %}
 
 <!-- js -->

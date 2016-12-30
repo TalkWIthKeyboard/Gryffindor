@@ -5,15 +5,11 @@
 
 $(function () {
     startCalendar();
-     $(".event-calendar tr td div").hover(function () {
-       $(this).addClass('pick');
-       console.log("click");
-       $(this).removeClass('pos-fix');
-//       if($(this).hasClass('current-day')){
-//            $(this).removeClass('current-day');
-//            }
-    },function(){
-       $(this).removeClass('pick');
+    $(".event-calendar tr td div").hover(function () {
+            $(this).addClass('pick');
+            $(this).removeClass('pos-fix');
+        }, function () {
+            $(this).removeClass('pick');
         }
     )
 });
@@ -53,21 +49,13 @@ startEventDay = function () {
                 var dateStr = year + '-' + month + '-' + day;
                 if (dict[dateStr] > 0) {
                     $(this).prepend('<div class="half_circle"></div>')
-                     $(this).addClass('pos-fix');
-                     console.log("add pos");
-
-
-
-
-
-                     var d = new Date();
-                     var m = d.getMonth()+1;
-                     if(m>12) m = m-12;
-                     if(d.getDate()==day&&m==month&&d.getFullYear()==year){
-                     $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"] ').removeClass('pos-fix');
-                     console.log("ddd");
-                     }
-
+                    $(this).addClass('pos-fix');
+                    var d = new Date();
+                    var m = d.getMonth() + 1;
+                    if (m > 12) m = m - 12;
+                    if (d.getDate() == day && m == month && d.getFullYear() == year) {
+                        $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"] ').removeClass('pos-fix');
+                    }
                 }
             })
             var event = data.event;
@@ -97,10 +85,9 @@ startEventDay = function () {
             }
 
             $('.event-list').append(
-                     // '<div class="panel m-t-sm p-t p-b empty event-hidden" style="margin-top: 0px"> \
-                     //     <img src="/assets/images/common/empty.png" alt="" class="empty_img"> \
-                     //     <p class="p-t-sm empty_text">空空如也</p> \
-                     // </div>'
+                '<div class="empty-list event-hidden"> \
+                   <img src="image/photo/popcorn.png"/> \
+                </div>'
             )
 
             $('.event-btn').click(function () {
@@ -132,8 +119,8 @@ writeByTime = function (year, month, day) {
 
     var num = 0;
 
-    if (!$('.empty').hasClass('event-hidden')) {
-        $('.empty').addClass('event-hidden');
+    if (!$('.empty-list').hasClass('event-hidden')) {
+        $('.empty-list').addClass('event-hidden');
     }
     $('.event-btn').each(function () {
         if (!$(this).hasClass('event-hidden')) {
@@ -149,7 +136,7 @@ writeByTime = function (year, month, day) {
 
     if (num == 0) {
         $('.activeInfo').text("没有记录提醒!");
-        $('.empty').removeClass('event-hidden')
+        $('.empty-list').removeClass('event-hidden')
     }
     else {
         $('.activeInfo').text("这一天有" + num + "个记录提醒！");
@@ -285,6 +272,7 @@ startCalendar = function () {
         function printWeek() {
             $('thead.event-days tr').append('<td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td>');
         }
+
 //        <div class="half-circle"></div>
         //填天数栏
         function printDay(monthNumber) {
@@ -292,15 +280,15 @@ startCalendar = function () {
             for (var index = 0; index < days.length; index++) {
                 var each = new Date(days[index]);
                 if (index < 7) {
-                    $('tbody.event-calendar tr.1').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="first-line">' + '<div class="">'+ each.getDate() + '</div></td>');
+                    $('tbody.event-calendar tr.1').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="first-line">' + '<div class="">' + each.getDate() + '</div></td>');
                 } else if (index < 14) {
-                    $('tbody.event-calendar tr.2').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">'+each.getDate() + '</div></td>');
+                    $('tbody.event-calendar tr.2').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">' + each.getDate() + '</div></td>');
                 } else if (index < 21) {
-                    $('tbody.event-calendar tr.3').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">'+each.getDate() + '</div></td>');
+                    $('tbody.event-calendar tr.3').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">' + each.getDate() + '</div></td>');
                 } else if (index < 28) {
-                    $('tbody.event-calendar tr.4').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' +'<div class="">'+ each.getDate() + '</div></td>');
+                    $('tbody.event-calendar tr.4').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">' + each.getDate() + '</div></td>');
                 } else if (index < 35) {
-                    $('tbody.event-calendar tr.5').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' +'<div class="">'+ each.getDate() + '</div></td>');
+                    $('tbody.event-calendar tr.5').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">' + each.getDate() + '</div></td>');
                 } else if (index < 42) {
                     $('tbody.event-calendar tr.6').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="last-line">' + each.getDate() + '</div></td>');
                 }
