@@ -184,6 +184,12 @@ header {
 #mark{
     height:8%;
     padding-left:20px;
+
+
+    font-family: PingFangSC-Light;
+font-size: 20px;
+color: #7D7D7D;
+letter-spacing: -0.49px;
     }
 #main{
     height:57%;
@@ -197,11 +203,17 @@ header {
 #user-name {
     text-align: right;
     left:20px;
-    bottom: 15px;
-    color: #fff;
+    bottom: 5px;
+
     font-weight: 700;
-    font-size: 15px;
+
     text-shadow: 0 1px .5px #000
+
+
+    font-family: PingFangSC-Medium;
+font-size: 36px;
+color: #FFFFFF;
+letter-spacing: -0.87px;
 }
 
 
@@ -432,10 +444,48 @@ html {
     float:left;
 }
 
-
-
+/* 骚瑞:
+font-family: PingFangSC-Medium;
+font-size: 36px;
+color: #FFFFFF;
+letter-spacing: -0.87px;
+*/
+/* 迄今为止观看过 17 部电影:
+font-family: PingFangSC-Light;
+font-size: 20px;
+color: #7D7D7D;
+letter-spacing: -0.49px;
+*/
+/* 杜老逼:
+font-family: PingFangSC-Semibold;
+font-size: 20px;
+color: #000000;
+letter-spacing: -0.49px;
+*/
+/* 5分钟前:
+font-family: PingFangSC-Light;
+font-size: 10px;
+color: #555555;
+letter-spacing: -0.25px;
+*/
+/* 观看了:
+font-family: PingFangSC-Light;
+font-size: 18px;
+color: #555555;
+letter-spacing: -0.44px;
+*/
+.watch{
+font-family: PingFangSC-Light;
+font-size: 18px;
+color: #555555;
+letter-spacing: -0.44px;
+}
 .po-name {
-    color: #576b95
+
+    font-family: PingFangSC-Semibold;
+font-size: 20px;
+color: #000000;
+letter-spacing: -0.49px;
 }
 
 .post {
@@ -467,7 +517,12 @@ html {
     padding-right: 0
 }
 .time {
-    color: #b1b1b1
+
+    font-family: PingFangSC-Light;
+font-size: 10px;
+color: #555555;
+letter-spacing: -0.25px;
+
 }
 /*
 .time {
