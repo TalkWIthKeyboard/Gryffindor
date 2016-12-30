@@ -13,11 +13,6 @@
 
 </head>
 <body>
-<!-- js -->
-<script src="/libs/jquery-2.1.4.js"></script>
-<script src="/libs/jquery-weui.min.js"></script>
-<script src="/libs/underscore-min.js"></script>
-<script src="/js/movie/searchMovie.js"></script>
 
 <!--搜索框-->
 <div id="search_bar">
@@ -32,7 +27,7 @@
     </div>
 </div>
 
-<!--&lt;!&ndash; 搜索结果电影列表 &ndash;&gt;-->
+<!-- 搜索结果 -->
 <div id="select">
     <div class="weui_cell" id="search_title">
         <div class="weui_cell_hd">
@@ -43,10 +38,18 @@
     </div>
     <div class="search-out weui-panel-bd" data-id="1" data-value="/"></div>
     <div class="weui-infinite-scroll" id="infinite">
-        <div class="infinite-preloader"></div>
-        &lt;!&ndash; 菊花 &ndash;&gt;
-        <!--正在加载... &lt;!&ndash; 文案，可以自行修改 &ndash;&gt;-->
+        <div class="infinite-preloader"></div><!-- 菊花 -->
+        正在加载... <!-- 文案，可以自行修改 -->
     </div>
 </div>
+
+<!-- js -->
+<script src="/libs/jquery-2.1.4.js"></script>
+<script src="/libs/jquery-weui.min.js"></script>
+<script src="/libs/underscore-min.js"></script>
+<script src="/js/movie/searchMovie.js"></script>
+
 </body>
 </html>
+
+
