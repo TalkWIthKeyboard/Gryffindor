@@ -7,6 +7,8 @@ $(function () {
     startCalendar();
      $(".event-calendar tr td div").hover(function () {
        $(this).addClass('pick');
+       console.log("click");
+       $(this).removeClass('pos-fix');
 //       if($(this).hasClass('current-day')){
 //            $(this).removeClass('current-day');
 //            }
@@ -52,11 +54,15 @@ startEventDay = function () {
                 if (dict[dateStr] > 0) {
                     $(this).prepend('<div class="half_circle"></div>')
                      $(this).addClass('pos-fix');
+                     console.log("add pos");
+
+
+
+
+
                      var d = new Date();
                      var m = d.getMonth()+1;
                      if(m>12) m = m-12;
-                     console.log(m);
-                     console.log(month);
                      if(d.getDate()==day&&m==month&&d.getFullYear()==year){
                      $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"] ').removeClass('pos-fix');
                      console.log("ddd");

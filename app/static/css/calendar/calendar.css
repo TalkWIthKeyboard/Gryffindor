@@ -143,6 +143,7 @@ tbody tr td {
 }
 */
 .pick{
+
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -150,6 +151,7 @@ tbody tr td {
     margin: 0 auto;
     background-color: darkgray !important;
     color: white;
+
 }
 .pos-fix{
     padding-right:10px;
