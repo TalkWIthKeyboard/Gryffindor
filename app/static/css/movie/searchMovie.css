@@ -183,7 +183,7 @@ header {
 }
 #mark{
     height:8%;
-
+    padding-left:20px;
     }
 #main{
     height:57%;
@@ -427,9 +427,12 @@ html {
 .po-cmt {
     padding-left: 60px;
     padding-right: 10px;
-    width: 100%;
-    box-sizing: border-box
+    width: 90%;
+    box-sizing: border-box;
+    float:left;
 }
+
+
 
 .po-name {
     color: #576b95
