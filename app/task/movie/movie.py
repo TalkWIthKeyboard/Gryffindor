@@ -6,7 +6,7 @@ from app.core.movie.movie import (select_basic_info_by_name_blur,
                                   select_by_userid_movieid_all,
                                   select_by_objectid,
                                   select_by_enname)
-from app import BasicInfo, Score, Details, Fullcredits, MovieRecordEvent, MovieFeatureEvent, Awards, Comment, Plot, \
+from app import BasicInfo, Score, Details, Fullcredits, MovieRecordEvent, Awards, Comment, Plot, \
     Scenes
 import datetime
 from app import db
@@ -58,12 +58,11 @@ def ready_for_SelectMovieById(userid, id):
     score = select_by_id(Score, id)
     detail = select_by_id(Details, id)
     fullcredits = select_by_id(Fullcredits, id)
-    feature = select_by_userid_movieid(MovieFeatureEvent, userid, str(id))
-    history = select_by_userid_movieid(MovieRecordEvent, userid, str(id))
+    feature = select_by_userid_movieid(MovieRecordEvent, userid, str(id), 1)
 
     # 再刷的日期
-    out['featureDate'] = str(history.to_dict()['date']) if history is not None else None
-    out['num'] = str(history.to_dict()['num']) if feature is not None else None
+    out['featureDate'] = str(feature.to_dict()['date']) if feature is not None else None
+    out['num'] = str(feature.to_dict()['num']) if feature is not None else None
 
     #  上映年份
     date = detail['release'][0]['date'].year if detail is not None and len(detail['release']) > 0 else '-'
@@ -88,53 +87,54 @@ def click_for_user_movie_save(info):
     :param movieid: 电影id
     :return:
     '''
-    record = select_by_userid_movieid(MovieRecordEvent, info['userId'], info['movieId'])
-    feature = select_by_userid_movieid(MovieFeatureEvent, info['userId'], info['movieId'])
+    record = select_by_userid_movieid(MovieRecordEvent, info['userId'], info['movieId'], 0)
+    feature = select_by_userid_movieid(MovieRecordEvent, info['userId'], info['movieId'], 1)
     info['createTime'] = datetime.datetime.now()
     info['updateTime'] = datetime.datetime.now()
-    info['date'] = datetime.datetime.strptime(info['date'], '%Y-%m-%d')
 
     # 电影记录事件
-    if record is not None:
-        recordDict = record.to_dict()
-        info['num'] = int(recordDict['num']) + 1
-    else:
-        info['num'] = 1
-    date = datetime.datetime.strptime(info['featureDate'], '%Y-%m-%d')
-    info.pop('featureDate')
-    MovieRecordEvent(**info).save()
+    if info['date'] != '':
+
+        info['date'] = datetime.datetime.strptime(info['date'], '%Y-%m-%d')
+        if record is not None:
+            recordDict = record.to_dict()
+            info['num'] = int(recordDict['num']) + 1
+        else:
+            info['num'] = 1
+        info['state'] = 0
+        info.pop('featureDate')
+        MovieRecordEvent(**info).save()
 
     # 电影未来观看事件
-    if date != '':
+    # 对一个电影仅存在一个未来观看
+    if info['featureDate'] != '':
+
+        info['featureDate'] = datetime.datetime.strptime(info['featureDate'], '%Y-%m-%d')
         if feature is not None:
             feature.date = info['featureDate']
             feature.save()
         else:
-            info['date'] = date
-            info.pop('num')
-            info.pop('impression')
+            info['state'] = 1
             info.pop('address')
-            MovieFeatureEvent(**info).save()
+            info.pop('impression')
+            MovieRecordEvent(**info).save()
 
 
-def user_movie_impression(userid, movieid, id):
+def user_movie_impression(userid, movieid):
     '''
     返回用户对于一个电影的所有评论
     :param userid: 用户id
     :param moiveid: 电影id
     :return:
     '''
-    this = -1
     out = []
-    num = 0
-    info = select_by_userid_movieid_all(MovieRecordEvent, userid, movieid)
+    info = select_by_userid_movieid_all(MovieRecordEvent, userid, movieid, 0)
     if info is not None:
         for each in info:
-            if str(each.id) == id:
-                this = num
-            num += 1
-            out.append(each.to_dict())
-        return dict({'out': out, 'this': this})
+            each_dict = each.to_dict()
+            each_dict['date'] = str(each_dict['date']).split(' ')[0]
+            out.append(each_dict)
+        return dict({'out': out, 'num': len(info)})
     else:
         return None
 
