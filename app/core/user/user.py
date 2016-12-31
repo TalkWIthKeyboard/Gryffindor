@@ -55,21 +55,23 @@ def query_user_by_myid(myid):
         return None
 
 
-def select_user_by_name_blur(name, num):
+def select_user_by_name_blur(name):
     '''
     通过名字片段查找用户基本信息
     :param name: 名字片段
     :return:
     '''
     search = \
-        {'$and':
-            [
-                {'__raw__': {'nickName': re.compile(name)}},
-                {'state': 1}
-            ]
+        {'__raw__':
+            {'$and':
+                [
+                    {'nickName': re.compile(name)},
+                    {'state': 1}
+                ]
+            }
         }
     try:
-        basic = User.objects(**search).paginate(page=num, per_page=5)
+        basic = User.objects(**search).all()
         if basic:
             return basic
         else:
@@ -135,8 +137,10 @@ def get_all_timeline_info(myid, num):
             list.append(each.userTo)
         # 构造查找函数
         search = \
-            {'userId':
-                 {'$in': list}
+            {'__raw__':
+                 {'userId':
+                      {'$in': list}
+                  }
              }
         basic = MovieRecordEvent.objects(**search).paginate(page=num, per_page=5)
         if basic:

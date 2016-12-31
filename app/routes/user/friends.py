@@ -9,6 +9,16 @@ from app.task.user.friends import (ready_for_MakeFriends,
 from app.core.user.user import (check_friend)
 
 
+@app.route('/friends', methods=['GET'])
+@login_required
+def search_friends_page():
+    '''
+    进入朋友搜索页面
+    :return:
+    '''
+    return render_template('user/searchFriends.html')
+
+
 @app.route('/friends/<string:num>', methods=['GET'])
 @login_required
 def get_friends_page(num):
@@ -23,9 +33,9 @@ def get_friends_page(num):
                            list=list)
 
 
-@app.route('/friends/<string:name>/<string:num>', methods=['GET'])
+@app.route('/friends/friend/<string:name>', methods=['GET'])
 @login_required
-def search_user(name, num):
+def search_user(name):
     '''
     通过用户名字输入，模糊匹配所有可能的用户
     :param name:
@@ -33,8 +43,8 @@ def search_user(name, num):
     :return:
     '''
     user = current_user
-    list = ready_for_MakeFriends(str(name), int(num), user.myid)
-    return jsonify({'userList': list, 'userNum': str(int(num) + 1)})
+    list = ready_for_MakeFriends(str(name), user.myid)
+    return jsonify({'userList': list})
 
 
 @app.route('/friends/one/<int:myid>', methods=['GET'])

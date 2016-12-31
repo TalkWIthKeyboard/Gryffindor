@@ -9,7 +9,7 @@ from app.core.movie.movie import (select_by_id)
 from app.core.basic import (calculation_time)
 
 
-def ready_for_MakeFriends(name, num, myid):
+def ready_for_MakeFriends(name, myid):
     '''
     为makefriends函数准备数据
     :param name:
@@ -18,12 +18,13 @@ def ready_for_MakeFriends(name, num, myid):
     :return:
     '''
     out = []
-    user_list = select_user_by_name_blur(name, num)
+    user_list = select_user_by_name_blur(name)
     if user_list is not None:
-        for each in user_list.items:
+        for each in user_list:
             info = each.to_dict()
-            userId = info.myid
+            userId = info['myid']
             info['isFriend'] = check_friend(myid, userId)
+            info['isMy'] = 0 if myid == userId else 1
             info.pop('account')
             info.pop('password')
             info.pop('state')
@@ -66,15 +67,15 @@ def ready_for_get_friends_page(myid, num):
             # 重新把数据拿出来
             obj = {}
             each = each.to_dict()
-            obj['userId'] = each.userId
-            obj['movieId'] = each.movieId
-            obj['createTime'] = each.createTime
+            obj['userId'] = each['userId']
+            obj['movieId'] = each['movieId']
+            obj['createTime'] = each['createTime']
             # 准备用户数据
-            obj['user_info'] = query_user_by_myid(each.userId)
+            obj['user_info'] = query_user_by_myid(each['userId'])
             # 准备电影数据
-            obj['movie_info'] = select_by_id(BasicInfo, each.movieId)
+            obj['movie_info'] = select_by_id(BasicInfo, each['movieId'])
             # 准备时间数据
-            obj['date'] = calculation_time(each.createTime)
+            obj['date'] = calculation_time(each['createTime'])
             list.append(obj)
         return list
     except Exception, e:
