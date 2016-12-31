@@ -258,16 +258,18 @@ div {
     background-color: #fff;
     height: 12%;
     min-height: 7%;
-    padding: 0 5%;
+    padding: 1px 5%;
 }
 
-.foot-btn {
+.foot-btn{
+    top:15%;
     width: 90%;
     background-color: #0dbdce;
     border-radius: 5px;
+    margin-bottom:10px; 
 }
 
 .bottom_fix {
     bottom: 0px;
-    position: fixed;
+    /*position: fixed;*/
 }

@@ -5,11 +5,24 @@
 
 $(function () {
     startCalendar();
-    $(".event-calendar tr td div").hover(function () {
-            $(this).addClass('pick');
+    var c = 0;
+    $(".event-calendar tr td ").hover(function () {
+            $(this).children().eq(-1).addClass('pick');
+//            $(this).children().eq(1).addClass('pick');
+
+            if ($(this).hasClass('pos-fix'))
+            {c = 1;}
+
+
             $(this).removeClass('pos-fix');
         }, function () {
-            $(this).removeClass('pick');
+            $(this).children().eq(-1).removeClass('pick');
+            if(c == 1)
+            {
+                console.log("click 1");
+                $(this).addClass('pos-fix');
+                c = 0;
+            }
         }
     )
 });
