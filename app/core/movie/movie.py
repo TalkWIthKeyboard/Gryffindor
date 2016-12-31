@@ -131,7 +131,7 @@ def user_movie_history_count(myid):
     '''
     try:
         # 有bug
-        info = len(MovieRecordEvent.objects(userId=myid, state=0))
+        info = len(MovieRecordEvent.objects(userId=str(myid), state=0))
         return info
     except Exception, e:
         print e.message
