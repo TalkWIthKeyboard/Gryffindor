@@ -8,7 +8,7 @@ html {
     min-height: 568px;
 }
 
-ul,li {
+ul, li {
     list-style: none;
 }
 
@@ -17,7 +17,7 @@ a {
     font-family: sans-serif;
 }
 
-input{
+input {
     border: none;
 }
 
@@ -35,7 +35,7 @@ div {
     padding: 6px 15px;
 }
 
-.nav>i {
+.nav > i {
     font-size: 18px;
     font-style: normal;
     margin-left: 0;
@@ -44,7 +44,6 @@ div {
     text-align: right;
 }
 
-
 .detail {
     background: #fff;
     padding: 15px 15px;
@@ -52,7 +51,7 @@ div {
     height: 25%;
 }
 
-.detail>img {
+.detail > img {
     float: left;
     background: #000;
     /*width: 96px;*/
@@ -62,7 +61,7 @@ div {
     margin-right: 7%;
 }
 
-.detail>div {
+.detail > div {
     float: left;
     background: #fff;
     width: 60%;
@@ -108,6 +107,7 @@ div {
     background-position: left;
     background-size: 22px 19px;
 }
+
 /*about class部分*/
 .about {
     height: 37.5%;
@@ -146,8 +146,7 @@ div {
     background-size: 22px 20px;
 }
 
-
-.record>.nav {
+.record > .nav {
     height: 13%;
 }
 
@@ -156,7 +155,7 @@ div {
     padding: 0px 15px;
 }
 
-.rectext>textarea {
+.rectext > textarea {
     background: #f2f2f2;
     height: 90%;
     width: 95%;
@@ -181,21 +180,21 @@ div {
 
 .time_where {
     height: 15%;
-    padding:0 16px;
+    padding: 0 16px;
 }
 
-.time_where>i {
+.time_where > i {
     display: block;
     height: 100%;
     float: left;
     border: none;
 }
 
-.time_where>.icon_locate {
+.time_where > .icon_locate {
     width: 54%;
 }
 
-.time_where>.icon_date {
+.time_where > .icon_date {
     width: 46%;
 }
 
@@ -224,16 +223,15 @@ div {
     background-size: 22px 22px;
 }
 
-.date>.nav {
+.date > .nav {
     height: 30%;
 }
 
-.date>.nav>i {
+.date > .nav > i {
     float: left;
 }
 
-
-.date>.nav>p {
+.date > .nav > p {
     float: right;
     width: 50%;
     font-size: 15px;
@@ -241,13 +239,11 @@ div {
     text-align: center;
 }
 
-
-.date>div {
+.date > div {
     height: 40%;
 }
 
-
-.date>div>input {
+.date > div > input {
     font-size: 17px;
     float: left;
     background: #fff;
@@ -265,13 +261,13 @@ div {
     padding: 0 5%;
 }
 
-.foot-btn{
+.foot-btn {
     width: 90%;
     background-color: #0dbdce;
     border-radius: 5px;
 }
 
-.bottom_fix{
+.bottom_fix {
     bottom: 0px;
     position: fixed;
 }
