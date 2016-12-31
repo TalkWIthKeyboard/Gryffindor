@@ -12,9 +12,15 @@ def select_basic_info_by_name_blur(name, num):
     :param name: 名字片段
     :return:
     '''
-    search = {'__raw__':
-                  {'$or': [{'info.cnname': re.compile(name)},
-                           {'info.enname': re.compile(name)}]}}
+    search = \
+        {'__raw__':
+            {'$or':
+                [
+                    {'info.cnname': re.compile(name)},
+                    {'info.enname': re.compile(name)}
+                ]
+            }
+        }
     try:
         basic = BasicInfo.objects(**search).paginate(page=num, per_page=DEFAULT_PAGE_SIZE)
         if basic:

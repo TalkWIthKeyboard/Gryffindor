@@ -1,13 +1,12 @@
 # coding=utf-8
 
-from flask import render_template, request, jsonify, redirect
+from flask import render_template, request, jsonify
 from flask_login import current_user, login_required
 from app import app
 from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
                                   click_for_user_movie_save,
                                   user_movie_impression,
-                                  user_movie_one_impression,
                                   movie_detail_info)
 import sys
 
@@ -39,7 +38,9 @@ def select_movie_by_id(id):
     userid = current_user.myid
     movie = ready_for_SelectMovieById(userid, id)
     detail = movie_detail_info(id)
-    return render_template('movie/postMovie.html', movie=movie, detail=detail)
+    return render_template('movie/postMovie.html',
+                           movie=movie,
+                           detail=detail)
 
 
 @app.route('/movies', methods=['POST', 'GET'])

@@ -1,22 +1,26 @@
 # coding=utf-8
 
-from app import app, User
-from flask import render_template, request, jsonify, redirect, url_for
+from app import app
+from flask import render_template, jsonify
 from flask_login import login_required, current_user
 from app.task.user.friends import (ready_for_MakeFriends,
-                                   change_friend_ship)
+                                   change_friend_ship,
+                                   ready_for_get_friends_page)
 from app.core.user.user import (check_friend)
 
 
-@app.route('/friends', methods=['GET'])
+@app.route('/friends/<string:num>', methods=['GET'])
 @login_required
-def get_friends_page():
+def get_friends_page(num):
     '''
     进入朋友圈页面
+    :param num: 页数
     :return:
     '''
-
-    return render_template('user/friends.html')
+    user = current_user
+    list = ready_for_get_friends_page(user.myid, num)
+    return render_template('user/friends.html',
+                           list=list)
 
 
 @app.route('/friends/<string:name>/<string:num>', methods=['GET'])
@@ -28,7 +32,8 @@ def search_user(name, num):
     :param num:
     :return:
     '''
-    list = ready_for_MakeFriends(str(name), int(num))
+    user = current_user
+    list = ready_for_MakeFriends(str(name), int(num), user.myid)
     return jsonify({'userList': list, 'userNum': str(int(num) + 1)})
 
 
@@ -48,6 +53,5 @@ def make_friends(myid):
         else:
             change_friend_ship(user.myid, myid, 1)
         return jsonify(dict(message='success'))
-    except Exception,e:
-        return jsonify(dict(message='error',err=e.message))
-
+    except Exception, e:
+        return jsonify(dict(message='error', err=e.message))
