@@ -1,7 +1,8 @@
 # coding=utf-8
 
-from app import User, Friends
+from app import User, Friends, MovieRecordEvent
 import re
+
 
 def query_first(db):
     '''
@@ -37,15 +38,40 @@ def query_user_by_account(account):
         return None
 
 
-def select_user_by_name_blur(name, num):
+def query_user_by_myid(myid):
+    '''
+    通过用户myid查询
+    :param db:
+    :return:
+    '''
+    try:
+        info = User.objects(myid=myid).first()
+        if info:
+            return info.to_dict()
+        else:
+            return None
+    except Exception, e:
+        print e.message
+        return None
+
+
+def select_user_by_name_blur(name):
     '''
     通过名字片段查找用户基本信息
     :param name: 名字片段
     :return:
     '''
-    search = {'__raw__': {'nickName': re.compile(name)}, 'state': 1}
+    search = \
+        {'__raw__':
+            {'$and':
+                [
+                    {'nickName': re.compile(name)},
+                    {'state': 1}
+                ]
+            }
+        }
     try:
-        basic = User.objects(**search).paginate(page=num, per_page=5)
+        basic = User.objects(**search).all()
         if basic:
             return basic
         else:
@@ -53,6 +79,7 @@ def select_user_by_name_blur(name, num):
     except Exception, e:
         print e.message
         return None
+
 
 def check_friend(userMyid, friendMyid):
     '''
@@ -75,3 +102,51 @@ def check_friend(userMyid, friendMyid):
     except Exception, e:
         print e.message
         return 0
+
+
+def get_all_friends(myid):
+    '''
+    获取一个人的所有朋友
+    :param myid:
+    :return:
+    '''
+    try:
+        friends_list = Friends.objects(userFrom=myid).all()
+        if friends_list:
+            return friends_list
+        else:
+            return None
+    except Exception, e:
+        print e.message
+        return None
+
+
+def get_all_timeline_info(myid, num):
+    '''
+    分页获取朋友圈消息
+    :param myid:
+    :param num:
+    :return:
+    '''
+    try:
+        friends_list = get_all_friends(myid)
+        # 拿出所有朋友的myid
+        list = []
+        for each in friends_list:
+            each = each.to_dict()
+            list.append(each['userTo'])
+        # 构造查找函数
+        search = \
+            {'__raw__':
+                 {'userId':
+                      {'$in': list}
+                  }
+             }
+        basic = MovieRecordEvent.objects(**search).paginate(page=num, per_page=5)
+        if basic:
+            return basic
+        else:
+            return None
+    except Exception, e:
+        print e.message
+        return None

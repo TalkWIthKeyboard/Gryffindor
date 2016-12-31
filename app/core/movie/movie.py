@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from app import BasicInfo, AliasName
+from app import BasicInfo, AliasName, MovieRecordEvent
 from config import DEFAULT_PAGE_SIZE
 import re
 
@@ -12,9 +12,15 @@ def select_basic_info_by_name_blur(name, num):
     :param name: 名字片段
     :return:
     '''
-    search = {'__raw__':
-                  {'$or': [{'info.cnname': re.compile(name)},
-                           {'info.enname': re.compile(name)}]}}
+    search = \
+        {'__raw__':
+            {'$or':
+                [
+                    {'info.cnname': re.compile(name)},
+                    {'info.enname': re.compile(name)}
+                ]
+            }
+        }
     try:
         basic = BasicInfo.objects(**search).paginate(page=num, per_page=DEFAULT_PAGE_SIZE)
         if basic:
@@ -115,3 +121,18 @@ def select_by_enname(enname):
     except Exception, e:
         print e.message
         return None
+
+
+def user_movie_history_count(myid):
+    '''
+    获取一个用户看过的所有的电影数
+    :param myid:
+    :return:
+    '''
+    try:
+        # 有bug
+        info = len(MovieRecordEvent.objects(userId=str(myid), state=0))
+        return info
+    except Exception, e:
+        print e.message
+        return 0

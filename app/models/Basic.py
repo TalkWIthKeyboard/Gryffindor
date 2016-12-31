@@ -11,4 +11,4 @@ class Basic(object):
     # 创建时间
     createTime = db.DateTimeField(required=True)
     # 更新时间
-    createTime = db.DateTimeField(required=True)
+    updateTime = db.DateTimeField(required=True)

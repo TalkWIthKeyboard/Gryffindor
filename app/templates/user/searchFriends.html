@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>朋友搜索</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/libs/jquery-weui.min.css">
+    <link rel="stylesheet" href="/libs/weui.css">
+    <link rel="stylesheet" href="/css/user/searchFriends.css">
+
+</head>
+<body>
+<!--搜索框-->
+<div id="search_bar">
+    <div class="weui_search_bar">
+        <div class="weui_search_outer">
+            <div class="weui_search_inner">
+                <i class="weui_icon_search"></i>
+                <input id="mov_input" type="search" class="weui_search_input" placeholder="搜索" required/>
+                <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 搜索结果朋友列表 -->
+<div id="select">
+    <div class="weui_cell" id="search_title">
+        <div class="weui_cell_hd">
+            <img src="image/icons/search_icon.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p style="font-size:18px;">搜索结果</p>
+        </div>
+    </div>
+    <div class="search-out weui-panel-bd"></div>
+</div>
+
+<!-- js -->
+<script src="/libs/jquery-2.1.4.js"></script>
+<script src="/libs/jquery-weui.min.js"></script>
+<script src="/libs/underscore-min.js"></script>
+<script src="/js/user/searchFriends.js"></script>
+
+</body>
+</html>

@@ -1,35 +1,56 @@
 # coding=utf-8
 
-from app import app, User
-from flask import render_template, request, jsonify, redirect, url_for
+from app import app
+from flask import render_template, jsonify
 from flask_login import login_required, current_user
 from app.task.user.friends import (ready_for_MakeFriends,
-                                   change_friend_ship)
+                                   change_friend_ship,
+                                   ready_for_get_friends_page)
 from app.core.user.user import (check_friend)
+from app.core.movie.movie import (user_movie_history_count)
 
 
 @app.route('/friends', methods=['GET'])
 @login_required
-def get_friends_page():
+def search_friends_page():
     '''
-    进入朋友圈页面
+    进入朋友搜索页面
     :return:
     '''
+    return render_template('user/searchFriends.html')
 
-    return render_template('user/friends.html')
 
-
-@app.route('/friends/<string:name>/<string:num>', methods=['GET'])
+@app.route('/friends/<int:num>', methods=['GET'])
 @login_required
-def search_user(name, num):
+def get_friends_page(num):
+    '''
+    进入朋友圈页面
+    :param num: 页数
+    :return:
+    '''
+    user = current_user
+    list = ready_for_get_friends_page(user.myid, num)
+    movie_count = user_movie_history_count(user.myid)
+    return render_template('user/friends.html',
+                           list=list,
+                           count=movie_count,
+                           user_img=user.headImgUrl,
+                           user_name=user.nickName,
+                           list_num=len(list))
+
+
+@app.route('/friends/friend/<string:name>', methods=['GET'])
+@login_required
+def search_user(name):
     '''
     通过用户名字输入，模糊匹配所有可能的用户
     :param name:
     :param num:
     :return:
     '''
-    list = ready_for_MakeFriends(str(name), int(num))
-    return jsonify({'userList': list, 'userNum': str(int(num) + 1)})
+    user = current_user
+    list = ready_for_MakeFriends(str(name), user.myid)
+    return jsonify({'userList': list})
 
 
 @app.route('/friends/one/<int:myid>', methods=['GET'])
@@ -48,6 +69,5 @@ def make_friends(myid):
         else:
             change_friend_ship(user.myid, myid, 1)
         return jsonify(dict(message='success'))
-    except Exception,e:
-        return jsonify(dict(message='error',err=e.message))
-
+    except Exception, e:
+        return jsonify(dict(message='error', err=e.message))
