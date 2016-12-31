@@ -7,6 +7,7 @@ from app.core.user.user import (select_user_by_name_blur,
                                 query_user_by_myid)
 from app.core.movie.movie import (select_by_id)
 from app.core.basic import (calculation_time)
+import datetime
 
 
 def ready_for_MakeFriends(name, myid):
@@ -49,6 +50,8 @@ def change_friend_ship(myid, friendid, state):
             info = {}
             info['userFrom'] = myid
             info['userTo'] = friendid
+            info['createTime'] = datetime.datetime.now()
+            info['updateTime'] = datetime.datetime.now()
             Friends(**info).save()
     except Exception, e:
         print e.message
@@ -63,20 +66,21 @@ def ready_for_get_friends_page(myid, num):
     try:
         info = get_all_timeline_info(myid, num)
         list = []
-        for each in info:
-            # 重新把数据拿出来
-            obj = {}
-            each = each.to_dict()
-            obj['userId'] = each['userId']
-            obj['movieId'] = each['movieId']
-            obj['createTime'] = each['createTime']
-            # 准备用户数据
-            obj['user_info'] = query_user_by_myid(each['userId'])
-            # 准备电影数据
-            obj['movie_info'] = select_by_id(BasicInfo, each['movieId'])
-            # 准备时间数据
-            obj['date'] = calculation_time(each['createTime'])
-            list.append(obj)
+        if info is not None:
+            for each in info.items:
+                # 重新把数据拿出来
+                obj = {}
+                each = each.to_dict()
+                obj['userId'] = each['userId']
+                obj['movieId'] = each['movieId']
+                obj['createTime'] = each['createTime']
+                # 准备用户数据
+                obj['user_info'] = query_user_by_myid(each['userId'])
+                # 准备电影数据
+                obj['movie_info'] = select_by_id(BasicInfo, each['movieId'])
+                # 准备时间数据
+                obj['date'] = calculation_time(each['createTime'])
+                list.append(obj)
         return list
     except Exception, e:
         print e.message

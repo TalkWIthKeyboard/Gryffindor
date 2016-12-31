@@ -7,6 +7,7 @@ from app.task.user.friends import (ready_for_MakeFriends,
                                    change_friend_ship,
                                    ready_for_get_friends_page)
 from app.core.user.user import (check_friend)
+from app.core.movie.movie import (user_movie_history_count)
 
 
 @app.route('/friends', methods=['GET'])
@@ -19,7 +20,7 @@ def search_friends_page():
     return render_template('user/searchFriends.html')
 
 
-@app.route('/friends/<string:num>', methods=['GET'])
+@app.route('/friends/<int:num>', methods=['GET'])
 @login_required
 def get_friends_page(num):
     '''
@@ -29,8 +30,13 @@ def get_friends_page(num):
     '''
     user = current_user
     list = ready_for_get_friends_page(user.myid, num)
+    movie_count = user_movie_history_count(user.myid)
     return render_template('user/friends.html',
-                           list=list)
+                           list=list,
+                           count=movie_count,
+                           user_img=user.headImgUrl,
+                           user_name=user.nickName,
+                           list_num=len(list))
 
 
 @app.route('/friends/friend/<string:name>', methods=['GET'])

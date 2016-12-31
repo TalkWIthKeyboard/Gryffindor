@@ -2,31 +2,20 @@
  * Created by CoderSong on 16/12/31.
  */
 $(document).ready(function () {
+
     $("#mov_input").keydown(function (e) {
         if (e.which == 13) {
-            var value = $("#mov_input").val();
+            var value = $(this).val();
             if (value != "") {
-                searchEvent(value)
+                $('.search-out').empty();
+                $("#select").slideDown();
+                searchEvent(value);
             } else {
-                searchEventClean()
+                $('.search-out').empty();
+                $("#select").slideUp();
             }
         }
-    })
-
-    $('.friends-add-btn').click(function () {
-        var id = this.attr('data-id');
-        $.ajax({
-            url: '/friends/one/' + id,
-            type: 'GET',
-            success: function (data) {
-                if (data.message == success) {
-                    window.location.href = '/';
-                } else {
-                    alert('添加好友失败!')
-                }
-            }
-        })
-    })
+    });
 });
 
 function searchEvent(value) {
@@ -85,13 +74,22 @@ function searchEvent(value) {
                         appendString
                     )
                 }
+
+                $('.friends-add-btn').click(function () {
+                    var id = $(this).attr('data-id');
+                    $.ajax({
+                        url: '/friends/one/' + id,
+                        type: 'GET',
+                        success: function (data) {
+                            if (data.message == 'success') {
+                                window.location.href = '/';
+                            } else {
+                                alert('添加好友失败!')
+                            }
+                        }
+                    })
+                })
             }
         }
     })
-}
-
-function searchEventClean() {
-    $('.search-out').empty();
-    $('.search-out').attr('data-id', "1");
-    $("#select").slideUp();
 }

@@ -10,164 +10,177 @@
     <link rel="stylesheet" href="/libs/jquery-weui.min.css">
     <link rel="stylesheet" href="/libs/weui.css">
     <link rel="stylesheet" href="/css/user/friends.css">
+    <link rel="stylesheet" href="/css/basic.css">
 </head>
 <body>
 
 <header>
-    <img id="bg" src="image/bg/moments.png">
-    <p id="user-name" class="data-name">Name</p>
+    <img id="bg" src="/image/bg/moments.png">
+    <p id="user-name" class="data-name">{{ user_name }}</p>
     <div>
-        <img id="avt" class="data-avt" src="image/head-image/head.png">
+        <img id="avt" class="data-avt" src={{ user_img }}>
     </div>
 </header>
 <div id="mark">
-    迄今为止看过<span>n</span>部电影
+    迄今为止看过<span>{{ count }}</span>部电影
 </div>
 <div id="main">
-    <div id="list">
-        <ul>
-            <li>
-                <div class="po-avt-wrap">
-                    <img class="po-avt" src="/image/head-image/Oval 5.png">
-                </div>
-                <!--头像-->
-                <div style="float:left;background-color:#FFB939;width:3px;height:171px">
-                    <div style="background-color:#f8f8f8;height:40px;width:4px"></div>
-                </div>
-                <div class="po-cmt">
-                    <div class="po-hd">
-                        <!--名字-->
-                        <p class="po-name">
-                            name
-                        </p>
-                        <div class="post">
-                            <!--内容-->
-                            <p class="time">
-                                5分钟前
+    {% if list_num > 0 %}
+        <div id="list">
+            <ul>
+                <li>
+                    <div class="po-avt-wrap">
+                        <img class="po-avt" src="/image/head-image/Oval 5.png">
+                    </div>
+                    <!--头像-->
+                    <div style="float:left;background-color:#FFB939;width:3px;height:171px">
+                        <div style="background-color:#f8f8f8;height:40px;width:4px"></div>
+                    </div>
+                    <div class="po-cmt">
+                        <div class="po-hd">
+                            <!--名字-->
+                            <p class="po-name">
+                                name
                             </p>
-                            <br>
-                            <p class="watch">
-                                观看了
-                            </p>
-                            <a id="first" href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
-                                <div id="fp" class=" weui_media_hd order_pic">
-                                    <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
-                                </div>
-                                <div class="weui_media_bd">
-                                    <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
-                                    <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All
-                                        About Lily Chou-Chou</p>
-                                    <div style="display:inline">
-                                        <div style="float:left;font-size:15px">导演:</div>
-                                        <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                            <div class="post">
+                                <!--内容-->
+                                <p class="time">
+                                    5分钟前
+                                </p>
+                                <br>
+                                <p class="watch">
+                                    观看了
+                                </p>
+                                <a id="first" href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
+                                    <div id="fp" class=" weui_media_hd order_pic">
+                                        <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png"
+                                             alt="">
                                     </div>
-                                    <br>
-                                    <div style="display:inline">
-                                        <div style="float:left;font-size:15px">编剧:</div>
-                                        <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                    <div class="weui_media_bd">
+                                        <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
+                                        <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">
+                                            All
+                                            About Lily Chou-Chou</p>
+                                        <div style="display:inline">
+                                            <div style="float:left;font-size:15px">导演:</div>
+                                            <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                        </div>
+                                        <br>
+                                        <div style="display:inline">
+                                            <div style="float:left;font-size:15px">编剧:</div>
+                                            <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="po-avt-wrap">
-                    <img class="po-avt" src="/image/head-image/Oval 5.png">
-                </div>
-                <!--头像-->
-                <div style="float:left;background-color:red;width:3px;height:171px">
-                    <div style="background-color:#f8f8f8;height:40px;width:4px"></div>
-                </div>
-                <div class="po-cmt">
-                    <div class="po-hd">
-                        <!--名字-->
-                        <p class="po-name">
-                            name
-                        </p>
+                </li>
+                <li>
+                    <div class="po-avt-wrap">
+                        <img class="po-avt" src="/image/head-image/Oval 5.png">
+                    </div>
+                    <!--头像-->
+                    <div style="float:left;background-color:red;width:3px;height:171px">
+                        <div style="background-color:#f8f8f8;height:40px;width:4px"></div>
+                    </div>
+                    <div class="po-cmt">
+                        <div class="po-hd">
+                            <!--名字-->
+                            <p class="po-name">
+                                name
+                            </p>
 
-                        <div class="post">
-                            <!--内容-->
-                            <p class="time">
-                                5分钟前
-                            </p>
-                            <br>
-                            <p class="watch">
-                                观看了
-                            </p>
-                            <a id="first" href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
-                                <div id="fp" class=" weui_media_hd order_pic">
-                                    <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
-                                </div>
-                                <div class="weui_media_bd">
-                                    <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
-                                    <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All
-                                        About Lily Chou-Chou</p>
-                                    <div style="display:inline">
-                                        <div style="float:left;font-size:15px">导演:</div>
-                                        <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                            <div class="post">
+                                <!--内容-->
+                                <p class="time">
+                                    5分钟前
+                                </p>
+                                <br>
+                                <p class="watch">
+                                    观看了
+                                </p>
+                                <a id="first" href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
+                                    <div id="fp" class=" weui_media_hd order_pic">
+                                        <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png"
+                                             alt="">
                                     </div>
-                                    <br>
-                                    <div style="display:inline">
-                                        <div style="float:left;font-size:15px">编剧:</div>
-                                        <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                    <div class="weui_media_bd">
+                                        <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
+                                        <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">
+                                            All
+                                            About Lily Chou-Chou</p>
+                                        <div style="display:inline">
+                                            <div style="float:left;font-size:15px">导演:</div>
+                                            <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                        </div>
+                                        <br>
+                                        <div style="display:inline">
+                                            <div style="float:left;font-size:15px">编剧:</div>
+                                            <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="po-avt-wrap">
-                    <img class="po-avt" src="/image/head-image/Oval 5.png">
-                </div>
-                <!--头像-->
-                <div style="float:left;background-color:red;width:3px;height:171px">
-                    <div style="background-color:#f8f8f8;height:40px;width:4px"></div>
-                </div>
-                <div class="po-cmt">
-                    <div class="po-hd">
-                        <!--名字-->
-                        <p class="po-name">
-                            name
-                        </p>
+                </li>
+                <li>
+                    <div class="po-avt-wrap">
+                        <img class="po-avt" src="/image/head-image/Oval 5.png">
+                    </div>
+                    <!--头像-->
+                    <div style="float:left;background-color:red;width:3px;height:171px">
+                        <div style="background-color:#f8f8f8;height:40px;width:4px"></div>
+                    </div>
+                    <div class="po-cmt">
+                        <div class="po-hd">
+                            <!--名字-->
+                            <p class="po-name">
+                                name
+                            </p>
 
-                        <div class="post">
-                            <!--内容-->
-                            <p class="time">
-                                5分钟前
-                            </p>
-                            <br>
-                            <p class="watch">
-                                观看了
-                            </p>
-                            <a id="first" href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
-                                <div id="fp" class=" weui_media_hd order_pic">
-                                    <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png" alt="">
-                                </div>
-                                <div class="weui_media_bd">
-                                    <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
-                                    <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">All
-                                        About Lily Chou-Chou</p>
-                                    <div style="display:inline">
-                                        <div style="float:left;font-size:15px">导演:</div>
-                                        <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                            <div class="post">
+                                <!--内容-->
+                                <p class="time">
+                                    5分钟前
+                                </p>
+                                <br>
+                                <p class="watch">
+                                    观看了
+                                </p>
+                                <a id="first" href="javascript:void(0);" class="weui_media_box weui_media_appmsg order">
+                                    <div id="fp" class=" weui_media_hd order_pic">
+                                        <img id="fpp" class="weui_media_appmsg_thumb" src="/image/icons/Bitmap.png"
+                                             alt="">
                                     </div>
-                                    <br>
-                                    <div style="display:inline">
-                                        <div style="float:left;font-size:15px">编剧:</div>
-                                        <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                    <div class="weui_media_bd">
+                                        <h4 class="weui_media_title">关于莉莉周的一切(2010)</h4>
+                                        <p style="font-family:Times New Roman,Times,serif;font-size:10px;color:gray;">
+                                            All
+                                            About Lily Chou-Chou</p>
+                                        <div style="display:inline">
+                                            <div style="float:left;font-size:15px">导演:</div>
+                                            <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                        </div>
+                                        <br>
+                                        <div style="display:inline">
+                                            <div style="float:left;font-size:15px">编剧:</div>
+                                            <div style="float:left;font-size:15px;color:#0052BA;">&nbsp&nbsp岩井俊二</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+                </li>
+            </ul>
+        </div>
+    {% else %}
+        <div class="empty-list">
+            <img src="/image/photo/popcorn.png"/>
+        </div>
+    {% endif %}
 </div>
 
 <!-- js -->

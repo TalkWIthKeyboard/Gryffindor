@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from app import BasicInfo, AliasName
+from app import BasicInfo, AliasName, MovieRecordEvent
 from config import DEFAULT_PAGE_SIZE
 import re
 
@@ -121,3 +121,18 @@ def select_by_enname(enname):
     except Exception, e:
         print e.message
         return None
+
+
+def user_movie_history_count(myid):
+    '''
+    获取一个用户看过的所有的电影数
+    :param myid:
+    :return:
+    '''
+    try:
+        # 有bug
+        info = len(MovieRecordEvent.objects(userId=myid, state=0))
+        return info
+    except Exception, e:
+        print e.message
+        return 0
