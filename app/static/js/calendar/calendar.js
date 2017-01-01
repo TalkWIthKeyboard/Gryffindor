@@ -5,21 +5,19 @@
 
 $(function () {
     startCalendar();
-       var c = 0;
-//    $("tbody.event-calendar tr td ").hover(function () {
-      $("#test tr td ").hover(function () {
+    var c = 0;
+    $("#test tr td ").hover(function () {
             console.log("dd");
             $(this).children().eq(-1).addClass('pick');
-//            $(this).children().eq(1).addClass('pick');
 
-            if ($(this).hasClass('pos-fix'))
-            {c = 1;}
+            if ($(this).hasClass('pos-fix')) {
+                c = 1;
+            }
 
             $(this).removeClass('pos-fix');
         }, function () {
             $(this).children().eq(-1).removeClass('pick');
-            if(c == 1)
-            {
+            if (c == 1) {
                 console.log("click 1");
                 $(this).addClass('pos-fix');
                 c = 0;
@@ -27,7 +25,6 @@ $(function () {
         }
     )
 });
-
 
 
 startEventDay = function () {
@@ -76,6 +73,13 @@ startEventDay = function () {
             })
             var event = data.event;
             for (var i = 0; i < event.length; i++) {
+                var markClass = '';
+                if (event[i].state == 0) {
+                    markClass = 'mark-one'
+                } else {
+                    markClass = 'mark-two'
+                }
+
                 $('.event-list').append(
                     '<div class="weui_panel"> \
                         <div class="weui_panel_bd"> \
@@ -91,8 +95,7 @@ startEventDay = function () {
                                                 <p class="weui_media_desc">观影地址：' + event[i].address + '</p> \
                                             </div> \
                                         </a> \
-                                        <div class="mark-one">\
-                                            </div>\
+                                        <div class=' + markClass + '></div>\
                                     </div> \
                                 </div> \
                             </div> \
@@ -307,7 +310,7 @@ startCalendar = function () {
                 } else if (index < 35) {
                     $('tbody.event-calendar tr.5').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">' + each.getDate() + '</div></td>');
                 } else if (index < 42) {
-                    $('tbody.event-calendar tr.6').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="last-line">' +'<div class="">'+ each.getDate() + '</div></td>');
+                    $('tbody.event-calendar tr.6').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="last-line">' + '<div class="">' + each.getDate() + '</div></td>');
                 }
             }
 

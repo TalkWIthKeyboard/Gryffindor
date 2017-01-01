@@ -3,7 +3,7 @@
 import datetime
 from app.core.calendar.calendar import select_event_by_user_date
 from app.core.movie.movie import (select_by_id)
-from app import MovieRecordEvent,BasicInfo,Details
+from app import MovieRecordEvent, BasicInfo, Details
 
 
 def ready_getActivities(userid, firstDay, lastDay):
@@ -30,7 +30,7 @@ def ready_date(list):
         info['id'] = str(each.id)
         info['movieId'] = dict['movieId']
         info['address'] = dict['address'] if dict.has_key('address') else ''
-        info['state'] = 1 if dict.has_key('impression') else 0
+        info['state'] = dict['state']
         out.append(info)
     return out
 
@@ -45,7 +45,7 @@ def create_dates_by_first_last(firstDate, lastDate):
     dateDict = {}
     while (firstDate <= lastDate):
         dateDict[firstDate.strftime("%Y-%m-%d")] = 0
-        firstDate = firstDate + datetime.timedelta(days = 1)
+        firstDate = firstDate + datetime.timedelta(days=1)
     return dateDict
 
 
@@ -63,9 +63,6 @@ def ready_out_date(eventList):
         #  上映年份
         date = detail['release'][0]['date'].year if detail is not None and len(detail['release']) > 0 else '-'
         out['cnname'] = '{}({})'.format(out['cnname'], date)
-        each = dict(each,**out)
+        each = dict(each, **out)
         info.append(each)
     return info
-
-
-
