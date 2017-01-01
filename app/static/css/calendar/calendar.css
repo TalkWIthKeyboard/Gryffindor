@@ -291,14 +291,7 @@ tbody tr td {
     margin: 0 auto;
 }
 
-.half_circle {
-    width: 10px;
-    height: 10px;
-    background-color: #FFB939;
-    border-radius: 0 0 50px 0;
-    float:left;
-    margin-top:-5px;
-}
+
 /* 下面区分看过和要看的样式 黄色*/
 .mark-one {
     width: 60px;
@@ -316,7 +309,7 @@ tbody tr td {
     float: right;
 }
 
-/*  er shua*/
+/* 日历上面的样式 红色*/
 .second_watch {
     cursor: pointer;
     position: relative;
@@ -324,6 +317,15 @@ tbody tr td {
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
+}
+/* 日历上面的样式 黄色*/
+.half_circle {
+    width: 10px;
+    height: 10px;
+    background-color: #FFB939;
+    border-radius: 0 0 50px 0;
+    float:left;
+    margin-top:-5px;
 }
 
 
