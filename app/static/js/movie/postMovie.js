@@ -35,7 +35,6 @@ function init() {
     var dateStr = date.getFullYear() + '-' + month + '-' + day;
 
     // 这边暂时不提供默认的今天日期
-    $('#time').val("请选择日期");
     getLocation();
     $('#where').click(function () {
         getLocation();
@@ -77,18 +76,10 @@ function postMovie() {
         var featureDate = $('#ftime').val() || false;
 
 
-        if (date.isEqual("请选择日期") && featureDate.isEqual("请选择日期")) {
+        if (date == "" && featureDate == "") {
             $.toast('请至少填写一个观影日期！', 'forbidden');
         }
         else {
-            if (date.isEqual("请选择日期")) {
-                date = '';
-            }
-
-            if (featureDate.isEqual("请选择日期")) {
-                featureDate = '';
-            }
-
             $.ajax({
                 url: '/movies',
                 type: 'POST',

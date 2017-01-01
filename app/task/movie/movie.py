@@ -91,15 +91,16 @@ def click_for_user_movie_save(info):
     info['createTime'] = datetime.datetime.now()
     info['updateTime'] = datetime.datetime.now()
 
+    # 观看次数
+    if record is not None:
+        recordDict = record.to_dict()
+        info['num'] = int(recordDict['num']) + 1
+    else:
+        info['num'] = 1
+
     # 电影记录事件
     if info['date'] != '':
-
         info['date'] = datetime.datetime.strptime(info['date'], '%Y-%m-%d')
-        if record is not None:
-            recordDict = record.to_dict()
-            info['num'] = int(recordDict['num']) + 1
-        else:
-            info['num'] = 1
         info['state'] = 0
         info.pop('featureDate')
         MovieRecordEvent(**info).save()
@@ -114,6 +115,8 @@ def click_for_user_movie_save(info):
             feature.save()
         else:
             info['state'] = 1
+            info['date'] = info['featureDate']
+            info.pop('featureDate')
             info.pop('address')
             info.pop('impression')
             MovieRecordEvent(**info).save()
