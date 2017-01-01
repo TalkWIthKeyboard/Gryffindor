@@ -42,7 +42,7 @@ function searchEvent(value) {
                             </div> \
                             <div class="weui_media_bd"> \
                                 <div class="weui_media_title"> \
-                                    <img src="image/photo/' + sex + '.png" /><span>' + friend.nickName + '</span> \
+                                    <img src="image/photo/' + sex + '.png" /><div>' + friend.nickName + '</div> \
                                 </div> \
                                 <p class="weui_media_desc">' + address + '</p> \
                             </div>';
@@ -51,7 +51,7 @@ function searchEvent(value) {
                     if (friend.isMy == 0) {
                         appendString +=
                             '   <div class="weui_cell_ft"> \
-                                    <h4>我</h4>\
+                                    <h4 class="me">我</h4>\
                                 </div>\
                             </div>'
                     } else {
