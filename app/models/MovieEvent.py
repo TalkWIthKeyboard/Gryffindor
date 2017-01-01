@@ -34,7 +34,7 @@ class MovieRecordEvent(db.Document, MovieBasic):
     state = db.IntField()
 
     meta = {
-        'ordering': ['-updateTime']
+        'ordering': ['-createTime']
     }
 
     def to_dict(self):

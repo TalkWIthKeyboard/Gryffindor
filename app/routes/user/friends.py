@@ -20,16 +20,16 @@ def search_friends_page():
     return render_template('user/searchFriends.html')
 
 
-@app.route('/friends/<int:num>', methods=['GET'])
+@app.route('/timeline', methods=['GET'])
 @login_required
-def get_friends_page(num):
+def get_friends_page():
     '''
     进入朋友圈页面
     :param num: 页数
     :return:
     '''
     user = current_user
-    list = ready_for_get_friends_page(user.myid, num)
+    list = ready_for_get_friends_page(user.myid, 1)
     movie_count = user_movie_history_count(user.myid)
     return render_template('user/friends.html',
                            list=list,
@@ -37,6 +37,19 @@ def get_friends_page(num):
                            user_img=user.headImgUrl,
                            user_name=user.nickName,
                            list_num=len(list))
+
+
+@app.route('/timeline/more/<int:num>', methods=['GET'])
+@login_required
+def get_friends_more_page(num):
+    '''
+    获得更多的朋友圈信息
+    :param num:
+    :return:
+    '''
+    user = current_user
+    list = ready_for_get_friends_page(user.myid, num)
+    return jsonify(dict(list=list))
 
 
 @app.route('/friends/friend/<string:name>', methods=['GET'])

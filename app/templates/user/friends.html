@@ -27,7 +27,7 @@
 <div id="main">
     {% if list_num > 0 %}
         <div id="list">
-            <ul>
+            <ul class="search-out" data-id="2">
                 {% for each in list %}
                     <li>
                         <!--头像-->
@@ -45,13 +45,9 @@
                         {% endif %}
                         <div class="po-cmt">
                             <div class="po-hd">
-                                <!--名字-->
                                 <p class="po-name">{{ each.user_info.nickName }}</p>
                                 <div class="post">
-                                    <!--内容-->
-                                    <p class="time">
-                                        <span>{{ each.date }}</span>
-                                    </p>
+                                    <p class="time"><span>{{ each.date }}</span></p>
                                     <br>
                                     <p class="watch">
                                         {% if each.state == 0 %}
@@ -63,8 +59,7 @@
                                     <a id="first" href="javascript:void(0);"
                                        class="weui_media_box weui_media_appmsg order">
                                         <div id="fp" class=" weui_media_hd order_pic">
-                                            <img id="fpp" class="weui_media_appmsg_thumb" src={{ each.movie_info.img }}
-                                                    alt="">
+                                            <img id="fpp" class="weui_media_appmsg_thumb" src={{ each.movie_info.img }}>
                                         </div>
                                         <div class="weui_media_bd">
                                             <h4 class="weui_media_title">{{ each.movie_info.cnname }}</h4>
@@ -88,6 +83,10 @@
                     </li>
                 {% endfor %}
             </ul>
+            <div class="weui-infinite-scroll" id="infinite">
+                <div class="infinite-preloader"></div><!-- 菊花 -->
+                正在加载... <!-- 文案，可以自行修改 -->
+            </div>
         </div>
     {% else %}
         <div class="empty-list">
@@ -99,6 +98,7 @@
 <!-- js -->
 <script src="/libs/jquery-2.1.4.js"></script>
 <script src="/libs/jquery-weui.min.js"></script>
+<script src="/js/user/friends.js"></script>
 <script src="/libs/underscore-min.js"></script>
 
 </body>
