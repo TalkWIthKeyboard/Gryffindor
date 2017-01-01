@@ -60,8 +60,16 @@ startEventDay = function () {
                 var day = addZero($(this).attr('date-day'));
 
                 var dateStr = year + '-' + month + '-' + day;
-                if (dict[dateStr] > 0) {
-                    $(this).prepend('<div class="half_circle"></div>')
+                var history = dict[dateStr]['history'];
+                var feature = dict[dateStr]['feature'];
+                if (history + feature > 0) {
+                    if (history > 0 && feature == 0) {
+                        $(this).prepend('<div class="history-watch"></div>');
+                    } else if (history == 0 && feature > 0) {
+                        $(this).prepend('<div class="feature-watch"></div>');
+                    } else {
+                        $(this).prepend('<div class="double-watch"></div>');
+                    }
                     $(this).addClass('pos-fix');
                     var d = new Date();
                     var m = d.getMonth() + 1;

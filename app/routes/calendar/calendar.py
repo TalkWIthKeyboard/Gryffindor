@@ -43,6 +43,9 @@ def get_calendar():
         info = ready_out_date(ready_getActivities(userid, firstDay, lastDay))
         dateDict = create_dates_by_first_last(firstDay, lastDay)
         for each in info:
-            dateDict[each['date']] += 1
+            if each['state'] == 0:
+                dateDict[each['date']]['history'] += 1
+            else:
+                dateDict[each['date']]['feature'] += 1
 
         return jsonify({'dateDict': dateDict, 'event': info})

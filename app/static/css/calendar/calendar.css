@@ -292,15 +292,6 @@ tbody tr td {
     margin: 0 auto;
 }
 
-.half_circle {
-    width: 10px;
-    height: 10px;
-    background-color: #FFB939;
-    border-radius: 0 0 50px 0;
-    float: left;
-    margin-top: -5px;
-}
-
 /* 下面区分看过和要看的样式 黄色*/
 .mark-one {
     width: 60px;
@@ -319,21 +310,31 @@ tbody tr td {
     float: right;
 }
 
-/* 日历上面的样式 红色*/
-.second_watch {
-    cursor: pointer;
-    position: relative;
+/* 日历上有未来观看事件的样式 */
+.feature-watch {
+    width: 10px;
+    height: 10px;
     background-color: #FF5050;
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
+    border-radius: 0 0 50px 0;
+    float: left;
+    margin-top: -5px;
 }
 
-/* 日历上面的样式 黄色*/
-.half_circle {
+/* 日历上有历史观看事件的样式 */
+.history-watch {
     width: 10px;
     height: 10px;
     background-color: #FFB939;
+    border-radius: 0 0 50px 0;
+    float: left;
+    margin-top: -5px;
+}
+
+/* 日历上有两种事件的样式 */
+.double-watch {
+    width: 10px;
+    height: 10px;
+    background-color: #2728ff;
     border-radius: 0 0 50px 0;
     float: left;
     margin-top: -5px;

@@ -44,7 +44,10 @@ def create_dates_by_first_last(firstDate, lastDate):
     '''
     dateDict = {}
     while (firstDate <= lastDate):
-        dateDict[firstDate.strftime("%Y-%m-%d")] = 0
+        obj = {}
+        obj['history'] = 0
+        obj['feature'] = 0
+        dateDict[firstDate.strftime("%Y-%m-%d")] = obj
         firstDate = firstDate + datetime.timedelta(days=1)
     return dateDict
 
