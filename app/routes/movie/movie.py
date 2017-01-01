@@ -82,3 +82,22 @@ def get_all_impression(movieId):
                            num=info['num'],
                            movie=movie,
                            detail=detail)
+
+
+@app.route('/movies/friends/<string:userId>/impressions/<string:movieId>', methods=['GET'])
+@login_required
+def get_friend_impression(userId, movieId):
+    '''
+    获取好友对于这个电影的所有感想
+    :param userId:
+    :param movieId:
+    :return:
+    '''
+    info = user_movie_impression(userId, movieId)
+    movie = ready_for_SelectMovieById(userId, movieId)
+    detail = movie_detail_info(int(movieId))
+    return render_template('movie/detailInfo.html',
+                           impression=info['out'],
+                           num=info['num'],
+                           movie=movie,
+                           detail=detail)

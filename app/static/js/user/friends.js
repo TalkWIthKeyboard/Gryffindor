@@ -16,6 +16,13 @@ $(document).ready(function () {
             }, 1000);   //模拟延迟
         });
     }
+
+    $('.friend-movie-btn').click(function () {
+        var myId = $(this).attr('data-userid');
+        var movieId = $(this).attr('data-movieid');
+        var url = '/movies/friends/' + myId + '/impressions/' + movieId;
+        window.location.href = url;
+    })
 });
 
 function searchEvent() {

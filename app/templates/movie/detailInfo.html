@@ -56,8 +56,8 @@
         <div class="record_title">
             <div class="nav left_title"><i class="icon_text">观影记录</i></div>
         </div>
-        {% for each in impression %}
-            <div class="weui_cells list">
+        <div class="weui_cells list">
+            {% for each in impression %}
                 <div class="weui_cell record_click">
                     <div class="weui_cell_bd weui_cell_primary">
                         <p>第<span>{{ each.num }}</span>次观看</p>
@@ -67,15 +67,16 @@
 
                 <div class="record">
                     <div class="rectext">
-                        <textarea class="weui_textarea" id="impression" readonly="readonly">{{ each.impression }}</textarea>
+                        <textarea class="weui_textarea" id="impression"
+                                  readonly="readonly">{{ each.impression }}</textarea>
                     </div>
                     <div class="time_where">
                         <i class="icon_locate"><input id="where" type="text" value="{{ each.address }}" readonly/></i>
                         <i class="icon_date"><input id="time" type="text" placeholder="{{ each.date }}" readonly/></i>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% else %}
     <div class="empty-list">
