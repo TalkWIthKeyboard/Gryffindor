@@ -134,7 +134,7 @@ def get_all_timeline_info(myid, num):
         list = []
         for each in friends_list:
             each = each.to_dict()
-            list.append(each['userTo'])
+            list.append(str(each['userTo']))
         # 构造查找函数
         search = \
             {'__raw__':

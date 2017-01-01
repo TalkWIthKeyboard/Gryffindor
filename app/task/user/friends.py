@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from app import Friends, BasicInfo
+from app import Friends, BasicInfo, Fullcredits
 from app.core.user.user import (select_user_by_name_blur,
                                 check_friend,
                                 get_all_timeline_info,
@@ -74,12 +74,20 @@ def ready_for_get_friends_page(myid, num):
                 obj['userId'] = each['userId']
                 obj['movieId'] = each['movieId']
                 obj['createTime'] = each['createTime']
+                obj['state'] = each['state']
                 # 准备用户数据
                 obj['user_info'] = query_user_by_myid(each['userId'])
                 # 准备电影数据
                 obj['movie_info'] = select_by_id(BasicInfo, each['movieId'])
                 # 准备时间数据
                 obj['date'] = calculation_time(each['createTime'])
+                # 导演编剧数据
+                fullcredits = select_by_id(Fullcredits, obj['movieId'])
+                obj['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and \
+                                                                     fullcredits['director'][0]['name'] else '-'
+                obj['writer'] = fullcredits['writer'][0] if fullcredits is not None and \
+                                                                     fullcredits['writer'][0] else '-'
+
                 list.append(obj)
         return list
     except Exception, e:

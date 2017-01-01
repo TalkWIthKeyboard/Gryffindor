@@ -37,13 +37,25 @@ def calculation_time(date):
     :return:
     '''
     now = datetime.datetime.now()
-    old = datetime.datetime(date)
-    type = 'minute'
-    ans = (now - old).minute
-    if ans >= 60:
-        ans = (now - old).hour
-        type = 'hour'
-        if ans >= 24:
-            ans = (now - old).days
-            type = 'day'
-    return {'date': ans, 'type': type}
+    old = date
+    now_old_second = (now - old).seconds
+    now_old_day = (now - old).days
+    if now_old_day == 0:
+        type = 'minute'
+        ans = now_old_second / 60
+        if ans >= 60:
+            type = 'hour'
+            ans /= 60
+        elif ans == 0:
+            ans = 1
+    else:
+        ans = now_old_day
+        type = 'day'
+
+    if type == 'minute':
+        ans_str = str(ans) + '分钟前'
+    elif type == 'hour':
+        ans_str = str(ans) + '小时前'
+    elif type == 'day':
+        ans_str = str(ans) + '天前'
+    return ans_str

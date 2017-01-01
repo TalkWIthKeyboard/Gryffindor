@@ -55,7 +55,7 @@ function searchEvent(value) {
                                 </div>\
                             </div>'
                     } else {
-                        if (friend.isFriend == 0 || friends.isFriend == 2) {
+                        if (friend.isFriend == 0 || friend.isFriend == 2) {
                             appendString +=
                                 '   <div class="weui_cell_ft">\
                                         <img data-id="' + friend.myid + '" class="friends-add-btn" src="image/photo/friends_add.png"/> \
