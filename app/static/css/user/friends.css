@@ -226,3 +226,7 @@ html {
     color: #555555;
     letter-spacing: -0.25px;
 }
+
+.infi-display {
+    display: none;
+}

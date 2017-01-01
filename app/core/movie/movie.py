@@ -130,8 +130,7 @@ def user_movie_history_count(myid):
     :return:
     '''
     try:
-        # 有bug
-        info = len(MovieRecordEvent.objects(userId=str(myid), state=0))
+        info = len(MovieRecordEvent.objects(userId=str(myid), state=0).distinct('movieId'))
         return info
     except Exception, e:
         print e.message

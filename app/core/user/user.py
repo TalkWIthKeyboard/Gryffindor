@@ -142,7 +142,7 @@ def get_all_timeline_info(myid, num):
                       {'$in': list}
                   }
              }
-        basic = MovieRecordEvent.objects(**search).paginate(page=num, per_page=5)
+        basic = MovieRecordEvent.objects(**search).paginate(page=num, per_page=3)
         if basic:
             return basic
         else:

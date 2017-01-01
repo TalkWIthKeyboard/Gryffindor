@@ -73,14 +73,14 @@ def ready_for_get_friends_page(myid, num):
                 each = each.to_dict()
                 obj['userId'] = each['userId']
                 obj['movieId'] = each['movieId']
-                obj['date'] = each['date']
+                obj['date'] = each['createTime']
                 obj['state'] = each['state']
                 # 准备用户数据
                 obj['user_info'] = query_user_by_myid(each['userId'])
                 # 准备电影数据
                 obj['movie_info'] = select_by_id(BasicInfo, each['movieId'])
                 # 准备时间数据
-                obj['date'] = calculation_time(each['date'])
+                obj['date'] = calculation_time(each['createTime'])
                 # 导演编剧数据
                 fullcredits = select_by_id(Fullcredits, obj['movieId'])
                 obj['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and \

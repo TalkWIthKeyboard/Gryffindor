@@ -32,14 +32,14 @@ function searchEvent() {
         success: function (data) {
             var list = data.list;
             $('.search-out').attr('data-id', num + 1);
-            if (list != null) {
+            if (list.length != 0) {
                 for (var index in list) {
                     var info = list[index];
                     // 添加头像的样式
                     var appendStr =
                         '<li> \
                             <div class="po-avt-wrap"> \
-                                <img class="po-avt" src={{' + info.user_info.headImgUrl + '}}> \
+                                <img class="po-avt" src=' + info.user_info.headImgUrl + '> \
                             </div>'
 
                     var stateStr = '';
