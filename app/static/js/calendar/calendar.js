@@ -5,14 +5,15 @@
 
 $(function () {
     startCalendar();
-    var c = 0;
-    $(".event-calendar tr td ").hover(function () {
+       var c = 0;
+//    $("tbody.event-calendar tr td ").hover(function () {
+      $("#test tr td ").hover(function () {
+            console.log("dd");
             $(this).children().eq(-1).addClass('pick');
 //            $(this).children().eq(1).addClass('pick');
 
             if ($(this).hasClass('pos-fix'))
             {c = 1;}
-
 
             $(this).removeClass('pos-fix');
         }, function () {
@@ -26,6 +27,8 @@ $(function () {
         }
     )
 });
+
+
 
 startEventDay = function () {
     var firstObj = $('tbody.event-calendar tr:first td:first');
@@ -88,7 +91,7 @@ startEventDay = function () {
                                                 <p class="weui_media_desc">观影地址：' + event[i].address + '</p> \
                                             </div> \
                                         </a> \
-                                        <div class="mark">\
+                                        <div class="mark-one">\
                                             </div>\
                                     </div> \
                                 </div> \
@@ -208,6 +211,7 @@ startCalendar = function () {
         }
     });
 
+
     function getWeekWord(monthNumber) {
         var months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
         return months[monthNumber - 1];
@@ -303,7 +307,7 @@ startCalendar = function () {
                 } else if (index < 35) {
                     $('tbody.event-calendar tr.5').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '">' + '<div class="">' + each.getDate() + '</div></td>');
                 } else if (index < 42) {
-                    $('tbody.event-calendar tr.6').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="last-line">' + each.getDate() + '</div></td>');
+                    $('tbody.event-calendar tr.6').append('<td date-month="' + each.getMonth() + '" date-day="' + each.getDate() + '" date-year="' + each.getFullYear() + '"class="last-line">' +'<div class="">'+ each.getDate() + '</div></td>');
                 }
             }
 
@@ -321,4 +325,5 @@ startCalendar = function () {
             })
         }
     }
+
 };

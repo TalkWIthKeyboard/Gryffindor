@@ -38,16 +38,7 @@ tbody tr td {
         */
 }
 
-/*  er shua*/
-.second_watch {
-    cursor: pointer;
-    position: relative;
-    background-color: #FF5050;
 
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-}
 
 #remind_pic_div {
     height: 90px;
@@ -308,14 +299,34 @@ tbody tr td {
     float:left;
     margin-top:-5px;
 }
-
-.mark {
+/* 下面区分看过和要看的样式 黄色*/
+.mark-one {
     width: 60px;
     height: 60px;
     background-color: #FFB939;
     border-radius: 0 0 0 50px;
     float: right;
 }
+/* 下面区分看过和要看的样式 红色*/
+.mark-two{
+    width: 60px;
+    height: 60px;
+    background-color: #FF5050;
+    border-radius: 0 0 0 50px;
+    float: right;
+}
+
+/*  er shua*/
+.second_watch {
+    cursor: pointer;
+    position: relative;
+    background-color: #FF5050;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+
 
 .weui_cell {
     float: left;
