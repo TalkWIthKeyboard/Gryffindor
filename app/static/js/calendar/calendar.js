@@ -4,26 +4,8 @@
 
 
 $(function () {
-    startCalendar();
     var c = 0;
-    $("#test tr td ").hover(function () {
-            console.log("dd");
-            $(this).children().eq(-1).addClass('pick');
-
-            if ($(this).hasClass('pos-fix')) {
-                c = 1;
-            }
-
-            $(this).removeClass('pos-fix');
-        }, function () {
-            $(this).children().eq(-1).removeClass('pick');
-            if (c == 1) {
-                console.log("click 1");
-                $(this).addClass('pos-fix');
-                c = 0;
-            }
-        }
-    )
+    startCalendar(c);
 });
 
 
@@ -78,7 +60,7 @@ startEventDay = function () {
                         $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"] ').removeClass('pos-fix');
                     }
                 }
-            })
+            });
             var event = data.event;
             for (var i = 0; i < event.length; i++) {
                 var markClass = '';
@@ -176,7 +158,7 @@ writeByTime = function (year, month, day) {
         }
         return true;
     }
-}
+};
 
 function addZero(num) {
     if (parseInt(num) < 10) {
@@ -186,13 +168,13 @@ function addZero(num) {
     }
 }
 
-startCalendar = function () {
+startCalendar = function (c) {
     //获得现在的日期
     var d = new Date();
     var dayNumber = d.getDate();
     var monthNumber = d.getMonth() + 1;
     var yearNumber = d.getFullYear();
-    setMonth(yearNumber, monthNumber);
+    setMonth(yearNumber, monthNumber, c);
 
     //左翻按钮事件
     $('.btn-prev').click(function () {
@@ -201,10 +183,10 @@ startCalendar = function () {
             $('.month').attr('data-month', '13');
             var monthNumber = 13;
             yearNumber = yearNumber - 1;
-            setMonth(yearNumber, parseInt(monthNumber) - 1);
+            setMonth(yearNumber, parseInt(monthNumber) - 1, c);
         }
         else {
-            setMonth(yearNumber, parseInt(monthNumber) - 1);
+            setMonth(yearNumber, parseInt(monthNumber) - 1, c);
         }
     });
 
@@ -215,13 +197,12 @@ startCalendar = function () {
             $('.month').attr('data-month', '0');
             var monthNumber = 0;
             yearNumber = yearNumber + 1;
-            setMonth(yearNumber, parseInt(monthNumber) + 1);
+            setMonth(yearNumber, parseInt(monthNumber) + 1, c);
         }
         else {
-            setMonth(yearNumber, parseInt(monthNumber) + 1);
+            setMonth(yearNumber, parseInt(monthNumber) + 1, c);
         }
     });
-
 
     function getWeekWord(monthNumber) {
         var months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
@@ -229,13 +210,13 @@ startCalendar = function () {
     }
 
     //通过月数来填数据
-    function setMonth(yearNumber, monthNumber) {
+    function setMonth(yearNumber, monthNumber, c) {
         $('.month').text(yearNumber + '年 ' + getWeekWord(monthNumber));
         $('.month').attr('data-month', monthNumber);
-        setDay(monthNumber)
+        setDay(monthNumber, c)
     };
 
-    function setDay(monthNumber) {
+    function setDay(monthNumber, c) {
 
         //清空天数栏
         $($('tbody.event-calendar tr')).each(function (index) {
@@ -256,10 +237,10 @@ startCalendar = function () {
         var month = date.getMonth() + 1;
         var thisyear = new Date().getFullYear();
         startEventDay();
-        //对今天特殊的样式处理
-//        $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"]').append('<div class="circle">aaa</div>');
+        // 对今天特殊的样式处理
         $('tbody.event-calendar td[date-month="' + d.getMonth() + '"][date-day="' + d.getDate() + '"][date-year="' + d.getFullYear() + '"] div').addClass('current-day');
-//        startEventDay();
+        // 监听所有td的hover事件
+        listenHoverEvent(c);
 
         function getAllDays(month, year) {
             var days = getDaysInMonth(month, year);
@@ -301,7 +282,6 @@ startCalendar = function () {
             $('thead.event-days tr').append('<td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td>');
         }
 
-//        <div class="half-circle"></div>
         //填天数栏
         function printDay(monthNumber) {
             var days = getAllDays(monthNumber - 1, yearNumber);
@@ -336,5 +316,21 @@ startCalendar = function () {
             })
         }
     }
-
 };
+
+listenHoverEvent = function (c) {
+    $("#test tr td ").hover(function () {
+            $(this).children().eq(-1).addClass('pick');
+            if ($(this).hasClass('pos-fix')) {
+                c = 1;
+            }
+            $(this).removeClass('pos-fix');
+        }, function () {
+            $(this).children().eq(-1).removeClass('pick');
+            if (c == 1) {
+                $(this).addClass('pos-fix');
+                c = 0;
+            }
+        }
+    )
+}
