@@ -67,10 +67,10 @@ def ready_for_SelectMovieById(userid, id):
     date = detail['release'][0]['date'].year if detail is not None and len(detail['release']) > 0 else '-'
     out['cnname'] = '{}({})'.format(out['cnname'], date)
     # 导演
-    out['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and fullcredits['director'][0][
+    out['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and len(fullcredits['director']) > 0 and fullcredits['director'][0][
         'name'] else '-'
     # 主演
-    out['actor'] = fullcredits['actor'][0]['name'] if fullcredits is not None and fullcredits['actor'][0][
+    out['actor'] = fullcredits['actor'][0]['name'] if fullcredits is not None and len(fullcredits['actor']) > 0 and fullcredits['actor'][0][
         'name'] else '-'
 
     # 电影得分

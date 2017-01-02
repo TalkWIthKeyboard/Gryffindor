@@ -31,12 +31,13 @@ def get_friends_page():
     user = current_user
     list = ready_for_get_friends_page(user.myid, 1)
     movie_count = user_movie_history_count(user.myid)
+    list_num = len(list) if list else 0
     return render_template('user/friends.html',
                            list=list,
                            count=movie_count,
                            user_img=user.headImgUrl,
                            user_name=user.nickName,
-                           list_num=len(list))
+                           list_num=list_num)
 
 
 @app.route('/timeline/more/<int:num>', methods=['GET'])

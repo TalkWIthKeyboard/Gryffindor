@@ -83,10 +83,9 @@ def ready_for_get_friends_page(myid, num):
                 obj['date'] = calculation_time(each['createTime'])
                 # 导演编剧数据
                 fullcredits = select_by_id(Fullcredits, obj['movieId'])
-                obj['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and \
-                                                                     fullcredits['director'][0]['name'] else '-'
-                obj['writer'] = fullcredits['writer'][0] if fullcredits is not None and \
-                                                                     fullcredits['writer'][0] else '-'
+                obj['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and len(fullcredits['director']) > 0 and \
+                                                                        fullcredits['director'][0]['name'] else '-'
+                obj['writer'] = fullcredits['writer'][0] if fullcredits is not None and len(fullcredits['writer']) > 0 else '-'
 
                 list.append(obj)
         return list
