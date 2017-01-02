@@ -90,6 +90,7 @@ def click_for_user_movie_save(info):
     feature = select_by_userid_movieid(MovieRecordEvent, info['userId'], info['movieId'], 1)
     info['createTime'] = datetime.datetime.now()
     info['updateTime'] = datetime.datetime.now()
+    featureDate = info['featureDate']
 
     # 观看次数
     if record is not None:
@@ -99,15 +100,16 @@ def click_for_user_movie_save(info):
         info['num'] = 1
 
     # 电影记录事件
-    if info['date'] != '':
+    if info['date'] != 'false':
         info['date'] = datetime.datetime.strptime(info['date'], '%Y-%m-%d')
         info['state'] = 0
         info.pop('featureDate')
         MovieRecordEvent(**info).save()
+        info['featureDate'] = featureDate
 
     # 电影未来观看事件
     # 对一个电影仅存在一个未来观看
-    if info['featureDate'] != '':
+    if info['featureDate'] != 'false':
 
         info['featureDate'] = datetime.datetime.strptime(info['featureDate'], '%Y-%m-%d')
         if feature is not None:

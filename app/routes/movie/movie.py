@@ -96,8 +96,10 @@ def get_friend_impression(userId, movieId):
     info = user_movie_impression(userId, movieId)
     movie = ready_for_SelectMovieById(userId, movieId)
     detail = movie_detail_info(int(movieId))
+    impression = info['out'] if info else None
+    num = info['num'] if info else None
     return render_template('movie/detailInfo.html',
-                           impression=info['out'],
-                           num=info['num'],
+                           impression=impression,
+                           num=num,
                            movie=movie,
                            detail=detail)

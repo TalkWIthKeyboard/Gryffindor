@@ -51,11 +51,11 @@
     </div>
 </div>
 
-{% if num > 0 %}
-    <div class="record_list">
-        <div class="record_title">
-            <div class="nav left_title"><i class="icon_text">观影记录</i></div>
-        </div>
+<div class="record_list">
+    <div class="record_title">
+        <div class="nav left_title"><i class="icon_text">观影记录</i></div>
+    </div>
+    {% if num > 0 %}
         <div class="weui_cells list">
             {% for each in impression %}
                 <div class="weui_cell record_click">
@@ -77,13 +77,12 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
-{% else %}
-    <div class="empty-list">
-        <span>空空如也</span>
-        <img src="image/photo/popcorn.png"/>
-    </div>
-{% endif %}
+        </div>
+    {% else %}
+        <div class="empty-list">
+            <img src="/image/photo/popcorn.png"/>
+        </div>
+    {% endif %}
 
 <!-- js -->
 <script src="/libs/jquery-2.1.4.js"></script>

@@ -76,7 +76,7 @@ function postMovie() {
         var featureDate = $('#ftime').val() || false;
 
 
-        if (date == "" && featureDate == "") {
+        if (date == false && featureDate == false) {
             $.toast('请至少填写一个观影日期！', 'forbidden');
         }
         else {
