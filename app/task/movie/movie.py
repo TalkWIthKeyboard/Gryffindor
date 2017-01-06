@@ -142,6 +142,7 @@ def user_movie_impression(userid, movieid):
         for each in info:
             each_dict = each.to_dict()
             each_dict['date'] = str(each_dict['date']).split(' ')[0]
+            each_dict['url'] = "/movies/message/" + each_dict['_id']
             out.append(each_dict)
         return dict({'out': out, 'num': len(info)})
     else:

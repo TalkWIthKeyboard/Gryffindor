@@ -115,6 +115,7 @@ def test():
 
 
 @app.route('/movies/message/<string:eventId>', methods=['GET', 'POST'])
+@login_required
 def get_event_message(eventId):
     '''
     GET: 获取一个感想事件的所有留言
@@ -127,11 +128,12 @@ def get_event_message(eventId):
         message = query_event_message(eventId)
         user = None
         if event is not None:
-            user = query_user_by_myid(User, event['userId'])
+            user = query_user_by_myid(event['userId'])
         return render_template('movie/message.html',
                                event=event,
                                message=message,
                                user=user)
     elif request.method == 'POST':
-        info = save_message_info(current_user.myid, eventId, str(request.form.items()['message']))
+        form = request.form
+        info = save_message_info(current_user.myid, eventId, str(request.form['message']))
         return jsonify(dict({'message': info}))

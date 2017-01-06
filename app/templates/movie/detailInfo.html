@@ -72,7 +72,11 @@
                     </div>
                     <div class="time_where">
                         <i class="icon_locate"><input id="where" type="text" value="{{ each.address }}" readonly/></i>
-                        <i class="icon_date"><input id="time" type="text" placeholder="{{ each.date }}" readonly/></i>
+                        <i class="icon_date">
+                            <a href={{ each.url }}>
+                                <input id="time" type="text" placeholder="{{ each.date }}" readonly/>
+                            </a>
+                        </i>
                     </div>
                 </div>
             {% endfor %}

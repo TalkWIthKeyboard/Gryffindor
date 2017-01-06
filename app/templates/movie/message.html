@@ -13,87 +13,48 @@
 </head>
 <body>
 
-     <div class="record">
-            <div class="nav"><i class="icon_text">观影记录</i></div>
-            <div class="rectext">
-                <textarea class="weui_textarea" id="impression"></textarea>
+<div class="record">
+    <div class="nav"><i class="icon_text">观影记录</i></div>
+    <div class="rectext">
+        <textarea class="weui_textarea" id="impression">{{ event.impression }}</textarea>
+    </div>
+</div>
+
+<ul class="search-out" data-id="2">
+    {% for each in message %}
+        <li>
+            <div class="po-avt-wrap">
+                <img class="po-avt" src={{ each.user.headImgUrl }}>
+            </div>
+            <div class="po-cmt">
+                <div class="po-hd">
+                    <p class="po-name">{{ each.user.nickName }}</p>
+                    <div class="post">
+                        <p class="watch">
+                            {{ each.message }}
+                        </p>
+                        <p class="time"><span>{{ each.date }}</span></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <hr class="line"/>
+    {% endfor %}
+</ul>
+<div class="comment-bo">
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <textarea class="weui_textarea" id="input-text" placeholder="请输入评论"
+                          rows="3"></textarea>
+                <div class="weui_textarea_counter"><span>0</span>/200</div>
             </div>
         </div>
-
-
-    <!--<div class="cmt-wrap">-->
-        <!--<div class="cmt-list">-->
-            <!--&lt;!&ndash;头像&ndash;&gt;-->
-            <!--<div class="po-avt-wrap">-->
-                <!--<img class="po-avt" src='image/head-image/head.png'>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;评论&ndash;&gt;-->
-            <!--<div class="cmt-right">-->
-                <!--<p><span class="comment-p">friend1</span>你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅</p>-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-         <!--<div class="cmt-list">-->
-            <!--<div class="po-avt-wrap">-->
-                <!--<img class="po-avt" src='image/head-image/head.png'>-->
-            <!--</div>-->
-            <!--<p><span class="comment-p">friend1：</span>你真帅</p>-->
-        <!--</div>-->
-    <!--</div>-->
-
- <ul class="search-out" data-id="2">
-                    <li>
-                        <!--头像-->
-                        <div class="po-avt-wrap">
-                            <img class="po-avt" src='image/head-image/head.png'>
-                        </div>
-                        <div class="po-cmt">
-                            <div class="po-hd">
-                                <p class="po-name">SunYang</p>
-                                <div class="post">
-                                    <p class="watch">
-                                        你很帅哦
-                                    </p>
-                                    <p class="time"><span>11个月前</span></p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                <hr class="line"/>
-        <li>
-                        <!--头像-->
-                        <div class="po-avt-wrap">
-                            <img class="po-avt" src='image/head-image/head.png'>
-                        </div>
-                        <div class="po-cmt">
-                            <div class="po-hd">
-                                <p class="po-name">SunYang</p>
-                                <div class="post">
-                                    <p class="watch">
-                                        你很帅哦
-                                    </p>
-                                    <p class="time"><span>11个月前</span></p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-     <hr class="line"/>
- </ul>
-      <div class="comment-bo">
-        <div class="weui_cells weui_cells_form">
-        <div class="weui_cell">
-        <div class="weui_cell_bd weui_cell_primary">
-         <textarea class="weui_textarea" placeholder="请输入评论" rows="3"></textarea>
-        <div class="weui_textarea_counter"><span>0</span>/200</div>
-        </div>
-        </div>
-        </div>
-        <a href="javascript:;" class="weui_btn weui_btn_primary">按钮</a>
     </div>
-
-
+    <a id="sure-btn" class="weui_btn weui_btn_primary" data-id={{ event._id }}>评论</a>
+</div>
 </body>
+<script src="/libs/jquery-2.1.4.js"></script>
+<script src="/libs/jquery-weui.min.js"></script>
+<script src="/js/movie/message.js"></script>
 </html>
