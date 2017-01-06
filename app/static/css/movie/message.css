@@ -327,15 +327,22 @@ html {
     color: #555555;
     letter-spacing: -0.25px;
 }
-
 .infi-display {
     display: none;
 }
 ul{
-list-style-type:none;}
+    list-style-type:none;
+}
 .line{
     border-top:1px solid #ece8e8;
     clear:both;
 }
 li{
-padding-top:10px;}
+    padding-top:10px;
+}
+.weui_cells{
+    margin-top:0em;
+}
+.weui_cells:before{
+    border-top:0px;
+}
