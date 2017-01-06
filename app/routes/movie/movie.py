@@ -2,12 +2,16 @@
 
 from flask import render_template, request, jsonify
 from flask_login import current_user, login_required
-from app import app
+from app import app, MovieRecordEvent, User
 from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
                                   click_for_user_movie_save,
                                   user_movie_impression,
-                                  movie_detail_info)
+                                  movie_detail_info,
+                                  query_event_message,
+                                  save_message_info)
+from app.core.user.user import (query_user_by_myid)
+from app.core.basic import query_by_id
 import sys
 
 reload(sys)
@@ -104,6 +108,30 @@ def get_friend_impression(userId, movieId):
                            movie=movie,
                            detail=detail)
 
-@app.route('/test',methods=['GET'])
+
+@app.route('/test', methods=['GET'])
 def test():
-    return  render_template('movie/message.html')
+    return render_template('movie/message.html')
+
+
+@app.route('/movies/message/<string:eventId>', methods=['GET', 'POST'])
+def get_event_message(eventId):
+    '''
+    GET: 获取一个感想事件的所有留言
+    POST: 提交感想事件的留言
+    :param eventId:
+    :return:
+    '''
+    if request.method == 'GET':
+        event = query_by_id(MovieRecordEvent, eventId)
+        message = query_event_message(eventId)
+        user = None
+        if event is not None:
+            user = query_user_by_myid(User, event['userId'])
+        return render_template('movie/message.html',
+                               event=event,
+                               message=message,
+                               user=user)
+    elif request.method == 'POST':
+        info = save_message_info(current_user.myid, eventId, str(request.form.items()['message']))
+        return jsonify(dict({'message': info}))

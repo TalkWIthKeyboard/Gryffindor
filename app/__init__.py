@@ -25,6 +25,7 @@ from app.models.Movie import AliasName  # 中英文名字对照
 from app.models.MovieEvent import MovieRecordEvent  # 电影记录事件
 from app.models.User import User
 from app.models.Friends import Friends # 朋友关系类
+from app.models.Message import Message # 留言类
 
 # router
 from app.routes.calendar import calendar
