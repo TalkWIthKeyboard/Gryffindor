@@ -102,10 +102,80 @@ html,body{
 
 
 
+header {
+    position: relative;
+    height: 35%;
+}
+
+#mark {
+    height: 8%;
+    padding-left: 20px;
+    font-family: PingFangSC-Light;
+    font-size: 20px;
+    color: #7D7D7D;
+    letter-spacing: -0.49px;
+}
+
+#main {
+    height: 57%;
+}
+
+#bg {
+    width: 100%
+}
+
+#user-name {
+    text-align: right;
+    left: 20px;
+    bottom: 5px;
+    font-weight: 700;
+    text-shadow: 0 1px .5px #000;
+    font-family: PingFangSC-Medium;
+    font-size: 36px;
+    color: #FFFFFF;
+    letter-spacing: -0.87px;
+}
+
+#avt, #user-name {
+    position: absolute
+}
+
+#avt {
+
+    height: 90px;
+    width: 90px;
+    right: 15px;
+    bottom: -40px;
+    margin: auto;
+    margin-top: 5px;
+    border-radius: 50px;
+    border: 1px solid #dbdbdb;
+}
+
+#fp {
+    height: 89px;
+    width: 65px;
+}
+
+#fpp {
+    height: 89px;
+}
+
+.weui_media_box {
+    padding: 0px;
+}
+
+.weui_media_box:before {
+    border-top: 0px;
+}
+
+.weui_media_box.weui_media_appmsg .weui_media_bd {
+    background-color: #F3F3F3;
+}
 
 /*........................*/
 #list, #list li, .po-hd, .post {
-    overflow: hidden;
+    overflow: hidden
 }
 
 .po-cmt, .post .list-img:nth-child(1), .time {
@@ -156,9 +226,6 @@ html {
     padding-bottom: 15px
 }
 
-#share a:nth-child(2), .ads, .po-avt {
-    position: absolute
-}
 
 .ads {
     color: #999;
@@ -184,6 +251,7 @@ html {
 .po-avt-wrap {
     padding-left: 10px;
     border: 0px solid #dbdbdb;
+    float:left;
 }
 
 .po-avt {
@@ -204,9 +272,9 @@ html {
 }
 
 .po-cmt {
-    padding-left: 60px;
+    padding-left: 30px;
     padding-right: 10px;
-    width: 90%;
+    width: 75%;
     box-sizing: border-box;
     float: left;
 }
@@ -263,5 +331,11 @@ html {
 .infi-display {
     display: none;
 }
-
-
+ul{
+list-style-type:none;}
+.line{
+    border-top:1px solid #ece8e8;
+    clear:both;
+}
+li{
+padding-top:10px;}
