@@ -3,6 +3,7 @@
  */
 
 
+
 $(function () {
     var c = 0;
     startCalendar(c);

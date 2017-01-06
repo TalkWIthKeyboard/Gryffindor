@@ -65,7 +65,6 @@ div {
     float: left;
     background: #fff;
     width: 60%;
-    overflow-y: scroll;
 }
 
 #mov_name {
