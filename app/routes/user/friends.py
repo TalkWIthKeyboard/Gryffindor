@@ -85,3 +85,4 @@ def make_friends(myid):
         return jsonify(dict(message='success'))
     except Exception, e:
         return jsonify(dict(message='error', err=e.message))
+

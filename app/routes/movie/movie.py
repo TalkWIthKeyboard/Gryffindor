@@ -103,3 +103,7 @@ def get_friend_impression(userId, movieId):
                            num=num,
                            movie=movie,
                            detail=detail)
+
+@app.route('/test',methods=['GET'])
+def test():
+    return  render_template('movie/message.html')
