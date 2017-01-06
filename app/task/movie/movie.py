@@ -168,8 +168,9 @@ def movie_detail_info(movieid):
     db_to_dict(scenes, 'scene', out)
 
     plot_str = ''
-    for each in out['plot']:
-        plot_str += each
+    if len(out['plot']):
+        for each in out['plot']:
+            plot_str += each
 
     out['plot_str'] = plot_str
 
