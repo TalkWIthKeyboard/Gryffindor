@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>评论</title>
+    <title>观影记录</title>
 
     <!-- css -->
     <link rel="stylesheet" href="/libs/jquery-weui.min.css">
@@ -12,88 +12,95 @@
     <link rel="stylesheet" href="/css/movie/message.css">
 </head>
 <body>
-
-     <div class="record">
-            <div class="nav"><i class="icon_text">观影记录</i></div>
-            <div class="rectext">
-                <textarea class="weui_textarea" id="impression"></textarea>
+    <div class="record">
+        <div class="avatar">
+            <img src="/image/head/head.jpg">
+            <div>
+                <p class="name">宋伟</p>
+                <p class="create_time">发表于11月前</p>
             </div>
         </div>
 
+        <h3 class="title">哈利波特与死亡圣器</h3>
+        <p class="content">
+            一点闲话：我打了10分，有人居然把这扯到了“良心”上。在此我并不想反驳，我只想呼吁哈迷，丫都打10分吧。
+            不是给《哈利·波特与死亡圣器（下）》，而是给《哈利·波特》整个系列。
+            在国外如火如荼的开画半个月之后，《哈利·波特与死亡圣器（下）》——这场姗姗来迟的告别演出才终于在中国大陆成功上岸。
+            观众们之前被《变形金刚3：月黑之时》所激发出的肾上腺素，也许可以消停上一阵子了。
+            10年间风雨无阻，哈利·波特一次又一次与我们相约在国王十字车站的九又四分之三站台，带领着我们进入那个天马行空的魔法世界。
+            在将一幅幅妙趣横生的画面尽收眼底的同时，我们也感受到了炽热的友情、亲情、爱情。
+            鲜活生动的人物形象，用他们一点一滴的成长来谱写剧情，久久在人们的心中传唱。
+            早已习惯了他们的我们，不得不接受这样一个即将走到尽头的事实。
+            弹指之间，一代人的青春也随之消逝。
+        </p>
 
-    <!--<div class="cmt-wrap">-->
-        <!--<div class="cmt-list">-->
-            <!--&lt;!&ndash;头像&ndash;&gt;-->
-            <!--<div class="po-avt-wrap">-->
-                <!--<img class="po-avt" src='image/head-image/head.png'>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;评论&ndash;&gt;-->
-            <!--<div class="cmt-right">-->
-                <!--<p><span class="comment-p">friend1</span>你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅你真帅</p>-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-         <!--<div class="cmt-list">-->
-            <!--<div class="po-avt-wrap">-->
-                <!--<img class="po-avt" src='image/head-image/head.png'>-->
-            <!--</div>-->
-            <!--<p><span class="comment-p">friend1：</span>你真帅</p>-->
-        <!--</div>-->
-    <!--</div>-->
-
- <ul class="search-out" data-id="2">
-                    <li>
-                        <!--头像-->
-                        <div class="po-avt-wrap">
-                            <img class="po-avt" src='image/head-image/head.png'>
-                        </div>
-                        <div class="po-cmt">
-                            <div class="po-hd">
-                                <p class="po-name">SunYang</p>
-                                <div class="post">
-                                    <p class="watch">
-                                        你很帅哦
-                                    </p>
-                                    <p class="time"><span>11个月前</span></p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                <hr class="line"/>
-        <li>
-                        <!--头像-->
-                        <div class="po-avt-wrap">
-                            <img class="po-avt" src='image/head-image/head.png'>
-                        </div>
-                        <div class="po-cmt">
-                            <div class="po-hd">
-                                <p class="po-name">SunYang</p>
-                                <div class="post">
-                                    <p class="watch">
-                                        你很帅哦
-                                    </p>
-                                    <p class="time"><span>11个月前</span></p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-     <hr class="line"/>
- </ul>
-      <div class="comment-bo">
-        <div class="weui_cells weui_cells_form">
-        <div class="weui_cell">
-        <div class="weui_cell_bd weui_cell_primary">
-         <textarea class="weui_textarea" placeholder="请输入评论" rows="3"></textarea>
-        <div class="weui_textarea_counter"><span>0</span>/200</div>
+        <div class="tag">
+            <p id="location">发表于上海市同济大学</p>
+            <p id="date">2016-1-30</p>
         </div>
-        </div>
-        </div>
-        <a href="javascript:;" class="weui_btn weui_btn_primary">按钮</a>
     </div>
 
+    <div class="comments">
+        <div class="nav">
+            <img src="/image/icons/comment_icon.png">
+            <p>评论区</p>
+        </div>
+
+        <ul>
+            <li class="comment">
+                <div class="avatar">
+                     <img src="/image/head/head.jpg">
+                    <div>
+                        <p class="name">林俊锜</p>
+                        <p class="create_time">发表于12月前</p>
+                    </div>
+                </div>
+                <p class="content">
+                    不管你喜不喜欢反正我就喜欢 这句话真的很好。
+                    毕竟十年了 结尾很让我心水 我觉得10分对我来说是应该的。
+                </p>
+            </li>
+
+            <li class="comment">
+                <div class="avatar">
+                     <img src="/image/head/head.jpg">
+                    <div>
+                        <p class="name">林俊锜</p>
+                        <p class="create_time">发表于12月前</p>
+                    </div>
+                </div>
+                <p class="content">
+                    不管你喜不喜欢反正我就喜欢 这句话真的很好。
+                    毕竟十年了 结尾很让我心水 我觉得10分对我来说是应该的。
+                </p>
+            </li>
+
+            <li class="comment">
+                <div class="avatar">
+                     <img src="/image/head/head.jpg">
+                    <div>
+                        <p class="name">林俊锜</p>
+                        <p class="create_time">发表于12月前</p>
+                    </div>
+                </div>
+                <p class="content">
+                    不管你喜不喜欢反正我就喜欢 这句话真的很好。
+                    毕竟十年了 结尾很让我心水 我觉得10分对我来说是应该的。
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="comment_box">
+        <div class="nav">
+            <img src="/image/icons/comment_icon.png">
+            <p>发表评论</p>
+        </div>
+        <textarea class="box" prefix="请输入评论">
+        </textarea>
+    </div>
+
+    <button class="submit_button">发表评论</button>
 
 </body>
 </html>
