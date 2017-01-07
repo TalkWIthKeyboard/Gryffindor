@@ -14,7 +14,7 @@
 <body>
 <div class="record">
     <div class="avatar">
-        <img src={{ user.headImgUrl }}>
+        <img src={{ event.user.headImgUrl }}>
         <div>
             <p class="name">{{ event.user.nickName }}</p>
             <p class="create_time">{{ event.createDate }}</p>
@@ -59,7 +59,7 @@
     </div>
     <textarea class="box" id="input-text" prefix="请输入评论"></textarea>
 </div>
-<button class="submit_button" id="sure-btn">发表评论</button>
+<button class="submit_button" id="sure-btn" data-id={{ event._id }}>发表评论</button>
 </body>
 <script src="/libs/jquery-2.1.4.js"></script>
 <script src="/libs/jquery-weui.min.js"></script>

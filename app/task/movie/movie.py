@@ -276,5 +276,5 @@ def query_by_movie_record_event_id(eventId):
         info['user'] = query_user_by_myid(info['userId'])
         info['movie'] = select_by_id(BasicInfo, id)
         info['createDate'] = calculation_time(info['createTime'])
-        info['date'] = datetime.datetime.strptime(info['date'], '%Y-%m-%d')
+        info['date'] = str(info['date']).split(' ')[0]
     return info
