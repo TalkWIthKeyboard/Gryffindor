@@ -274,7 +274,7 @@ def query_by_movie_record_event_id(eventId):
     info = query_by_id(MovieRecordEvent, eventId)
     if info is not None:
         info['user'] = query_user_by_myid(info['userId'])
-        info['movie'] = select_by_id(BasicInfo, id)
+        info['movie'] = select_by_id(BasicInfo, info['movieId'])
         info['createDate'] = calculation_time(info['createTime'])
         info['date'] = str(info['date']).split(' ')[0]
     return info
