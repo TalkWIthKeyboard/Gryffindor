@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>评论</title>
+    <title>观影记录</title>
 
     <!-- css -->
     <link rel="stylesheet" href="/libs/jquery-weui.min.css">
@@ -12,47 +12,54 @@
     <link rel="stylesheet" href="/css/movie/message.css">
 </head>
 <body>
-
 <div class="record">
-    <div class="nav"><i class="icon_text">观影记录</i></div>
-    <div class="rectext">
-        <textarea class="weui_textarea" id="impression">{{ event.impression }}</textarea>
-    </div>
-</div>
-
-<ul class="search-out" data-id="2">
-    {% for each in message %}
-        <li>
-            <div class="po-avt-wrap">
-                <img class="po-avt" src={{ each.user.headImgUrl }}>
-            </div>
-            <div class="po-cmt">
-                <div class="po-hd">
-                    <p class="po-name">{{ each.user.nickName }}</p>
-                    <div class="post">
-                        <p class="watch">
-                            {{ each.message }}
-                        </p>
-                        <p class="time"><span>{{ each.date }}</span></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <hr class="line"/>
-    {% endfor %}
-</ul>
-<div class="comment-bo">
-    <div class="weui_cells weui_cells_form">
-        <div class="weui_cell">
-            <div class="weui_cell_bd weui_cell_primary">
-                <textarea class="weui_textarea" id="input-text" placeholder="请输入评论"
-                          rows="3"></textarea>
-                <div class="weui_textarea_counter"><span>0</span>/200</div>
-            </div>
+    <div class="avatar">
+        <img src={{ user.headImgUrl }}>
+        <div>
+            <p class="name">{{ event.user.nickName }}</p>
+            <p class="create_time">{{ event.createDate }}</p>
         </div>
     </div>
-    <a id="sure-btn" class="weui_btn weui_btn_primary" data-id={{ event._id }}>评论</a>
+
+    <h3 class="title">{{ event.movie.cnname }}</h3>
+    <p class="content">{{ event.impression }}</p>
+
+    <div class="tag">
+        <p id="location">发表于{{ event.address }}</p>
+        <p id="date">{{ event.date }}</p>
+    </div>
 </div>
+
+<div class="comments">
+    <div class="nav">
+        <img src="/image/icons/comment_icon.png">
+        <p>评论区</p>
+    </div>
+
+    <ul>
+        {% for each in message %}
+            <li class="comment">
+                <div class="avatar">
+                    <img src={{ each.user.headImgUrl }}>
+                    <div>
+                        <p class="name">{{ each.user.nickName }}</p>
+                        <p class="create_time">{{ each.date }}</p>
+                    </div>
+                </div>
+                <p class="content">{{ each.message }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="comment_box">
+    <div class="nav">
+        <img src="/image/icons/comment_icon.png">
+        <p>发表评论</p>
+    </div>
+    <textarea class="box" id="input-text" prefix="请输入评论"></textarea>
+</div>
+<button class="submit_button" id="sure-btn">发表评论</button>
 </body>
 <script src="/libs/jquery-2.1.4.js"></script>
 <script src="/libs/jquery-weui.min.js"></script>

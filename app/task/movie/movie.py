@@ -9,6 +9,7 @@ from app.core.movie.movie import (select_basic_info_by_name_blur,
                                   select_message_by_eventId)
 from app import BasicInfo, Score, Details, Fullcredits, MovieRecordEvent, Awards, Comment, Plot, \
     Scenes, Message
+from app.core.basic import query_by_id
 from app.core.user.user import (query_user_by_myid)
 from app.task.user.friends import (calculation_time)
 import datetime
@@ -262,3 +263,18 @@ def save_message_info(userId, eventId, message):
     except Exception, e:
         print e.message
         return 'fail'
+
+
+def query_by_movie_record_event_id(eventId):
+    '''
+    通过记录事件的id获取记录事件并扩展数据
+    :param eventId:
+    :return:
+    '''
+    info = query_by_id(MovieRecordEvent, eventId)
+    if info is not None:
+        info['user'] = query_user_by_myid(info['userId'])
+        info['movie'] = select_by_id(BasicInfo, id)
+        info['createDate'] = calculation_time(info['createTime'])
+        info['date'] = datetime.datetime.strptime(info['date'], '%Y-%m-%d')
+    return info

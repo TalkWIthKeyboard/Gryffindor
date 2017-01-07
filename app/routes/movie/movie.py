@@ -2,16 +2,15 @@
 
 from flask import render_template, request, jsonify
 from flask_login import current_user, login_required
-from app import app, MovieRecordEvent, User
+from app import app
 from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
                                   click_for_user_movie_save,
                                   user_movie_impression,
                                   movie_detail_info,
                                   query_event_message,
-                                  save_message_info)
-from app.core.user.user import (query_user_by_myid)
-from app.core.basic import query_by_id
+                                  save_message_info,
+                                  query_by_movie_record_event_id)
 import sys
 
 reload(sys)
@@ -124,16 +123,11 @@ def get_event_message(eventId):
     :return:
     '''
     if request.method == 'GET':
-        event = query_by_id(MovieRecordEvent, eventId)
+        event = query_by_movie_record_event_id(eventId)
         message = query_event_message(eventId)
-        user = None
-        if event is not None:
-            user = query_user_by_myid(event['userId'])
         return render_template('movie/message.html',
                                event=event,
-                               message=message,
-                               user=user)
+                               message=message)
     elif request.method == 'POST':
-        form = request.form
         info = save_message_info(current_user.myid, eventId, str(request.form['message']))
         return jsonify(dict({'message': info}))
