@@ -10,10 +10,9 @@ body {
     padding: 0 0;
 }
 
-ul,li {
+ul, li {
     list-style: none;
 }
-
 
 /*头像样式*/
 .avatar {
@@ -53,9 +52,8 @@ ul,li {
 /**区域导航样式**/
 .nav {
     width: 85%;
-    height: 10%;
+    height: 5%;
     padding: 5% 7.5% 1%;
-    float: left;
     clear: both;
 }
 
@@ -99,7 +97,7 @@ ul,li {
     margin: 2% auto;
 }
 
-.tag #location,#date {
+.tag #location, #date {
     width: 100%;
     text-align: right;
     font-size: 18px;
@@ -150,3 +148,6 @@ ul,li {
     margin: 10%;
 }
 
+.empty-list img{
+    height: 80%;
+}

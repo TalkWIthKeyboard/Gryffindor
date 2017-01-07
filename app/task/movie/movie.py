@@ -5,9 +5,13 @@ from app.core.movie.movie import (select_basic_info_by_name_blur,
                                   select_by_userid_movieid,
                                   select_by_userid_movieid_all,
                                   select_by_objectid,
-                                  select_by_enname)
+                                  select_by_enname,
+                                  select_message_by_eventId)
 from app import BasicInfo, Score, Details, Fullcredits, MovieRecordEvent, Awards, Comment, Plot, \
-    Scenes
+    Scenes, Message
+from app.core.basic import query_by_id
+from app.core.user.user import (query_user_by_myid)
+from app.task.user.friends import (calculation_time)
 import datetime
 
 
@@ -67,11 +71,13 @@ def ready_for_SelectMovieById(userid, id):
     date = detail['release'][0]['date'].year if detail is not None and len(detail['release']) > 0 else '-'
     out['cnname'] = '{}({})'.format(out['cnname'], date)
     # 导演
-    out['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and len(fullcredits['director']) > 0 and fullcredits['director'][0][
-        'name'] else '-'
+    out['director'] = fullcredits['director'][0]['name'] if fullcredits is not None and len(
+        fullcredits['director']) > 0 and fullcredits['director'][0][
+                                                                'name'] else '-'
     # 主演
-    out['actor'] = fullcredits['actor'][0]['name'] if fullcredits is not None and len(fullcredits['actor']) > 0 and fullcredits['actor'][0][
-        'name'] else '-'
+    out['actor'] = fullcredits['actor'][0]['name'] if fullcredits is not None and len(fullcredits['actor']) > 0 and \
+                                                      fullcredits['actor'][0][
+                                                          'name'] else '-'
 
     # 电影得分
     if score is not None:
@@ -137,6 +143,7 @@ def user_movie_impression(userid, movieid):
         for each in info:
             each_dict = each.to_dict()
             each_dict['date'] = str(each_dict['date']).split(' ')[0]
+            each_dict['url'] = "/movies/message/" + each_dict['_id']
             out.append(each_dict)
         return dict({'out': out, 'num': len(info)})
     else:
@@ -154,7 +161,7 @@ def movie_detail_info(movieid):
     comment = select_by_id(Comment, movieid)  # 评论
     plot = select_by_id(Plot, movieid)  # 简介
     scenes = select_by_id(Scenes, movieid)  # 揭秘
-    fullcredits = getCnname(select_by_id(Fullcredits, movieid))  # 演职人员信息
+    fullcredits = get_cnname(select_by_id(Fullcredits, movieid))  # 演职人员信息
 
     out['awards'] = awards['awards'] if awards and len(awards['awards']) > 0 else None
     out['plot'] = plot['content'] if plot and len(plot['content']) > 0 else None
@@ -163,8 +170,9 @@ def movie_detail_info(movieid):
     db_to_dict(scenes, 'scene', out)
 
     plot_str = ''
-    for each in out['plot']:
-        plot_str += each
+    if len(out['plot']):
+        for each in out['plot']:
+            plot_str += each
 
     out['plot_str'] = plot_str
 
@@ -198,7 +206,7 @@ def user_movie_one_impression(impressionid):
     return info
 
 
-def getCnname(list):
+def get_cnname(list):
     '''
     获取相对应的中文名字
     :param list:
@@ -216,3 +224,57 @@ def getCnname(list):
                 each = alias['alias'][0] if alias is not None and len(alias['alias']) > 0 else None
 
     return list
+
+
+def query_event_message(eventId):
+    '''
+    获得这个感想事件的所有评论信息和评论人的信息
+    :param eventId:
+    :return:
+    '''
+    messages = select_message_by_eventId(eventId)
+    info = []
+    if messages is not None:
+        for each in messages:
+            obj = each.to_dict()
+            obj['user'] = query_user_by_myid(obj['myid'])
+            obj['date'] = calculation_time(obj['createTime'])
+            info.append(obj)
+    return info
+
+
+def save_message_info(userId, eventId, message):
+    '''
+    保存评论信息
+    :param userId:
+    :param eventId:
+    :param message:
+    :return:
+    '''
+    form = {}
+    try:
+        form['myid'] = userId
+        form['movieEventId'] = eventId
+        form['message'] = message
+        form['createTime'] = datetime.datetime.now()
+        form['updateTime'] = datetime.datetime.now()
+        Message(**form).save()
+        return 'success'
+    except Exception, e:
+        print e.message
+        return 'fail'
+
+
+def query_by_movie_record_event_id(eventId):
+    '''
+    通过记录事件的id获取记录事件并扩展数据
+    :param eventId:
+    :return:
+    '''
+    info = query_by_id(MovieRecordEvent, eventId)
+    if info is not None:
+        info['user'] = query_user_by_myid(info['userId'])
+        info['movie'] = select_by_id(BasicInfo, info['movieId'])
+        info['createDate'] = calculation_time(info['createTime'])
+        info['date'] = str(info['date']).split(' ')[0]
+    return info

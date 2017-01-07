@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from app import BasicInfo, AliasName, MovieRecordEvent
+from app import BasicInfo, AliasName, MovieRecordEvent, Message
 from config import DEFAULT_PAGE_SIZE
 import re
 
@@ -135,3 +135,20 @@ def user_movie_history_count(myid):
     except Exception, e:
         print e.message
         return 0
+
+
+def select_message_by_eventId(eventId):
+    '''
+    通过事件的id获取所有的评论
+    :param movieId:
+    :return:
+    '''
+    try:
+        info = Message.objects(movieEventId=eventId).all()
+        if info:
+            return info
+        else:
+            return None
+    except Exception, e:
+        print e.message
+        return None

@@ -7,6 +7,7 @@ class MovieBasic(object):
         电影事件基础类
     '''
 
+    _id = db.ObjectIdField()
     # 用户Id
     userId = db.StringField(max_length=60, required=True)
     # 电影Id
@@ -39,6 +40,7 @@ class MovieRecordEvent(db.Document, MovieBasic):
 
     def to_dict(self):
         return dict(
+            _id=str(self._id),
             userId=self.userId,
             movieId=self.movieId,
             date=self.date,

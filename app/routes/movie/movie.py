@@ -7,7 +7,10 @@ from app.task.movie.movie import (ready_for_SelectMovieByName,
                                   ready_for_SelectMovieById,
                                   click_for_user_movie_save,
                                   user_movie_impression,
-                                  movie_detail_info)
+                                  movie_detail_info,
+                                  query_event_message,
+                                  save_message_info,
+                                  query_by_movie_record_event_id)
 import sys
 
 reload(sys)
@@ -104,6 +107,28 @@ def get_friend_impression(userId, movieId):
                            movie=movie,
                            detail=detail)
 
-@app.route('/test',methods=['GET'])
+
+@app.route('/test', methods=['GET'])
 def test():
-    return  render_template('movie/message.html')
+    return render_template('movie/message.html')
+
+
+@app.route('/movies/message/<string:eventId>', methods=['GET', 'POST'])
+@login_required
+def get_event_message(eventId):
+    '''
+    GET: 获取一个感想事件的所有留言
+    POST: 提交感想事件的留言
+    :param eventId:
+    :return:
+    '''
+    if request.method == 'GET':
+        event = query_by_movie_record_event_id(eventId)
+        message = query_event_message(eventId)
+        return render_template('movie/message.html',
+                               event=event,
+                               message=message,
+                               num=len(message))
+    elif request.method == 'POST':
+        info = save_message_info(current_user.myid, eventId, str(request.form['message']))
+        return jsonify(dict({'message': info}))
