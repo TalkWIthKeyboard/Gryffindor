@@ -127,7 +127,8 @@ def get_event_message(eventId):
         message = query_event_message(eventId)
         return render_template('movie/message.html',
                                event=event,
-                               message=message)
+                               message=message,
+                               num=len(message))
     elif request.method == 'POST':
         info = save_message_info(current_user.myid, eventId, str(request.form['message']))
         return jsonify(dict({'message': info}))

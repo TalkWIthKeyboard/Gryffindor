@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/libs/jquery-weui.min.css">
     <link rel="stylesheet" href="/libs/weui.css">
     <link rel="stylesheet" href="/css/movie/message.css">
+    <link rel="stylesheet" href="/css/basic.css">
 </head>
 <body>
 <div class="record">
@@ -22,7 +23,7 @@
     </div>
 
     <h3 class="title">{{ event.movie.cnname }}</h3>
-    <p class="content">{{ event.impression }}</p>
+    <p class="content">&nbsp;&nbsp;{{ event.impression }}</p>
 
     <div class="tag">
         <p id="location">发表于{{ event.address }}</p>
@@ -30,27 +31,32 @@
     </div>
 </div>
 
-<div class="comments">
-    <div class="nav">
-        <img src="/image/icons/comment_icon.png">
-        <p>评论区</p>
-    </div>
-
-    <ul>
-        {% for each in message %}
-            <li class="comment">
-                <div class="avatar">
-                    <img src={{ each.user.headImgUrl }}>
-                    <div>
-                        <p class="name">{{ each.user.nickName }}</p>
-                        <p class="create_time">{{ each.date }}</p>
-                    </div>
-                </div>
-                <p class="content">{{ each.message }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="nav">
+    <img src="/image/icons/comment_icon.png">
+    <p>评论区</p>
 </div>
+{% if num > 0 %}
+    <div class="comments">
+        <ul>
+            {% for each in message %}
+                <li class="comment">
+                    <div class="avatar">
+                        <img src={{ each.user.headImgUrl }}>
+                        <div>
+                            <p class="name">{{ each.user.nickName }}</p>
+                            <p class="create_time">{{ each.date }}</p>
+                        </div>
+                    </div>
+                    <p class="content">{{ each.message }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    <div class="empty-list">
+        <img src="/image/photo/popcorn.png"/>
+    </div>
+{% endif %}
 
 <div class="comment_box">
     <div class="nav">
