@@ -111,11 +111,20 @@ ul, li {
 }
 
 .comment .content {
-    font-size: 16px;
+    font-size: 14px;
     width: 70%;
     margin: 0 7.5%;
     padding-left: 60px;
     font-weight: 400;
+}
+
+.comment .avatar img {
+    width: 45px;
+    height: 45px;
+}
+
+.comment .avatar .name {
+    font-size: 16px;
 }
 
 /**输入栏样式**/

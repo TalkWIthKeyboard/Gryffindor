@@ -174,93 +174,68 @@ div {
     padding: 3px 10px;
 }
 
-.icon_date {
-    background-image: url("/image/icons/date.png");
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: 17px 17px;
-}
-
-.icon_locate {
-    background-image: url("/image/icons/locate.png");
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: 17px 17px;
-}
-
 .time_where {
-    height: 15%;
-    padding: 0 16px;
+    padding: 0 5%;
+    width: 100%;
+    height: 10%;
 }
 
-.time_where > i {
-    display: block;
-    height: 100%;
-    float: left;
-    border: none;
-}
-
-.time_where > .icon_locate {
-    width: 54%;
-}
-
-.time_where > .icon_date {
-    width: 46%;
-}
-
-#where, #time {
-    font-size: 13px;
-
-    display: block;
-    color: #999999;
-    height: 100%;
-    width: 75%;
-}
-
-/*date class部分*/
-
-.date {
-    font-size: 20px;
-    height: 13%;
-    background: #fff;
-    margin-bottom: 2%;
-}
-
-.icon_clock {
-    background-image: url("/image/icons/clock.png");
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: 22px 22px;
-}
-
-.date > .nav {
-    height: 30%;
-}
-
-.date > .nav > i {
+.location {
+    width: 55%;
     float: left;
 }
 
-.date > .nav > p {
-    float: right;
-    width: 50%;
+.location img {
+    width: 17px;
+    height: 17px;
+    float: left;
+}
+
+#where {
     font-size: 15px;
     color: #999999;
-    text-align: center;
-}
-
-.date > div {
-    height: 40%;
-}
-
-.date > div > input {
-    font-size: 17px;
-    float: left;
-    background: #fff;
-    width: 50%;
-    border: none;
     height: 100%;
-    text-align: center;
+    width: 80%;
+    overflow: hidden; /*自动隐藏文字*/
+    text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+    white-space: nowrap;/*强制不换行*/
+    float: left;
+    padding-bottom: 0;
+    margin-left: 5%;
+}
+
+.date {
+    width: 40%;
+    float: left;
+}
+
+.date img {
+    width: 17px;
+    height: 17px;
+    float: left;
+}
+
+#time {
+    font-size: 15px;
+    color: #999999;
+    height: 100%;
+    width: 80%;
+    overflow: hidden; /*自动隐藏文字*/
+    text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+    white-space: nowrap;/*强制不换行*/
+    float: left;
+    padding-bottom: 0;
+    margin-left: 5%;
+}
+
+.comment {
+    display: none;
+    padding-top: 3%;
+}
+
+.comment img {
+    width: 17px;
+    height: 17px;
 }
 
 /*foot class部分*/
@@ -290,15 +265,6 @@ div {
     height: 90%;
 }
 
-.comment {
-    height: 40%;
-}
-
-.hehe {
-}
-
-.record {
-}
 
 .disvi {
     display: none;
@@ -315,3 +281,5 @@ div {
 .weui_cells {
     margin-top: 0em;
 }
+
+
