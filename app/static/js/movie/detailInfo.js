@@ -2,8 +2,8 @@
  * Created by huangrui on 2016/10/22.
  */
 $(document).ready(function () {
-    
-    var click = 0;
+
+    var click = 1;
     $('.info').click(function () {
         $('.about').slideToggle();
         if (0 == click) {
@@ -15,32 +15,26 @@ $(document).ready(function () {
         }
     });
 
-    
-    var click_record = 0;
-
     $('.record_click').click(function () {
         $(this).next().slideToggle();
 
         if ($(this).children().eq(1).hasClass('disvi')) {
             $(this).children().eq(1).removeClass('disvi');
-            console.log("remove class");
-        }
-        else {
+        } else {
             $(this).children().eq(1).addClass('disvi');
-            console.log("add class");
         }
 
-        if (0 == click_record) {
+        // 收起来
+        if (!$(this).children().eq(1).hasClass('disvi')) {
             $(this).css({'background': 'rgba(255,255,255, 0.8)'});
-            $('.tag_time').hide();
-            $('.comment').show();
-            click_record = 1;
+            $(this).children().eq(1).show();
+            $(this).children().eq(2).hide();
         } else {
+            // 放下去
             $(this).css({'background': '#fff'});
-            $('.tag_time').show();
-            $('.comment').hide();
-            click_record = 0;
+            $(this).children().eq(1).hide();
+            $(this).children().eq(2).show();
         }
-    });
+    })
 });
 

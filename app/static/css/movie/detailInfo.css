@@ -126,6 +126,7 @@ div {
     background-color: #fff;
     overflow-y: scroll;
     padding: 0 15px;
+    display: none;
 }
 
 .title {
@@ -226,6 +227,10 @@ div {
     float: left;
     padding-bottom: 0;
     margin-left: 5%;
+}
+
+.tag_time {
+    display: block;
 }
 
 .comment {
