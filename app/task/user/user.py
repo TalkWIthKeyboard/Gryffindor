@@ -33,7 +33,7 @@ def save_user_info(image, form, info):
         info['state'] = 1
         # 头像保存
         if image != None:
-            path = save_image(image, info['nickName'])
+            path = save_image(image, info['myid'])
             info['headImgUrl'] = path if path != 'fail' and path != 'error' else ''
         else:
             info['headImgUrl'] = ''
